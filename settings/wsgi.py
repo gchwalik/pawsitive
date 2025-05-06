@@ -1,5 +1,5 @@
 """
-WSGI config for muzzle project.
+WSGI config for pawsitive project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

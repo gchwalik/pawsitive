@@ -1,5 +1,5 @@
 """
-ASGI config for muzzle project.
+ASGI config for pawsitive project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
