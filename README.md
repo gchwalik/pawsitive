@@ -9,4 +9,5 @@ Reactive dogs generally have similar triggers - children, other dogs, loud noise
 Hosting temporarily on heroku because my digitalocean account is broken. 
 
 Files relevant:
-- Procfile
+- Procfile  # specifies which dynos/processes to launch
+- heroku.yml  # used for container based builds
