@@ -39,7 +39,7 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "pawsitive-app-01e6d8cf1e0c.herokuapp.com",
+    "https://pawsitive-app-01e6d8cf1e0c.herokuapp.com",
 ]
 
 # Application definition
