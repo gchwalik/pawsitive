@@ -22,11 +22,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-root
  
 # Copy the Django project to the container
-COPY . /app/
- 
-# Expose the Django port
-EXPOSE 8000
- 
-# CMD ["sleep", "1000"]
+COPY . .env /app/
+
 # Run Django’s development server
 CMD python manage.py runserver 0.0.0.0:$PORT
