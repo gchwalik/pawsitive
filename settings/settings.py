@@ -10,11 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
+
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
+
+# Set env vars
+load_dotenv(find_dotenv())
+print(os.getenv('PORT'))
+PORT = os.getenv('PORT', 8000)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -26,6 +33,8 @@ SECRET_KEY = 'django-insecure-kd)@s2w*)xu$q-b-$=ol19!q5!iobr%sdwv1&xk-%72+prtsc_
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
     "pawsitive-app-01e6d8cf1e0c.herokuapp.com"
 ]
 

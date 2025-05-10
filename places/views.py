@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Place
 
 
+@method_decorator(csrf_protect, name='dispatch')
 class PlaceListView(ListView):
     model = Place
     template_name = "places/index.html"
