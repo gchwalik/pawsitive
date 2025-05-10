@@ -1,1 +1,1 @@
-web: make run
+web: docker compose up --build
