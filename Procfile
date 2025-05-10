@@ -1,1 +1,1 @@
-pawsitive: make run
+web: make run
