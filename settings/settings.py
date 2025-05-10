@@ -35,9 +35,12 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "pawsitive-app-01e6d8cf1e0c.herokuapp.com"
+    "pawsitive-app-01e6d8cf1e0c.herokuapp.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "pawsitive-app-01e6d8cf1e0c.herokuapp.com",
+]
 
 # Application definition
 
