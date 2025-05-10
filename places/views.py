@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Place
@@ -25,7 +26,7 @@ class PlaceUpdateView(UpdateView):
     model = Place
     fields = ["name"]
     template_name_suffix = "_details"
-    success_url = "/places/"
+    success_url = reverse_lazy('places:index')
 
 # class PlaceDeleteView(DeleteView):
 #     model = Place
