@@ -6,25 +6,12 @@
 </head>
 
 {% block content %}
-<!-- <h1>Details for {{ place.name }}</h1> -->
+<h1>Details for {{ place.name }}</h1>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
 </form>
-
-<!-- <form action="{% url 'places:place_details' place.id %}" method="post">
-    {% csrf_token %}
-    <fieldset>
-        <legend><h1>{{ place.name }}</h1></legend>
-        <input type="text" name="name" id="place.id" value="{{ place.name }}">
-         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-        {% for choice in question.choice_set.all %}
-            
-        {% endfor %} -->
-    <!-- </fieldset>
-    <input type="submit" value="Update">
-</form> -->
 
 {% endblock %}
