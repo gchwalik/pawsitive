@@ -16,21 +16,29 @@ class PlaceListView(ListView):
     # def get_queryset(self):
     #     return Place.objects.all()
 
-# class PlaceDetailView(DetailView):
-#     model = Place
-#     template_name = "places/place_details.html"
-#     context_object_name = "place"
-
 class PlaceCreateView(CreateView):
     model = Place
     fields = ["name"]
     success_url = reverse_lazy('places:index')
 
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = "Create Place"
+        context["btn_txt"] = "Create"
+        return context
+
 class PlaceUpdateView(UpdateView):
     model = Place
     fields = ["name"]
-    template_name_suffix = "_details"
     success_url = reverse_lazy('places:index')
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        context["page_title"] = "Update Place"
+        context["btn_txt"] = "Update"
+        return context
 
 # class PlaceDeleteView(DeleteView):
 #     model = Place
