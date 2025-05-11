@@ -8,7 +8,8 @@
     {% for place in places %}
         <li>
             {{ place.name }} -
-            <a href="{% url 'places:place_details' place.id %}" class="button">Edit</a>
+            <a href="{% url 'places:place_update' place.id %}" class="button">Edit, </a>
+            <a href="{% url 'places:place_delete' place.id %}" class="button">Delete</a>
         </li>
     {% endfor %}
     </ul>

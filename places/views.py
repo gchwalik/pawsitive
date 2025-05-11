@@ -40,7 +40,7 @@ class PlaceUpdateView(UpdateView):
         context["btn_txt"] = "Update"
         return context
 
-# class PlaceDeleteView(DeleteView):
-#     model = Place
-#     template_name = "places/place_confirm_delete.html"
-#     success_url = "/places/"
+class PlaceDeleteView(DeleteView):
+    model = Place
+    template_name = "places/place_confirm_delete.html"
+    success_url = reverse_lazy('places:index')
