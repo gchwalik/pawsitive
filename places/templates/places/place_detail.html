@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Place: {{place.name}}</h1>
+
+<dl>
+    <dt>Name:</dt>
+    <dd>{{ place.name }}</dd>
+</dl>
+
+<a href="{% url 'places:place_update' place.id %}">Edit</a>
+<a href="{% url 'places:index' %}">Back</a>
+
+{% endblock %}

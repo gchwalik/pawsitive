@@ -13,8 +13,8 @@ class PlaceListView(ListView):
     template_name = "places/index.html"
     context_object_name = "places"
 
-    # def get_queryset(self):
-    #     return Place.objects.all()
+class PlaceDetailView(DetailView):
+    model = Place
 
 class PlaceCreateView(CreateView):
     model = Place
