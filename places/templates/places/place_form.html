@@ -1,0 +1,17 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'places/style.css' %}">
+    <title>{% block title %}Places{% endblock %}</title>
+</head>
+
+{% block content %}
+<h1>Create new place</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+
+{% endblock %}

@@ -21,9 +21,10 @@ class PlaceListView(ListView):
 #     template_name = "places/place_details.html"
 #     context_object_name = "place"
 
-# class PlaceCreateView(CreateView):
-#     model = Place
-#     fields = ["name"]
+class PlaceCreateView(CreateView):
+    model = Place
+    fields = ["name"]
+    success_url = reverse_lazy('places:index')
 
 class PlaceUpdateView(UpdateView):
     model = Place
