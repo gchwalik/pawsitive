@@ -1,13 +1,8 @@
-{% load static %}
-
-<head>
-    <link rel="stylesheet" href="{% static 'places/style.css' %}">
-    <title>{% block title %}Places{% endblock %}</title>
-</head>
+{% extends "base.html" %}
 
 {% block content %}
-<h1>Places</h1>
 
+<h1>Places</h1>
 {% if places %}
     <ul>
     {% for place in places %}
