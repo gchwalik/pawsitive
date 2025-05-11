@@ -1,11 +1,7 @@
-{% load static %}
-
-<head>
-    <link rel="stylesheet" href="{% static 'places/style.css' %}">
-    <title>{% block title %}Places{% endblock %}</title>
-</head>
+{% extends "base.html" %}
 
 {% block content %}
+
 <h1>{{ page_title}}</h1>
 
 <form method="post">
