@@ -7,6 +7,8 @@
 <dl>
     <dt>Name:</dt>
     <dd>{{ place.name }}</dd>
+    <dt>Type:</dt>
+    <dd>{{ place.place_type }}</dd>
 </dl>
 
 <a href="{% url 'places:place_update' place.id %}">Edit</a>
