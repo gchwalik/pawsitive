@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit & vite build",
-    "lint": "eslint . && prettier --check . && tsc --noEmit",
+    "lint": "eslint . && prettier --check --debug . && tsc --noEmit",
     "format": "eslint --fix . & prettier --write .",
     "preview": "vite preview"
   },
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/node": "^22.15.18",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
