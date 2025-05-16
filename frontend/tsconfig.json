@@ -19,6 +19,6 @@
       "skipLibCheck": true,         // Skip checking all .d.ts files (faster)
       "forceConsistentCasingInFileNames": true, // Avoid case-sensitivity bugs
     },
-    "include": ["./src/**/*", "tests/**/*"], // Include all TypeScript files in src and tests folders
+    "include": ["src/**/*", "tests/**/*"], // Include all TypeScript files in src and tests folders
     "exclude": ["node_modules", "dist", "build"] // Exclude unnecessary folders
 }
