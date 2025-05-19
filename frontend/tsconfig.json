@@ -1,24 +1,7 @@
 {
-    "compilerOptions": {
-      // Core settings (adjust based on your project)
-      "module": "ESNext",           // Use ESM (or "CommonJS" if needed)
-      "jsx": "react-jsx",           // For React projects
-
-      // Strict type-checking (recommended for linting)
-      "strict": true,               // Enables all strict checks
-      "noImplicitAny": true,        // No implicit 'any' types
-      "strictNullChecks": true,     // Catch null/undefined errors
-      "strictFunctionTypes": true,  // Stricter function type checks
-      "noUnusedLocals": true,       // Error on unused variables (like ESLint)
-      "noUnusedParameters": true,   // Error on unused function params
-      "allowUnreachableCode": false, // Disallow unreachable code
-
-      // Linting-specific optimizations
-      "noEmit": true,               // Don't output JS (linting only)
-      "incremental": true,          // Speeds up subsequent runs (creates .tsbuildinfo)
-      "skipLibCheck": true,         // Skip checking all .d.ts files (faster)
-      "forceConsistentCasingInFileNames": true, // Avoid case-sensitivity bugs
-    },
-    "include": ["src/**/*", "tests/**/*"], // Include all TypeScript files in src and tests folders
-    "exclude": ["node_modules", "dist", "build"] // Exclude unnecessary folders
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.vite.json" }
+  ]
 }

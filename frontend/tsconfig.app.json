@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "module": "ESNext",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+
+    // Strict type-checking (recommended for linting)
+    "strict": true,               // Enables all strict checks
+    "noImplicitAny": true,        // No implicit 'any' types
+    "strictNullChecks": true,     // Catch null/undefined errors
+    "strictFunctionTypes": true,  // Stricter function type checks
+    "noUnusedLocals": true,       // Error on unused variables (like ESLint)
+    "noUnusedParameters": true,   // Error on unused function params
+    "allowUnreachableCode": false, // Disallow unreachable code
+
+    // Linting-specific optimizations
+    "noEmit": true,               // Don't output JS (linting only)
+    "incremental": true,          // Speeds up subsequent runs (creates .tsbuildinfo)
+    "skipLibCheck": true,         // Skip checking all .d.ts files (faster)
+    "forceConsistentCasingInFileNames": true, // Avoid case-sensitivity bugs
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "build"] // Exclude unnecessary folders
+}
