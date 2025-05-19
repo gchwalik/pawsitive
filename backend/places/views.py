@@ -44,3 +44,12 @@ class PlaceDeleteView(DeleteView):
     model = Place
     template_name = "places/place_confirm_delete.html"
     success_url = reverse_lazy('places:index')
+
+
+# --- API Views ---
+
+@method_decorator(csrf_protect, name='dispatch')
+class PlaceListView(ListView):
+    model = Place
+    template_name = "places/index.html"
+    context_object_name = "places"

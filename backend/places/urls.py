@@ -11,6 +11,16 @@ urlpatterns = [
     path("<int:pk>/delete/", views.PlaceDeleteView.as_view(), name="place_delete"),
 ]
 
+api_patterns = ([
+    path("", views.PlaceListAPIView.as_view(), name="index"),
+    path("<int:pk>/", views.PlaceDetailAPIView.as_view(), name="detail"),
+], "places_apis")  # (urlpatterns, app_name)
+
+# Include API patterns under /api/
+urlpatterns += [
+    path("apis/", include(api_patterns)),
+]
+
 
 """
 view places list
