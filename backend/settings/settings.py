@@ -46,6 +46,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     "rest_framework",
+    "snippets",
     "places.apps.PlacesConfig",
     "polls.apps.PollsConfig",
     'django.contrib.admin',

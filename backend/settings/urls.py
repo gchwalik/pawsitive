@@ -19,6 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path("", include("places.urls")),
+    path('snippets/', include('snippets.urls')),
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
 ]
