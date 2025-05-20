@@ -1,21 +1,30 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios';
+
+import { fetchPlaces } from './api/placesApi';
+import type { Place } from './api/placesApi';
 
 import './App.css'
 
+
 function App() {
-  const [places, setPlaces] = useState([]);
+  const [places, setPlaces] = useState<Place[]>([]);
   useEffect(() => {
-    axios.get('http://localhost:8000/places/')
+    fetchPlaces()
       .then(response => {
-        setPlaces(response.data)
-        console.log(response.data)
+        setPlaces(response)
       })
       .catch(error => console.error('Error:', error));
   }, []);
 
   return (
-    <p>I am empty.</p>
+    <div>
+      {places.map(place => (
+        <div key={place.id}> {/* Each item needs a unique key */}
+          <p>{place.name}</p>
+          {/* Render other place properties as needed */}
+        </div>
+      ))}
+    </div>
   );
 }
 
