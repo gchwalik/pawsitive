@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 
+import { List, ListItem, ListItemText } from '@mui/material';
+import { IconButton } from '@mui/material';
+import { EyeIcon, PencilSimpleIcon, TrashIcon } from '@phosphor-icons/react';
+
 import { fetchPlaces } from "./api/placesApi";
 import type { Place } from "./api/placesApi";
 
@@ -15,17 +19,25 @@ function App() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
+  const iconSize = 24;
+
   return (
-    <div>
+    <List>
       {places.map((place) => (
-        <div key={place.id}>
-          {" "}
-          {/* Each item needs a unique key */}
-          <p>{place.name}</p>
-          {/* Render other place properties as needed */}
-        </div>
+        <ListItem key={place.id} divider>
+          <ListItemText primary={place.name} />
+            <IconButton edge="end" aria-label="view">
+              <EyeIcon size={iconSize}/>
+            </IconButton>
+            <IconButton edge="end" aria-label="edit">
+              <PencilSimpleIcon size={iconSize} />
+            </IconButton>
+            <IconButton edge="end" aria-label="delete">
+              <TrashIcon size={iconSize}  />
+            </IconButton>
+        </ListItem>
       ))}
-    </div>
+    </List>
   );
 }
 
