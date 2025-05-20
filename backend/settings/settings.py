@@ -42,11 +42,18 @@ CSRF_TRUSTED_ORIGINS = [
     "https://pawsitive-app-01e6d8cf1e0c.herokuapp.com",
 ]
 
+# Allow only specific origins (recommended for production)
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Your frontend URL
+    "http://127.0.0.1:5173",  # Alternative frontend URL
+]
+
 # Application definition
 
 INSTALLED_APPS = [
     "rest_framework",
-    "snippets",
+    "corsheaders",
+    "snippets.apps.SnippetsConfig",
     "places.apps.PlacesConfig",
     "polls.apps.PollsConfig",
     'django.contrib.admin',
@@ -68,6 +75,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Must be at the top
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
