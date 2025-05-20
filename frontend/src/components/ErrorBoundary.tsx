@@ -1,6 +1,6 @@
 // src/components/ErrorBoundary.tsx
-import { Component } from 'react';
-import type { ErrorInfo, ReactNode } from 'react';
+import { Component } from "react";
+import type { ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -20,14 +20,15 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught:', error, errorInfo);
+    console.error("ErrorBoundary caught:", error, errorInfo);
     // Log to error monitoring (Sentry, etc.)
   }
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback || <DefaultFallback error={this.state.error} />;
-      
+      return (
+        this.props.fallback || <DefaultFallback error={this.state.error} />
+      );
     }
     return this.props.children;
   }

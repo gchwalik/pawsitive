@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
-import { fetchPlaces } from './api/placesApi';
-import type { Place } from './api/placesApi';
+import { fetchPlaces } from "./api/placesApi";
+import type { Place } from "./api/placesApi";
 
-import './App.css'
-
+import "./App.css";
 
 function App() {
   const [places, setPlaces] = useState<Place[]>([]);
   useEffect(() => {
     fetchPlaces()
-      .then(response => {
-        setPlaces(response)
+      .then((response) => {
+        setPlaces(response);
       })
-      .catch(error => console.error('Error:', error));
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   return (
     <div>
-      {places.map(place => (
-        <div key={place.id}> {/* Each item needs a unique key */}
+      {places.map((place) => (
+        <div key={place.id}>
+          {" "}
+          {/* Each item needs a unique key */}
           <p>{place.name}</p>
           {/* Render other place properties as needed */}
         </div>
@@ -28,4 +29,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
