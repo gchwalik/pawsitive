@@ -59,6 +59,3 @@ export default tseslint.config({
 - https://react.dev/reference/react/createElement
 - https://vite.dev/guide/
 - https://vite.dev/guide/features.html
-
-### Frontend References
-* 
