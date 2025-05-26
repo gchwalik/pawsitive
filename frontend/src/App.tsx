@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { EyeIcon, TrashIcon, PencilSimpleIcon } from '@phosphor-icons/react';
+import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/react';
 
 import { fetchPlaces } from "./api/placesApi";
 import type { Place } from "./api/placesApi";
@@ -19,53 +19,50 @@ function App() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  const handleView = (id: number) => console.log('View:', id);
-  const handleEdit = (id: number) => console.log('Edit:', id);
-  const handleDelete = (id: number) => console.log('Delete:', id);
-
   return (
     <>
-    <h1 className="text-green-800 text-4xl">Pawsitive Places</h1>
-    <div className="p-6 w-full mx-auto">
+      <h1 className="text-3xl font-medium text-nowrap py-4">Pawsitive Places</h1>
+      <div className="flex justify-center"> {/* content container */}
+        <div className="w-full md:w-2/3 lg:w-1/2 mt-5 bg-gray-50 pt-1 rounded-lg"> {/* table container */}
+          <h2 className="text-center text-xl font-medium p-2 border-b-1 border-stone-500">Places</h2>
+          <ul className="flex flex-col">
+            {places.map((place) => 
+              <li key={place.id} className="flex justify-between items-center hover:bg-gray-200 px-3 py-1">
+                <div className="mx-1">{place.name}</div>
+                <div className="flex gap-2"> {/* buttons */}
+                  <a href="" className="p-1 text-blue-600 hover:bg-blue-100 rounded-xl" aria-label="View">
+                    <EyeIcon size={iconSize} />
+                  </a>
+                  <a href="" className="p-1 text-green-600 hover:bg-green-100 rounded-xl" aria-label="Edit">
+                    <PencilSimpleIcon size={iconSize} />
+                  </a>
+                  <a href="" className="p-1 text-red-600 hover:bg-red-200 rounded-xl" aria-label="Delete">
+                    <TrashIcon size={iconSize}/>
+                  </a>
+                </div>
+              </li>
+            )}
+            {/* <a href="" className="bg-blue-300 w-1"><PlusIcon/>Create new</a> */}
+          </ul>
+
+        </div>
+      </div>
+
+    {/* <div className="p-6 w-full mx-auto">
       <div className="mx-auto max-w-4xl flex justify-center">
-        <div className="bg-white rounded-lg shadow-md overflow-hidden basis-1/2">  {/* Table */}
-          <div className="bg-gray-50 px-6 py-4 border-b">
-            <h2 className="text-lg font-semibold text-gray-900">Places</h2>
-          </div>
-          <ul className="divide-y divide-gray-200">
+        <div className="bg-white rounded-lg overflow-hidden basis-1/2">  
+          <ul>
             {places.map((place) => (
               <li key={place.id} className="flex items-center justify-between px-6 py-4 hover:bg-gray-50">
-                <span className="text-gray-500 font-small mr-20">{place.name}</span>
-                <div className="flex space-x-1">
-                  <button 
-                    onClick={() => handleView(place.id)}
-                    className="p-2 text-blue-600 hover:bg-blue-100 rounded-xl transition-colors"
-                    aria-label={`View ${place.name}`}
-                  >
-                    <EyeIcon size={iconSize} />
-                  </button>
-                  <button 
-                    onClick={() => handleEdit(place.id)}
-                    className="p-2 text-green-600 hover:bg-green-100 rounded-xl transition-colors"
-                    aria-label={`Edit ${place.name}`}
-                  >
-                    <PencilSimpleIcon size={iconSize} />
-                  </button>
-                  <button 
-                    onClick={() => handleDelete(place.id)}
-                    className="p-2 text-red-600 hover:bg-red-100 rounded-xl transition-colors"
-                    aria-label={`Delete ${place.name}`}
-                  >
-                    <TrashIcon size={iconSize} />
-                  </button>
+               
                 </div>
               </li>
             ))}
           </ul>
         </div>
       </div>  
-    </div>
-</>
+    </div> */}
+    </>
   );
 }
 
