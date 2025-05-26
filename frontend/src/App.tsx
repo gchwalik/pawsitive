@@ -27,7 +27,7 @@ function App() {
           <h2 className="text-center text-xl font-medium p-2 border-b-1 border-stone-500">Places</h2>
           <ul className="flex flex-col">
             {places.map((place) => 
-              <li key={place.id} className="flex justify-between items-center hover:bg-gray-200 px-3 py-1">
+              <li key={place.id} className="flex justify-between items-center hover:bg-gray-200 px-3 py-2">
                 <div className="mx-1">{place.name}</div>
                 <div className="flex gap-2"> {/* buttons */}
                   <a href="" className="p-1 text-blue-600 hover:bg-blue-100 rounded-xl" aria-label="View">
@@ -42,26 +42,16 @@ function App() {
                 </div>
               </li>
             )}
-            {/* <a href="" className="bg-blue-300 w-1"><PlusIcon/>Create new</a> */}
+            <li className="border-t border-gray-200">
+              <a href="" className="flex items-center justify-center gap-2 rounded-lg text-blue-600 hover:bg-blue-50 px-3 py-3 font-medium">
+                <PlusIcon size={18} />
+                Create New Place
+              </a>
+            </li>
           </ul>
 
         </div>
       </div>
-
-    {/* <div className="p-6 w-full mx-auto">
-      <div className="mx-auto max-w-4xl flex justify-center">
-        <div className="bg-white rounded-lg overflow-hidden basis-1/2">  
-          <ul>
-            {places.map((place) => (
-              <li key={place.id} className="flex items-center justify-between px-6 py-4 hover:bg-gray-50">
-               
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>  
-    </div> */}
     </>
   );
 }
