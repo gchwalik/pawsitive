@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   const [places, setPlaces] = useState<Place[]>([]);
-  const iconSize = 22;
+  const iconSize = 20;
 
   useEffect(() => {
     fetchPlaces()
@@ -19,18 +19,37 @@ function App() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
+
   return (
     <>
-      <h1 className="text-3xl font-medium text-nowrap py-4">Pawsitive Places</h1>
-      <div className="flex justify-center"> {/* content container */}
-        <div className="w-full md:w-2/3 lg:w-1/2 mt-5 bg-gray-50 pt-1 rounded-lg"> {/* table container */}
-          <h2 className="text-center text-xl font-medium p-2 border-b-1 border-stone-500">Places</h2>
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">Pawsitive Places</h1>
+        <p className="text-gray-600">Because every dog deserves a peaceful walk</p>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex justify-center">
+
+        {/* Table */}
+        <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mt-5 bg-fuchsia-50 pt-1 rounded-lg">
+
+          {/* Title */}
+          <h2 className="text-center text-xl font-medium p-2 border-b-1 border-neutral-500">Places</h2>
+
+          {/* Places List */}
           <ul className="flex flex-col">
-            {places.map((place) => 
-              <li key={place.id} className="flex justify-between items-center hover:bg-gray-200 px-3 py-2">
+            {places.length === 0 ? (
+              <div className="py-12 text-center text-gray-600">
+                <p className="text-lg">No places yet!</p>
+                <p className="text-sm">Add a spot to get started</p>
+              </div>
+            ) : (
+            places.map((place) =>
+              <li key={place.id} className="flex justify-between items-center hover:bg-fuchsia-100 px-4 py-2">
                 <div className="mx-1">{place.name}</div>
                 <div className="flex gap-2"> {/* buttons */}
-                  <a href="" className="p-1 text-blue-600 hover:bg-blue-100 rounded-xl" aria-label="View">
+                  <a href="" className="p-1 text-blue-500 hover:bg-cyan-100 rounded-xl" aria-label="View">
                     <EyeIcon size={iconSize} />
                   </a>
                   <a href="" className="p-1 text-green-600 hover:bg-green-100 rounded-xl" aria-label="Edit">
@@ -41,15 +60,17 @@ function App() {
                   </a>
                 </div>
               </li>
+            )
             )}
+
+            {/* Add New Button */}
             <li className="border-t border-gray-200">
-              <a href="" className="flex items-center justify-center gap-2 rounded-lg text-blue-600 hover:bg-blue-50 px-3 py-3 font-medium">
+              <a href="" className="flex items-center justify-center gap-2 rounded-b-lg text-indigo-800 hover:bg-indigo-100 px-3 py-3 font-medium">
                 <PlusIcon size={18} />
                 Create New Place
               </a>
             </li>
           </ul>
-
         </div>
       </div>
     </>
