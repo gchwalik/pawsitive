@@ -1,14 +1,20 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { createPlace, type Place } from "../api/placesApi";
 
 function PlaceForm() {
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Creating place:', name);
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    createPlace({ name } as Place)
+      .then((response) => {
+        console.log('Place created:', response);
+      })
+      .catch((error) => console.error("Error:", error));
+
     // After successful creation, navigate back
     navigate('/');
   };
@@ -21,7 +27,7 @@ function PlaceForm() {
             type="text"
             name="name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(event) => setName(event.target.value)}
             className="flex-1 my-2 p-1 border border-neutral-500 rounded-lg focus:ring focus:ring-indigo-800"
             required
         />

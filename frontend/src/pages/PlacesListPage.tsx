@@ -3,8 +3,7 @@ import { Link } from "react-router";
 
 import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/react';
 
-import { fetchPlaces } from "../api/placesApi";
-import type { Place } from "../api/placesApi";
+import { fetchPlaces, type Place } from "../api/placesApi";
 import Header from "../components/Header";
 
 import "../App.css";
