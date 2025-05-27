@@ -1,5 +1,5 @@
-import PlacesList from './components/PlacesList';
-import CreatePlace from './components/CreatePlace';
+import PlacesList from './pages/PlacesListPage';
+import CreatePlace from './pages/PlaceCreatePage';
 
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router";

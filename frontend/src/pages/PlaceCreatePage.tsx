@@ -1,5 +1,5 @@
-import Header from './Header';
-import PlaceForm from './PlaceForm';
+import Header from '../components/Header';
+import PlaceForm from '../components/PlaceForm';
 
 
 function CreatePlace() {

@@ -5,7 +5,7 @@ import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/
 
 import { fetchPlaces } from "../api/placesApi";
 import type { Place } from "../api/placesApi";
-import Header from "./Header";
+import Header from "../components/Header";
 
 import "../App.css";
 
