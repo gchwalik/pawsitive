@@ -45,9 +45,9 @@ function PlacesList() {
               <li key={place.id} className="flex justify-between items-center hover:bg-fuchsia-100 px-4 py-2">
                 <div className="mx-1">{place.name}</div>
                 <div className="flex gap-2"> {/* buttons */}
-                  <a href="" className="p-1 text-blue-500 hover:bg-cyan-100 rounded-xl" aria-label="View">
+                  <Link to={`/${place.id}`} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-xl" aria-label="View">
                     <EyeIcon size={iconSize} />
-                  </a>
+                  </Link>
                   <a href="" className="p-1 text-green-600 hover:bg-green-100 rounded-xl" aria-label="Edit">
                     <PencilSimpleIcon size={iconSize} />
                   </a>

@@ -33,10 +33,10 @@ function PlaceForm() {
         />
         </div>
         <div className="flex justify-center items-center gap-4">
-            <button type="submit" className="w-24 rounded-lg  text-indigo-800 bg-indigo-100 hover:bg-indigo-200 px-3 py-2 font-medium">
+            <button type="submit" className="btn">
                 Submit
             </button>
-            <Link to="/" className="w-24 rounded-lg text-center text-indigo-800 bg-indigo-100 hover:bg-indigo-200 px-3 py-2 font-medium">Cancel</Link>
+            <Link to="/" className="btn">Cancel</Link>
         </div>
     </form>
   )

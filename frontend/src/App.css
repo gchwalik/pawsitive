@@ -5,3 +5,7 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
+.btn {
+  @apply w-24 rounded-lg text-center text-indigo-800 bg-indigo-100 hover:bg-indigo-200 px-3 py-2 font-medium;
+}
