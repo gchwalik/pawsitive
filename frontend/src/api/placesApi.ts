@@ -20,7 +20,7 @@ const fetchPlaces = async (): Promise<Place[]> => {
 const createPlace = async (place: Place): Promise<Place> => {
   try {
     const response = await axios.post(`${API_BASE_URL}/places/`, place);
-    return response.data.results;
+    return response.data;
   } catch (error) {
     console.error("Error creating place:", error);
     throw error; // Re-throw to let components handle it
