@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { createPlace, type Place } from "../api/placesApi";
-import ButtonContainer from './Buttons';
+import ButtonContainer from "./Buttons";
 
 function PlaceForm() {
   const [name, setName] = useState('');
@@ -32,10 +32,10 @@ function PlaceForm() {
             className="flex-1  p-1 border border-neutral-400 rounded-lg focus:ring focus:ring-indigo-800"
             required
         />
-      </div> 
+      </div>
       <ButtonContainer>
-          <button type="submit" className="btn">Submit</button>
-          <Link to="/" className="btn">Cancel</Link>
+        <button type="submit" className="btn">Submit</button>
+        <Link to="/" className="btn">Cancel</Link>
       </ButtonContainer>
     </form>
   )
