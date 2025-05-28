@@ -1,8 +1,10 @@
-import PlacesList from './pages/PlacesListPage';
-import CreatePlace from './pages/PlaceCreatePage';
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+
+import PlacesList from './pages/PlacesListPage';
+import CreatePlace from './pages/PlaceCreatePage';
+import ViewPlace from "./pages/PlaceViewPage";
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PlacesList />} />
         <Route path="/create" element={<CreatePlace />} />
+        <Route path="/:id" element={<ViewPlace />} />
       </Routes>
     </Router>
   );

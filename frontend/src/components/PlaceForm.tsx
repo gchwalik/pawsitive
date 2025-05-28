@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { createPlace, type Place } from "../api/placesApi";
+import ButtonContainer from './Buttons';
 
 function PlaceForm() {
   const [name, setName] = useState('');
@@ -21,23 +22,21 @@ function PlaceForm() {
 
   return (
     <form action="/places" method="post" onSubmit={handleSubmit}>
-        <div className="flex items-center gap-4 mb-4">
+      <div className="flex items-center gap-4 mb-4 max-w-md mx-auto">
         <label className="w-10 text-right">Name</label>
         <input
             type="text"
             name="name"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="flex-1 my-2 p-1 border border-neutral-500 rounded-lg focus:ring focus:ring-indigo-800"
+            className="flex-1  p-1 border border-neutral-400 rounded-lg focus:ring focus:ring-indigo-800"
             required
         />
-        </div>
-        <div className="flex justify-center items-center gap-4">
-            <button type="submit" className="btn">
-                Submit
-            </button>
-            <Link to="/" className="btn">Cancel</Link>
-        </div>
+      </div> 
+      <ButtonContainer>
+          <button type="submit" className="btn">Submit</button>
+          <Link to="/" className="btn">Cancel</Link>
+      </ButtonContainer>
     </form>
   )
 }
