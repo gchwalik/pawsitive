@@ -8,19 +8,6 @@ interface PlaceDetailsProps {
 }
 
 function PlaceDetails({ place }: PlaceDetailsProps) {
-  if (!place) {
-    return (
-      <div className="flex flex-col items-center gap-4 py-8">
-        <div className="text-gray-600">Place not found</div>
-        <div className="flex justify-center items-center gap-4">
-          <Link to="/" className="btn">
-            Back
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="flex items-center gap-4 mb-4 max-w-md mx-auto">

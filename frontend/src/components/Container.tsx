@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 function Container({ title, showTitleBorder = false, minHeight = true, children }: ContainerProps) {
-  title = title ? title : "I'm a title";
+  title = title ? title : "";
   return (
     <>
       <div className={`w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-fuchsia-50 pt-1 rounded-lg mt-5 shadow-lg ${minHeight ? `min-h-70` : ""}`}>

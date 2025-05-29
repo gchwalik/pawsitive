@@ -6,7 +6,6 @@ function CreatePlace() {
   return (
     <>
       <Header />
-      {/* Main Content */}
       <div className="flex justify-center">
         <Container title="Create Place">
           <PlaceForm />
