@@ -3,7 +3,7 @@ import { type Place } from "../api/placesApi";
 import ButtonContainer from './Buttons';
 
 interface PlaceDetailsProps {
-  place: Place | null; // The place object or null if not found
+  place: Place;
 }
 
 function PlaceDetails({ place }: PlaceDetailsProps) {
@@ -13,10 +13,6 @@ function PlaceDetails({ place }: PlaceDetailsProps) {
         <div className="place-attribute items-center">
           <label className="label font-medium">Name:</label>
           <div className="flex-1">{place.name}</div>
-        </div>
-        <div className="place-attribute items-center">
-            <label className="label font-medium">Farts:</label>
-            <div className="flex-1">asf lklja  djdjja 132 akj</div>
         </div>
       </div>
       <ButtonContainer>

@@ -34,17 +34,6 @@ function PlaceForm() {
               required
           />
         </div>
-        <div className="place-attribute items-end">
-          <label className="label leading-none">Name</label>
-          <input
-              type="text"
-              name="name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              className="flex-1 border-b border-neutral-500 focus:bg-fuchsia-100 focus:border-indigo-700 focus:border-b-2 focus:outline-hidden"
-              required
-          />
-        </div>
       </div>
       <ButtonContainer>
         <button type="submit" className="btn">Submit</button>

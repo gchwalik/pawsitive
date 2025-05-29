@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import PlaceDetails from '../components/PlaceDetails';
+import PlaceNotFound from '../components/PlaceNotFound';
 import Container from '../components/Container';
 import ButtonContainer from '../components/Buttons';
 import { Link } from 'react-router';
@@ -35,14 +36,8 @@ function ViewPlace() {
         <Container title={`${place?.name || ""}`}>
           {place ? (
             <PlaceDetails place={place} />
-          ) : (
-            <div className="flex flex-col items-center gap-4">
-              <div className="text-gray-600">Place not found</div>
-              <ButtonContainer>
-                <Link to="/" className="btn">Back</Link>
-              </ButtonContainer>
-            </div>
-          )}
+          ) : <PlaceNotFound />
+          }
         </Container>
       </div>
     </>
