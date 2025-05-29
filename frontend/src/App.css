@@ -9,3 +9,15 @@
 .btn {
   @apply w-24 rounded-lg text-center text-indigo-800 bg-indigo-100 hover:bg-indigo-200 px-3 py-2 font-medium;
 }
+
+.place-attributes {
+  @apply px-10 pt-2 flex flex-col gap-3 flex-1;
+}
+
+.place-attribute {
+  @apply flex gap-4;
+}
+
+.label {
+  @apply w-12 text-right;
+}

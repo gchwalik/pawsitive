@@ -36,7 +36,7 @@ function ViewPlace() {
           {place ? (
             <PlaceDetails place={place} />
           ) : (
-            <div className="flex flex-col items-center gap-4 py-8">
+            <div className="flex flex-col items-center gap-4">
               <div className="text-gray-600">Place not found</div>
               <ButtonContainer>
                 <Link to="/" className="btn">Back</Link>
