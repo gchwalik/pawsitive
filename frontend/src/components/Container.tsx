@@ -9,13 +9,15 @@ function Container({ title, showTitleBorder = false, minHeight = true, children 
   title = title ? title : "I'm a title";
   return (
     <>
-      <div className={`w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-fuchsia-50 pt-1 rounded-lg mt-5 shadow-lg ${minHeight ? `min-h-90` : ""}`}>
-        {title && (
-          <h2 className={`text-center text-xl font-medium p-3 ${showTitleBorder ? 'border-b-1 border-neutral-500' : ""}`}>
-            {title}
-          </h2>
-        )}
-        {children}
+      <div className={`w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-fuchsia-50 pt-1 rounded-lg mt-5 shadow-lg ${minHeight ? `min-h-70` : ""}`}>
+        <div className="flex flex-col h-full">
+          {title && (
+            <h2 className={`text-center text-xl font-medium p-3 ${showTitleBorder ? 'border-b-1 border-neutral-500' : ""}`}>
+              {title}
+            </h2>
+          )}
+          {children}
+        </div>
       </div>
     </>  
   );

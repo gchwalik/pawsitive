@@ -21,24 +21,24 @@ function PlaceForm() {
   };
 
   return (
-    <form action="/places" method="post" onSubmit={handleSubmit}>
-        <div className="px-10 pt-2 pb-8 flex flex-col gap-3">
-          <div className="flex items-end justify-items-end gap-4">
-            <label className="w-12 text-right leading-none">Name</label>
-            <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                className="flex-1 border-b border-neutral-500 focus:bg-fuchsia-100 focus:border-indigo-700 focus:border-b-2 focus:outline-hidden"
-                required
-            />
-          </div>
+    <form action="/places" method="post" onSubmit={handleSubmit} className="flex flex-col flex-1">
+      <div className="px-10 pt-2 pb-8 flex flex-col gap-3 flex-1">
+        <div className="flex items-end justify-items-end gap-4">
+          <label className="w-12 text-right leading-none">Name</label>
+          <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              className="flex-1 border-b border-neutral-500 focus:bg-fuchsia-100 focus:border-indigo-700 focus:border-b-2 focus:outline-hidden"
+              required
+          />
         </div>
-        <ButtonContainer>
-          <button type="submit" className="btn">Submit</button>
-          <Link to="/" className="btn">Cancel</Link>
-        </ButtonContainer>
+      </div>
+      <ButtonContainer>
+        <button type="submit" className="btn">Submit</button>
+        <Link to="/" className="btn">Cancel</Link>
+      </ButtonContainer>
     </form>
   )
 }
