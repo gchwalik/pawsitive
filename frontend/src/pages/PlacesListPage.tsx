@@ -5,6 +5,7 @@ import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/
 
 import { fetchPlaces, type Place } from "../api/placesApi";
 import Header from "../components/Header";
+import Container from "../components/Container";
 
 import "../App.css";
 
@@ -26,13 +27,7 @@ function PlacesList() {
       <Header />
       {/* Main Content */}
       <div className="flex justify-center">
-
-        {/* Table */}
-        <div className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 mt-5 bg-fuchsia-50 pt-1 rounded-lg">
-
-          {/* Title */}
-          <h2 className="text-center text-xl font-medium p-2 border-b-1 border-neutral-500">Places</h2>
-
+        <Container title="Places" showTitleBorder={true}>
           {/* Places List */}
           <ul className="flex flex-col">
             {places.length === 0 ? (
@@ -45,13 +40,13 @@ function PlacesList() {
               <li key={place.id} className="flex justify-between items-center hover:bg-fuchsia-100 px-4 py-2">
                 <div className="mx-1">{place.name}</div>
                 <div className="flex gap-2"> {/* buttons */}
-                  <Link to={`/${place.id}`} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-xl" aria-label="View">
+                  <Link to={`/${place.id}`} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-lg" aria-label="View">
                     <EyeIcon size={iconSize} />
                   </Link>
-                  <a href="" className="p-1 text-green-600 hover:bg-green-100 rounded-xl" aria-label="Edit">
+                  <a href="" className="p-1 text-green-600 hover:bg-green-100 rounded-lg" aria-label="Edit">
                     <PencilSimpleIcon size={iconSize} />
                   </a>
-                  <a href="" className="p-1 text-red-600 hover:bg-red-200 rounded-xl" aria-label="Delete">
+                  <a href="" className="p-1 text-red-600 hover:bg-red-200 rounded-lg" aria-label="Delete">
                     <TrashIcon size={iconSize}/>
                   </a>
                 </div>
@@ -67,7 +62,8 @@ function PlacesList() {
               </Link>
             </li>
           </ul>
-        </div>
+        
+        </Container>
       </div>
     </>
   );
