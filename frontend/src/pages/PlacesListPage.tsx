@@ -39,7 +39,9 @@ function PlacesList() {
             places.map((place) =>
               <li key={place.id} className="flex justify-between items-center hover:bg-fuchsia-100 px-4 py-2">
                 <div className="mx-1">{place.name}</div>
-                <div className="flex gap-2"> {/* buttons */}
+
+                {/* Buttons */}
+                <div className="flex gap-2">
                   <Link to={`/${place.id}`} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-lg" aria-label="View">
                     <EyeIcon size={iconSize} />
                   </Link>
@@ -50,6 +52,7 @@ function PlacesList() {
                     <TrashIcon size={iconSize}/>
                   </Link>
                 </div>
+
               </li>
             )
             )}
