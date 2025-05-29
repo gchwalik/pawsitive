@@ -43,12 +43,12 @@ function PlacesList() {
                   <Link to={`/${place.id}`} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-lg" aria-label="View">
                     <EyeIcon size={iconSize} />
                   </Link>
-                  <a href="" className="p-1 text-green-600 hover:bg-green-100 rounded-lg" aria-label="Edit">
+                  <Link to={`/${place.id}`} className="p-1 text-green-600 hover:bg-green-100 rounded-lg" aria-label="Edit">
                     <PencilSimpleIcon size={iconSize} />
-                  </a>
-                  <a href="" className="p-1 text-red-600 hover:bg-red-200 rounded-lg" aria-label="Delete">
+                  </Link>
+                  <Link to={`/${place.id}`} className="p-1 text-red-600 hover:bg-red-200 rounded-lg" aria-label="Delete">
                     <TrashIcon size={iconSize}/>
-                  </a>
+                  </Link>
                 </div>
               </li>
             )
