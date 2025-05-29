@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router';
-import { fetchPlace as getPlace, type Place } from "../api/placesApi";
+import { Link } from 'react-router';
+import { type Place } from "../api/placesApi";
 import ButtonContainer from './Buttons';
 
 interface PlaceDetailsProps {
@@ -9,18 +8,22 @@ interface PlaceDetailsProps {
 
 function PlaceDetails({ place }: PlaceDetailsProps) {
   return (
-    <>
-      <div className="flex items-center gap-4 mb-4 max-w-md mx-auto">
-        <label className="w-10 text-right font-medium">Name:</label>
-        <div className="flex-1 my-2 p-1">
-          {place.name}
+    <div className="flex flex-col flex-1">
+      <div className="place-attributes">
+        <div className="place-attribute items-center">
+          <label className="label font-medium">Name:</label>
+          <div className="flex-1">{place.name}</div>
+        </div>
+        <div className="place-attribute items-center">
+            <label className="label font-medium">Farts:</label>
+            <div className="flex-1">asf lklja  djdjja 132 akj</div>
         </div>
       </div>
       <ButtonContainer>
         <Link to={`/places/${place.id}/edit`} className="btn">Edit</Link>
         <Link to="/" className="btn">Back</Link>
       </ButtonContainer>
-    </>
+    </div>
   );
 }
 
