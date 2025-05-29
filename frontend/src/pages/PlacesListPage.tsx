@@ -53,15 +53,13 @@ function PlacesList() {
               </li>
             )
             )}
-
-            {/* Add New Button */}
-            <li className="border-t border-gray-200">
+          </ul>
+          <div className="border-t border-gray-200 mt-auto">
               <Link to="/create" className="flex items-center justify-center gap-2 rounded-b-lg text-indigo-800 hover:bg-indigo-100 px-3 py-3 font-medium">
                 <PlusIcon size={18} />
                 Create New Place
               </Link>
-            </li>
-          </ul>
+          </div>
         
         </Container>
       </div>
