@@ -22,16 +22,18 @@ function PlaceForm() {
 
   return (
     <form action="/places" method="post" onSubmit={handleSubmit}>
-        <div className="flex items-center gap-4 mb-4">
-        <label className="w-10 text-right">Name</label>
-        <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            className="flex-1 my-2 p-1 border border-neutral-500 rounded-lg focus:ring focus:ring-indigo-800"
-            required
-        />
+        <div className="px-10 pt-2 pb-8 flex flex-col gap-3">
+          <div className="flex items-end justify-items-end gap-4">
+            <label className="w-12 text-right leading-none">Name</label>
+            <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className="flex-1 border-b border-neutral-500 focus:bg-fuchsia-100 focus:border-indigo-700 focus:border-b-2 focus:outline-hidden"
+                required
+            />
+          </div>
         </div>
         <ButtonContainer>
           <button type="submit" className="btn">Submit</button>

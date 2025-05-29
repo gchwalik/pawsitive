@@ -4,7 +4,7 @@ interface ButtonContainerProps {
 
 function ButtonContainer({children}: ButtonContainerProps) {
   return (
-    <div className="flex justify-center items-center gap-4">
+    <div className="flex justify-center items-center gap-4 pb-4">
         {children}
     </div>
   )   
