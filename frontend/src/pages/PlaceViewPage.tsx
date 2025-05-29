@@ -33,11 +33,8 @@ function ViewPlace() {
     <>
       <Header />
       <div className="flex justify-center">
-        <Container title={`${place?.name || ""}`}>
-          {place ? (
-            <PlaceDetails place={place} />
-          ) : <PlaceNotFound />
-          }
+        <Container title={place?.name || "Error"}>
+          { place ? <PlaceDetails place={place}/> : <PlaceNotFound id={id}/> }
         </Container>
       </div>
     </>
