@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import ButtonContainer from './Buttons';
 
 interface PlaceNotFoundProps {
-  id: number;
+  id: string | undefined;
 }
 
 function PlaceNotFound({id}: PlaceNotFoundProps) {

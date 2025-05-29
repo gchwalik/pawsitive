@@ -3,14 +3,16 @@ import { Link } from "react-router";
 
 import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/react';
 
-import { fetchPlaces, type Place } from "../api/placesApi";
+import { fetchPlaces, type PlaceEntity } from "../api/placesApi";
 import Header from "../components/Header";
 import Container from "../components/Container";
+
+import { ROUTES } from "../consts";
 
 import "../App.css";
 
 function PlacesList() {
-  const [places, setPlaces] = useState<Place[]>([]);
+  const [places, setPlaces] = useState<PlaceEntity[]>([]);
   const iconSize = 20;
 
   useEffect(() => {
@@ -42,13 +44,13 @@ function PlacesList() {
 
                 {/* Buttons */}
                 <div className="flex gap-2">
-                  <Link to={`/${place.id}`} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-lg" aria-label="View">
+                  <Link to={ROUTES.PLACES_VIEW(place.id)} className="p-1 text-blue-500 hover:bg-cyan-100 rounded-lg" aria-label="View">
                     <EyeIcon size={iconSize} />
                   </Link>
-                  <Link to={`/${place.id}`} className="p-1 text-green-600 hover:bg-green-100 rounded-lg" aria-label="Edit">
+                  <Link to={ROUTES.PLACES_EDIT(place.id)} className="p-1 text-green-600 hover:bg-green-100 rounded-lg" aria-label="Edit">
                     <PencilSimpleIcon size={iconSize} />
                   </Link>
-                  <Link to={`/${place.id}`} className="p-1 text-red-600 hover:bg-red-200 rounded-lg" aria-label="Delete">
+                  <Link to={ROUTES.PLACES_DELETE(place.id)} className="p-1 text-red-600 hover:bg-red-200 rounded-lg" aria-label="Delete">
                     <TrashIcon size={iconSize}/>
                   </Link>
                 </div>
@@ -58,7 +60,7 @@ function PlacesList() {
             )}
           </ul>
           <div className="border-t border-gray-200 mt-auto">
-              <Link to="/create" className="flex items-center justify-center gap-2 rounded-b-lg text-indigo-800 hover:bg-indigo-100 px-3 py-3 font-medium">
+              <Link to={ROUTES.PLACES_CREATE} className="flex items-center justify-center gap-2 rounded-b-lg text-indigo-800 hover:bg-indigo-100 px-3 py-3 font-medium">
                 <PlusIcon size={18} />
                 Create New Place
               </Link>
