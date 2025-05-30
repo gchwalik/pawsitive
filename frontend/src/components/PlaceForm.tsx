@@ -30,7 +30,7 @@ function PlaceForm() {
               name="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              className="flex-1 border-b border-neutral-500 focus:bg-lime-100 focus:border-emerald-700 focus:border-b-2 focus:outline-hidden"
+              className="flex-1 border-b border-neutral-500 focus:bg-lime-100 focus:border-emerald-800 focus:border-b-2 focus:outline-hidden"
               required
           />
         </div>
