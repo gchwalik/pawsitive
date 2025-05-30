@@ -7,7 +7,15 @@
 }
 
 .btn {
-  @apply w-24 rounded-lg text-center text-emerald-800 bg-lime-100 hover:bg-lime-200 px-3 py-2 font-medium;
+  @apply w-24 rounded-lg text-center px-3 py-2 font-medium cursor-pointer;
+}
+
+.btn-primary {
+  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900
+}
+
+.btn-danger {
+  @apply text-rose-800 bg-red-200 hover:bg-red-300 hover:text-rose-900
 }
 
 .place-attributes {

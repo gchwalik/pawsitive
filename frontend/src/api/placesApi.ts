@@ -43,5 +43,15 @@ const createPlace = async (place: Place): Promise<Place> => {
   }
 }
 
-export { fetchPlaces, fetchPlace, createPlace };
+const deletePlace = async (id: number): Promise<Place> => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/places/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting place:", error);
+    throw error; // Re-throw to let components handle it
+  }
+}
+
+export { fetchPlaces, fetchPlace, createPlace, deletePlace };
 export type { Place, PlaceEntity };

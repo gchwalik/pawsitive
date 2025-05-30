@@ -36,8 +36,8 @@ function PlaceForm() {
         </div>
       </div>
       <ButtonContainer>
-        <button type="submit" className="btn">Submit</button>
-        <Link to="/" className="btn">Cancel</Link>
+        <button type="submit" className="btn btn-primary">Submit</button>
+        <Link to="/" className="btn btn-primary">Cancel</Link>
       </ButtonContainer>
     </form>
   )

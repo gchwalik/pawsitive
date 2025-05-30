@@ -12,7 +12,7 @@ function PlaceNotFound({id}: PlaceNotFoundProps) {
         <p>{`No place with id: ${id}`}</p>
       </div>
       <ButtonContainer>
-        <Link to="/" className="btn">Back</Link>
+        <Link to="/" className="btn btn-primary">Back</Link>
       </ButtonContainer>
     </div>
   );
