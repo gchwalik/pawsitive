@@ -1,8 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { createPlace, getEmptyPlace, updatePlace, type Place, type PlaceEntity } from "../api/placesApi";
+import { createPlace, updatePlace,  getEmptyPlace, toPlace, type Place, type PlaceEntity } from "../api/placesApi";
 import ButtonContainer from "./Buttons";
-import { toPlace } from '../api/placesApi';
 
 interface PlaceFormProps {
   placeEntity?: PlaceEntity;
