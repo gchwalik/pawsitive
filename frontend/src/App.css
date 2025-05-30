@@ -7,7 +7,7 @@
 }
 
 .btn {
-  @apply w-24 rounded-lg text-center text-indigo-800 bg-indigo-100 hover:bg-indigo-200 px-3 py-2 font-medium;
+  @apply w-24 rounded-lg text-center text-emerald-800 bg-lime-100 hover:bg-lime-200 px-3 py-2 font-medium;
 }
 
 .place-attributes {
