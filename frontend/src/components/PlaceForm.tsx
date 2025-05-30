@@ -53,7 +53,7 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
               name="name"
               value={formPlace.name}
               onChange={handleInputChange("name")}
-              className="flex-1 border-b border-neutral-500 focus:bg-lime-100 focus:border-emerald-800 focus:border-b-2 focus:outline-hidden"
+              className="input"
               required
           />
         </div>
