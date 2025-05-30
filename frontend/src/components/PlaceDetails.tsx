@@ -1,9 +1,10 @@
 import { Link } from 'react-router';
-import { type Place } from "../api/placesApi";
+import { type PlaceEntity } from "../api/placesApi";
 import ButtonContainer from './Buttons';
+import { ROUTES } from '../consts';
 
 interface PlaceDetailsProps {
-  place: Place;
+  place: PlaceEntity;
 }
 
 function PlaceDetails({ place }: PlaceDetailsProps) {
@@ -16,7 +17,7 @@ function PlaceDetails({ place }: PlaceDetailsProps) {
         </div>
       </div>
       <ButtonContainer>
-        <Link to={`/places/${place.id}/edit`} className="btn">Edit</Link>
+        <Link to={ROUTES.PLACES_EDIT(place.id)} className="btn">Edit</Link>
         <Link to="/" className="btn">Back</Link>
       </ButtonContainer>
     </div>

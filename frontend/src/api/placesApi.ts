@@ -3,13 +3,16 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:8000";
 
 interface Place {
-  id?: number;
   name: string;
-  created?: Date;
-  updated?: Date;
 }
 
-const fetchPlaces = async (): Promise<Place[]> => {
+interface PlaceEntity extends Place {
+  id: number;
+  created: Date;
+  updated: Date;
+}
+
+const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   try {
     const response = await axios.get(`${API_BASE_URL}/places/`);
     return response.data.results; // api has pagination
@@ -19,7 +22,7 @@ const fetchPlaces = async (): Promise<Place[]> => {
   }
 };
 
-const fetchPlace = async (id: number): Promise<Place> => {
+const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   try {
     const response = await axios.get(`${API_BASE_URL}/places/${id}/`);
     console.log("API Response:", response.data); // Add this line
@@ -41,4 +44,4 @@ const createPlace = async (place: Place): Promise<Place> => {
 }
 
 export { fetchPlaces, fetchPlace, createPlace };
-export type { Place };
+export type { Place, PlaceEntity };
