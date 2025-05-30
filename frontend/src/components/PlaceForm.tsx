@@ -34,7 +34,7 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
     } else {
       updatePlace(formPlace, id)
         .then((response) => {
-          console.log('Place created:', response);
+          console.log('Place updated:', response);
         })
         .catch((error) => console.error("Error:", error));
     }
