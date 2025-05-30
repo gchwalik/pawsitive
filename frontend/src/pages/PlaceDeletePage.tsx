@@ -1,0 +1,51 @@
+import Header from '../components/Header';
+import PlaceDetails from '../components/PlaceDetails';
+import PlaceNotFound from '../components/PlaceNotFound';
+import Container from '../components/Container';
+import { usePlace } from '../hooks/usePlace';
+import { deletePlace } from '../api/placesApi';
+
+import { Link, useNavigate,  } from 'react-router';
+import ButtonContainer from '../components/Buttons';
+
+function DeletePlace() {
+  const { place, loading, error, id } = usePlace();
+
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    try {
+      await deletePlace(place.id);
+      console.log('Place deleted:', place.name);
+      navigate('/'); // Go back to list
+    } catch (error) {
+      console.error('Error deleting place:', error);
+    }
+  };
+
+  return (
+    <>
+      <Header />
+      <div className="flex justify-center">
+        <Container title={ place?.name || ""}>
+          {loading ? (
+            <div className="flex justify-center items-center flex-1">Loading...</div>
+          ) : place ? (
+            <>
+            <PlaceDetails place={place} />
+            <p className='px-10 pb-4 font-medium text-rose-800'>Are you sure you want to delete {`${place.name}`}?</p>
+            <ButtonContainer>
+              <button onClick={handleDelete} className="btn btn-danger">Yes</button>
+              <Link to="/" className="btn btn-primary">Back</Link>
+            </ButtonContainer>
+            </>            
+          ) : (
+            <PlaceNotFound id={id} />
+          )}
+        </Container>
+      </div>
+    </>
+  );
+}
+
+export default DeletePlace;
