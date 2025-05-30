@@ -14,6 +14,11 @@ function DeletePlace() {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
+    if (!place) {
+      console.error('No place to delete');
+      return;
+    }
+
     try {
       await deletePlace(place.id);
       console.log('Place deleted:', place.name);
