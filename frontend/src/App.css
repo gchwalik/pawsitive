@@ -15,7 +15,7 @@
 }
 
 .btn-danger {
-  @apply text-rose-800 bg-red-200 hover:bg-red-300 hover:text-rose-900
+  @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900
 }
 
 .place-attributes {
