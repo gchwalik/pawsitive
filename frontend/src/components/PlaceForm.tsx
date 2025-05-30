@@ -10,10 +10,10 @@ interface PlaceFormProps {
 
 
 function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
-  const place = placeEntity ? toPlace(placeEntity) : getEmptyPlace();
-
-  const [formPlace, setFormPlace] = useState<Place>(place || getEmptyPlace());
   const navigate = useNavigate();
+
+  const place = placeEntity ? toPlace(placeEntity) : getEmptyPlace();
+  const [formPlace, setFormPlace] = useState<Place>(place);
 
   const handleInputChange = (field: keyof Place) => (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormPlace(prev => ({
