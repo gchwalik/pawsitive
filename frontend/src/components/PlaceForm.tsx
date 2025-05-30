@@ -1,20 +1,43 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { createPlace, type Place } from "../api/placesApi";
+import { createPlace, updatePlace,  getEmptyPlace, toPlace, type Place, type PlaceEntity } from "../api/placesApi";
 import ButtonContainer from "./Buttons";
 
-function PlaceForm() {
-  const [name, setName] = useState('');
+interface PlaceFormProps {
+  placeEntity?: PlaceEntity;
+  id?: number;
+}
+
+
+function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
   const navigate = useNavigate();
+
+  const place = placeEntity ? toPlace(placeEntity) : getEmptyPlace();
+  const [formPlace, setFormPlace] = useState<Place>(place);
+
+  const handleInputChange = (field: keyof Place) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormPlace(prev => ({
+      ...prev,
+      [field]: event.target.value
+    }));
+  };
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    createPlace({ name } as Place)
-      .then((response) => {
-        console.log('Place created:', response);
-      })
-      .catch((error) => console.error("Error:", error));
+    if (!id) {
+      createPlace(formPlace)
+        .then((response) => {
+          console.log('Place created:', response);
+        })
+        .catch((error) => console.error("Error:", error));
+    } else {
+      updatePlace(formPlace, id)
+        .then((response) => {
+          console.log('Place updated:', response);
+        })
+        .catch((error) => console.error("Error:", error));
+    }
 
     // After successful creation, navigate back
     navigate('/');
@@ -28,8 +51,8 @@ function PlaceForm() {
           <input
               type="text"
               name="name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              value={formPlace.name}
+              onChange={handleInputChange("name")}
               className="input"
               required
           />

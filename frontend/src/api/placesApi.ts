@@ -2,6 +2,8 @@ import axios from "axios";
 
 const API_BASE_URL = "http://localhost:8000";
 
+// Types
+
 interface Place {
   name: string;
 }
@@ -11,6 +13,18 @@ interface PlaceEntity extends Place {
   created: Date;
   updated: Date;
 }
+
+// Helpers
+
+const getEmptyPlace = (): Place => ({ name: "" })
+
+const toPlace = (placeEntity: PlaceEntity): Place => {
+  return {
+    name: placeEntity.name
+  }
+}
+
+// APIs
 
 const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   try {
@@ -43,6 +57,16 @@ const createPlace = async (place: Place): Promise<Place> => {
   }
 }
 
+const updatePlace = async (place: Place, id: number): Promise<Place> => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/places/${id}/`, place);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting place:", error);
+    throw error; // Re-throw to let components handle it
+  }
+}
+
 const deletePlace = async (id: number): Promise<Place> => {
   try {
     const response = await axios.delete(`${API_BASE_URL}/places/${id}/`);
@@ -53,5 +77,6 @@ const deletePlace = async (id: number): Promise<Place> => {
   }
 }
 
-export { fetchPlaces, fetchPlace, createPlace, deletePlace };
 export type { Place, PlaceEntity };
+export { getEmptyPlace, toPlace };
+export { fetchPlaces, fetchPlace, createPlace, updatePlace, deletePlace };
