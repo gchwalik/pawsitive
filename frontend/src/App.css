@@ -6,6 +6,10 @@
   padding: 2rem;
 }
 
+.input {
+  @apply flex-1 border-b border-neutral-500 focus:bg-lime-100 focus:border-emerald-800 focus:border-b-2 focus:outline-hidden;
+}
+
 .btn {
   @apply w-24 rounded-lg text-center px-3 py-2 font-medium cursor-pointer;
 }
