@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
+/* :root is for global typography and css variables */
 :root {
-  background: white url("pastel_rainbow.jpg") no-repeat;
-
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   @apply text-stone-900;
 }
 
+/* body is for layout properties (background, margin, padding) */
 body {
+  background: white url("/pastel_rainbow.jpg") left / cover;
+
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
