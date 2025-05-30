@@ -6,7 +6,7 @@ interface ContainerProps {
 }
 
 function Container({ title, showTitleBorder = false, minHeight = true, children }: ContainerProps) {
-  title = title ? title : "Error";
+  title = title ? title : "";
   return (
     <div className={`w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-amber-50 rounded-lg mt-5 pt-1 shadow-lg ${minHeight ? `min-h-70` : ""}`}>
       <div className="flex flex-col h-full">
