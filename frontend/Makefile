@@ -12,5 +12,8 @@ lint:
 fmt:
 	npm run format
 
+restore:
+	git restore ../backend/db.sqlite3
+
 clean:
 	docker system prune -f
