@@ -18,7 +18,7 @@ interface PlaceEntity extends Place {
 
 const getEmptyPlace = (): Place => ({ name: "" })
 
-const toPlace = (placeEntity: PlaceEntity) => {
+const toPlace = (placeEntity: PlaceEntity): Place => {
   return {
     name: placeEntity.name
   }
