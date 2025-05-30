@@ -10,7 +10,7 @@
 
 /* body is for layout properties (background, margin, padding) */
 body {
-  background: white url("/pastel_rainbow.jpg") left / cover;
+  background: white url("/pastel_rainbow.jpg");
 
   margin: 0;
   min-width: 320px;
