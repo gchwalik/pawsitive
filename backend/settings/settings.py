@@ -35,18 +35,18 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "128.199.0.1",
+    "128.199.11.48",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "128.199.0.1",
+    "http://128.199.11.48",
 ]
 
 # Allow only specific origins (recommended for production)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Your frontend URL
     "http://127.0.0.1:5173",  # Alternative frontend URL
-    "http://128.199.0.1:5173", # droplet ip
+    "http://128.199.11.48:5173", # droplet ip
 ]
 
 # Application definition
