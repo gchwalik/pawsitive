@@ -3,7 +3,7 @@ services:
     env_file: ".env"
     build: .
     ports:
-      # - "5173:5173"
       - ${PORT}:${PORT}
     volumes:
-      - .:/app
+      - .:/app  # TODO: remove bind-mount for prod
+      - /app/node_modules

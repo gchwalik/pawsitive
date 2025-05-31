@@ -3,11 +3,12 @@ FROM node:24
 
 # Set the working directory inside the container
 WORKDIR /app
-COPY package.json package-lock.json ./  
+COPY package*.json .
+
 RUN npm install
 
 # Copy the react project to the container
-COPY . /app/
+COPY . .
 
 # Run Django’s development server
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]

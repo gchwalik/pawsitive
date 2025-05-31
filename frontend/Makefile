@@ -1,5 +1,8 @@
 .PHONY: run 
 
+build:
+	docker compose build --no-cache --progress=plain
+
 run:
 	docker compose up --build
 
@@ -16,4 +19,4 @@ restore:
 	git restore ../backend/db.sqlite3
 
 clean:
-	docker system prune -f
+	docker system prune -af
