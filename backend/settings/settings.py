@@ -35,17 +35,18 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "pawsitive-app-01e6d8cf1e0c.herokuapp.com",
+    "128.199.0.1",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://pawsitive-app-01e6d8cf1e0c.herokuapp.com",
+    "128.199.0.1",
 ]
 
 # Allow only specific origins (recommended for production)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Your frontend URL
     "http://127.0.0.1:5173",  # Alternative frontend URL
+    "http://128.199.0.1:5173", # droplet ip
 ]
 
 # Application definition
