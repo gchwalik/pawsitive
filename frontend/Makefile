@@ -1,8 +1,5 @@
-.PHONY: debug-build dev prod exec lint fmt restore clean
+.PHONY: clean debug-build dev exec fmt lint prod restore
 
-
-debug-build:
-	docker compose --profile dev build --no-cache --progress plain
 
 dev:
 	docker compose --profile dev up --build
@@ -18,6 +15,9 @@ lint:
 
 fmt:
 	npm run format
+
+debug-build:
+	docker compose --profile dev build --no-cache --progress plain
 
 restore:
 	git restore ../backend/db.sqlite3
