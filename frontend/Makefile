@@ -1,19 +1,22 @@
-.PHONY: run 
+.PHONY: clean debug-build dev exec fmt lint prod restore
 
-build:
-	docker compose build --no-cache --progress=plain
+PROFILE?=dev
+
 
 run:
-	docker compose up --build
+	docker compose --profile ${PROFILE} up --build
 
 exec:
-	docker exec -it frontend-pawsitive-1 bash
+	docker exec -it frontend-pawsitive-${PROFILE}-1 bash
 
 lint:
 	npm run lint
 
 fmt:
 	npm run format
+
+debug-build:
+	docker compose --profile dev build --no-cache --progress plain
 
 restore:
 	git restore ../backend/db.sqlite3

@@ -1,9 +1,20 @@
+x-pawsitive-base: &pawsitive-base
+  build: .
+  ports:
+    - ${PORT}:${PORT}
+
 services:
-  pawsitive:
-    env_file: ".env"
-    build: .
-    ports:
-      - ${PORT}:${PORT}
+  pawsitive-dev:
+    <<: *pawsitive-base
+    profiles: ["dev"]
+    environment:
+      - BACKEND_API=http://localhost:8000
     volumes:
-      - .:/app  # TODO: remove bind-mount for prod
-      - /app/node_modules
+      - .:/app  # bind mount
+      - /app/node_modules  # so image node_modules not overwritten by local
+
+  pawsitive-prod:
+    <<: *pawsitive-base
+    profiles: ["prod"]
+    environment:
+      - BACKEND_API=http://128.199.11.48:8000

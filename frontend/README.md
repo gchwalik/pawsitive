@@ -59,3 +59,13 @@ export default tseslint.config({
 - https://react.dev/reference/react/createElement
 - https://vite.dev/guide/
 - https://vite.dev/guide/features.html
+
+## Notes
+
+Vite has a few different run commands:
+- `vite` (or `vite dev`) - runs in dev mode with hot module replacement, etc
+- `vite build` - generates the prod build, stores the build in .dist,
+- `vite preview` - runs a preview of the compiled .dist files
+
+Helpful docker flags for debugging images:
+`docker compose --profile prod build --no-cache --progress plain`
