@@ -1,14 +1,12 @@
 .PHONY: clean debug-build dev exec fmt lint prod restore
 
+PROFILE?=dev
 
-dev:
-	docker compose --profile dev up --build
-
-prod:
-	docker compose --profile prod up --build
+run:
+	docker compose --profile ${PROFILE} up --build
 
 exec:
-	docker exec -it frontend-pawsitive-1 bash
+	docker exec -it frontend-pawsitive-${PROFILE}-1 bash
 
 lint:
 	npm run lint
