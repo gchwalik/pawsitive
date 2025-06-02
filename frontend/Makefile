@@ -2,6 +2,7 @@
 
 PROFILE?=dev
 
+
 run:
 	docker compose --profile ${PROFILE} up --build
 
