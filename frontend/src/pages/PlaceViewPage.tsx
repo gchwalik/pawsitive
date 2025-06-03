@@ -24,8 +24,8 @@ function ViewPlace() {
             <>
             <PlaceDetails place={place} />
               <ButtonContainer>
-              <Link to={ROUTES.PLACES_EDIT(place.id)} className="btn btn-primary">Edit</Link>
-              <Link to="/" className="btn btn-primary">Back</Link>
+              <Link to={ROUTES.ENDPOINTS.PLACES_DETAIL(place.id)} className="btn btn-primary">Edit</Link>
+              <Link to={ROUTES.ENDPOINTS.ROOT} className="btn btn-primary">Back</Link>
             </ButtonContainer>
             </>
           ) : (

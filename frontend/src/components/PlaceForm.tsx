@@ -49,6 +49,7 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
       <ButtonContainer>
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-primary">Cancel</Link>
+        <Link to= className="btn btn-primary">Cancel</Link>
       </ButtonContainer>
     </form>
   )
