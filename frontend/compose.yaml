@@ -8,7 +8,6 @@ services:
     <<: *pawsitive-base
     profiles: ["dev"]
     environment:
-      - NODE_ENV=development
       - VITE_BACKEND_API=http://localhost:8000
     volumes:
       - .:/app  # bind mount
@@ -18,5 +17,4 @@ services:
     <<: *pawsitive-base
     profiles: ["prod"]
     environment:
-      - NODE_ENV=production
       - VITE_BACKEND_API=http://128.199.11.48:8000
