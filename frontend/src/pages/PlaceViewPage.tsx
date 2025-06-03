@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 
 import { usePlace } from '../hooks/usePlace';
-import { ROUTES } from '../consts';
+import { ROUTES } from '../routes';
 
 import Header from '../components/Header';
 import PlaceDetails from '../components/PlaceDetails';
