@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import ButtonContainer from './Buttons';
+import { ROUTES } from '../routes';
 
 interface PlaceNotFoundProps {
   id: string | undefined;
@@ -12,7 +13,7 @@ function PlaceNotFound({id}: PlaceNotFoundProps) {
         <p>{`No place with id: ${id}`}</p>
       </div>
       <ButtonContainer>
-        <Link to="/" className="btn btn-primary">Back</Link>
+        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>
       </ButtonContainer>
     </div>
   );
