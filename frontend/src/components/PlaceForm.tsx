@@ -1,6 +1,8 @@
-import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { createPlace, updatePlace,  getEmptyPlace, toPlace, type Place, type PlaceEntity } from "../api/placesApi";
+import { useForm, type SubmitHandler } from "react-hook-form";
+
+import { createPlace, updatePlace, getEmptyPlace, toPlace } from "../api/placesApi";
+import type { Place, PlaceEntity } from "../api/placesApi";
 import ButtonContainer from "./Buttons";
 
 interface PlaceFormProps {
@@ -8,53 +10,39 @@ interface PlaceFormProps {
   id?: number;
 }
 
+// only create a separate form interface if have add'l intermediate fields
 
 function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
   const navigate = useNavigate();
+  const defaultPlace = placeEntity ? toPlace(placeEntity) : getEmptyPlace();
+  const {register, handleSubmit} = useForm<Place>({defaultValues: defaultPlace})
 
-  const place = placeEntity ? toPlace(placeEntity) : getEmptyPlace();
-  const [formPlace, setFormPlace] = useState<Place>(place);
+  const onSubmit: SubmitHandler<Place> = async (data: Place) => {
+    try {
+      if (!id) {
+        const response = createPlace(data);
+        console.log('Place created:', response);
+      } else {
+        const response = updatePlace(data, id);
+        console.log('Place updated:', response);
+      }
 
-  const handleInputChange = (field: keyof Place) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormPlace(prev => ({
-      ...prev,
-      [field]: event.target.value
-    }));
-  };
-
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-
-    if (!id) {
-      createPlace(formPlace)
-        .then((response) => {
-          console.log('Place created:', response);
-        })
-        .catch((error) => console.error("Error:", error));
-    } else {
-      updatePlace(formPlace, id)
-        .then((response) => {
-          console.log('Place updated:', response);
-        })
-        .catch((error) => console.error("Error:", error));
+      // After successful creation, navigate back
+      navigate('/');
+    } catch (error) {
+      console.error("Error:", error);
     }
-
-    // After successful creation, navigate back
-    navigate('/');
   };
 
   return (
-    <form action="/places" method="post" onSubmit={handleSubmit} className="flex flex-col flex-1">
+    <form action="/places" method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
       <div className="place-attributes">
         <div className="place-attribute items-end">
           <label className="label leading-none">Name</label>
           <input
               type="text"
-              name="name"
-              value={formPlace.name}
-              onChange={handleInputChange("name")}
+              {...register("name", { required: "Name is required" })}
               className="input"
-              required
           />
         </div>
       </div>

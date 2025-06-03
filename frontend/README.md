@@ -61,4 +61,8 @@ export default tseslint.config({
 
 ## Tools
 - background image [unsplash link](https://unsplash.com/photos/a-field-with-yellow-flowers-and-trees-in-the-background-uNxpbV-D8hI)
-- git issues [color pallette link](https://coolors.co/palette/fbf8cc-fde4cf-ffcfd2-f1c0e8-cfbaf0-a3c4f3-90dbf4-8eecf5-98f5e1-b9fbc0)
+- git issues color pallette links:
+  - issue type: https://coolors.co/palette/fb7d89-bad1c9-85b873-e5db9e-f3a46c-f6bb5d-55abb8
+  - P1-P4 red colors: https://coolors.co/palette/ffeaec-ffccd1-ef999c-e57272
+  - points: https://coolors.co/palette/d9ed92-b5e48c-99d98c-76c893-52b69a-34a0a4-168aad-1a759f-1e6091-184e77
+  - domain area: https://coolors.co/palette/f8f9fa-e9ecef-dee2e6-ced4da-adb5bd-6c757d-495057-343a40-212529
