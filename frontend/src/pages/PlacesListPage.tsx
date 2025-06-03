@@ -7,7 +7,7 @@ import { fetchPlaces, type PlaceEntity } from "../api/placesApi";
 import Header from "../components/Header";
 import Container from "../components/Container";
 
-import { ROUTES } from "../consts";
+import { ROUTES } from "../routes";
 
 import "../App.css";
 

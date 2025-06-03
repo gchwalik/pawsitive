@@ -8,7 +8,7 @@ services:
     <<: *pawsitive-base
     profiles: ["dev"]
     environment:
-      - BACKEND_API=http://localhost:8000
+      - VITE_BACKEND_API=http://localhost:8000
     volumes:
       - .:/app  # bind mount
       - /app/node_modules  # so image node_modules not overwritten by local
@@ -17,4 +17,4 @@ services:
     <<: *pawsitive-base
     profiles: ["prod"]
     environment:
-      - BACKEND_API=http://128.199.11.48:8000
+      - VITE_BACKEND_API=http://128.199.11.48:8000

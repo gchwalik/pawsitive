@@ -3,7 +3,7 @@ import CreatePlace from './pages/PlaceCreatePage';
 import ViewPlace from './pages/PlaceViewPage';
 import DeletePlace from './pages/PlaceDeletePage';
 
-import { ROUTES } from "./consts";
+import { ROUTES } from "./routes";
 
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
