@@ -53,19 +53,12 @@ export default tseslint.config({
 });
 ```
 
-## Links for Later
+## Reference links
 
-- https://mui.com/material-ui/react-menu/
-- https://react.dev/reference/react/createElement
-- https://vite.dev/guide/
+- https://tailwindcss.com/docs/colors/
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 - https://vite.dev/guide/features.html
 
-## Notes
-
-Vite has a few different run commands:
-- `vite` (or `vite dev`) - runs in dev mode with hot module replacement, etc
-- `vite build` - generates the prod build, stores the build in .dist,
-- `vite preview` - runs a preview of the compiled .dist files
-
-Helpful docker flags for debugging images:
-`docker compose --profile prod build --no-cache --progress plain`
+## Tools
+- background image [unsplash link](https://unsplash.com/photos/a-field-with-yellow-flowers-and-trees-in-the-background-uNxpbV-D8hI)
+- git issues [color pallette link](https://coolors.co/palette/fbf8cc-fde4cf-ffcfd2-f1c0e8-cfbaf0-a3c4f3-90dbf4-8eecf5-98f5e1-b9fbc0)
