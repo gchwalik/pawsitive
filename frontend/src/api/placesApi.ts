@@ -36,6 +36,16 @@ const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   }
 };
 
+const createPlace = async (place: Place): Promise<Place> => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/places/`, place);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating place:", error);
+    throw error; // Re-throw to let components handle it
+  }
+}
+
 const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   try {
     const response = await axios.get(`${API_BASE_URL}/places/${id}/`);
@@ -47,22 +57,12 @@ const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   }
 };
 
-const createPlace = async (place: Place): Promise<Place> => {
-  try {
-    const response = await axios.post(`${API_BASE_URL}/places/`, place);
-    return response.data;
-  } catch (error) {
-    console.error("Error creating place:", error);
-    throw error; // Re-throw to let components handle it
-  }
-}
-
 const updatePlace = async (place: Place, id: number): Promise<Place> => {
   try {
     const response = await axios.put(`${API_BASE_URL}/places/${id}/`, place);
     return response.data;
   } catch (error) {
-    console.error("Error deleting place:", error);
+    console.error("Error updating place:", error);
     throw error; // Re-throw to let components handle it
   }
 }
