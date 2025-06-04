@@ -15,6 +15,9 @@ lint:
 fmt:
 	npm run format
 
+check:
+	docker compose --profile ${PROFILE} run --build --rm pawsitive-${PROFILE} npm run check
+
 debug-build:
 	docker compose --profile dev build --no-cache --progress plain
 

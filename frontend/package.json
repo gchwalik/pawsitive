@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "check": "node src/scripts/validateEnv.js",
     "dev": "vite --host",
     "build": "tsc --noEmit & vite build",
     "lint": "eslint . && prettier --check . && tsc --noEmit",
