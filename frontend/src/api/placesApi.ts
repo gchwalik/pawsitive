@@ -67,7 +67,7 @@ const updatePlace = async (place: Place, id: number): Promise<Place> => {
 
 const deletePlace = async (id: number): Promise<Place> => {
   try {
-    const response = await axios.delete(ROUTES.API.PLACES_DETAIL(id));\
+    const response = await axios.delete(ROUTES.API.PLACES_DETAIL(id));
     return response.data;
   } catch (error) {
     console.error("Error deleting place:", error);
