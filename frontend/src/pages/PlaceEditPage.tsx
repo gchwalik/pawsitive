@@ -5,7 +5,7 @@ import { usePlace } from '../hooks/usePlace';
 import PlaceNotFound from '../components/PlaceNotFound';
 
 function EditPlace() {
-  const { place, loading, error, id } = usePlace();
+  const { place, loading, id } = usePlace();
 
   return (
     <>
