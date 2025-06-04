@@ -36,7 +36,7 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
   };
 
   return (
-    <form action={ROUTES.FRONTEND.PLACES_LIST} method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
+    <form action={ROUTES.FRONTEND.ROOT} method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
       <div className="place-attributes">
         <div className="place-attribute items-end">
           <label className="label leading-none">Name</label>
