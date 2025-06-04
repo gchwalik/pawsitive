@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<PlacesList />} />
-        <Route path={ROUTES.ENDPOINTS.PLACES_CREATE} element={<CreatePlace />} />
+        <Route path={ROUTES.FRONTEND.PLACES_CREATE} element={<CreatePlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_VIEW_PATTERN} element={<ViewPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_EDIT_PATTERN} element={<EditPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_DELETE_PATTERN} element={<DeletePlace />} />

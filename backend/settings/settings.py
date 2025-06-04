@@ -49,6 +49,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://128.199.11.48:5173", # droplet ip
 ]
 
+APPEND_SLASH = True
+
 # Application definition
 
 INSTALLED_APPS = [
