@@ -7,9 +7,10 @@ import { deletePlace } from '../api/placesApi';
 
 import { Link, useNavigate,  } from 'react-router';
 import ButtonContainer from '../components/Buttons';
+import { ROUTES } from '../routes';
 
 function DeletePlace() {
-  const { place, loading, error, id } = usePlace();
+  const { place, loading, id } = usePlace();
 
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ function DeletePlace() {
     try {
       await deletePlace(place.id);
       console.log('Place deleted:', place.name);
-      navigate('/'); // Go back to list
+      navigate(ROUTES.FRONTEND.ROOT); // Go back to list
     } catch (error) {
       console.error('Error deleting place:', error);
     }
@@ -41,7 +42,7 @@ function DeletePlace() {
             <p className='px-10 pb-4 font-medium text-rose-800'>Are you sure you want to delete {`${place.name}`}?</p>
             <ButtonContainer>
               <button onClick={handleDelete} className="btn btn-danger">Yes</button>
-              <Link to="/" className="btn btn-primary">Back</Link>
+              <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>
             </ButtonContainer>
             </>            
           ) : (

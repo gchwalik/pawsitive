@@ -4,6 +4,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { createPlace, updatePlace, getEmptyPlace, toPlace } from "../api/placesApi";
 import type { Place, PlaceEntity } from "../api/placesApi";
 import ButtonContainer from "./Buttons";
+import { ROUTES } from '../routes';
 
 interface PlaceFormProps {
   placeEntity?: PlaceEntity;
@@ -28,14 +29,14 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
       }
 
       // After successful creation, navigate back
-      navigate('/');
+      navigate(ROUTES.FRONTEND.ROOT);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   return (
-    <form action="/places" method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
+    <form action={ROUTES.FRONTEND.PLACES_LIST} method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
       <div className="place-attributes">
         <div className="place-attribute items-end">
           <label className="label leading-none">Name</label>
@@ -48,7 +49,7 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
       </div>
       <ButtonContainer>
         <button type="submit" className="btn btn-primary">Submit</button>
-        <Link to="/" className="btn btn-primary">Cancel</Link>
+        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Cancel</Link>
       </ButtonContainer>
     </form>
   )
