@@ -48,7 +48,6 @@ const createPlace = async (place: Place): Promise<Place> => {
 const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES_DETAIL(id));
-    console.log("API Response:", response.data); // Add this line
     return response.data;
   } catch (error) {
     console.error("Error fetching place:", error);
@@ -68,8 +67,7 @@ const updatePlace = async (place: Place, id: number): Promise<Place> => {
 
 const deletePlace = async (id: number): Promise<Place> => {
   try {
-    const response = await axios.delete(ROUTES.API.PLACES_DETAIL(id));
-    // const response = await axios.delete(`${API_BASE_URL}/places/${id}/`);
+    const response = await axios.delete(ROUTES.API.PLACES_DETAIL(id));\
     return response.data;
   } catch (error) {
     console.error("Error deleting place:", error);
