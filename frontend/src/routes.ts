@@ -11,7 +11,6 @@ export const ROUTES = {
 
   FRONTEND: {
     ROOT: "/",
-    PLACES_LIST: '/places',
     PLACES_CREATE: '/places/create',
     PLACES_VIEW: (id: number) => `/places/${id}`,
     PLACES_EDIT: (id: number) => `/places/${id}/edit`,
@@ -19,7 +18,7 @@ export const ROUTES = {
   },
 
   API: {
-    PLACES_LIST: createApiUrl("/places/"),
+    PLACES: createApiUrl("/places/"),
     PLACES_DETAIL: (id: number) => createApiUrl(`/places/${id}/`),
   },
 

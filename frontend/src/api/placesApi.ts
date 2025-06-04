@@ -1,10 +1,6 @@
 import axios from "axios";
 import { ROUTES } from "../routes";
 
-
-const API_BASE_URL = "http://128.199.11.48:8000";
-// const API_BASE_URL = "http://localhost:8000";
-
 // Types
 
 interface Place {
@@ -31,7 +27,7 @@ const toPlace = (placeEntity: PlaceEntity): Place => {
 
 const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   try {
-    const response = await axios.get(ROUTES.API.PLACES_LIST);
+    const response = await axios.get(ROUTES.API.PLACES);
     return response.data.results; // api has pagination
   } catch (error) {
     console.error("Error fetching places:", error);
@@ -41,7 +37,7 @@ const fetchPlaces = async (): Promise<PlaceEntity[]> => {
 
 const createPlace = async (place: Place): Promise<Place> => {
   try {
-    const response = await axios.post(ROUTES.API.PLACES_LIST, place);
+    const response = await axios.post(ROUTES.API.PLACES, place);
     return response.data;
   } catch (error) {
     console.error("Error creating place:", error);
