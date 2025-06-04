@@ -19,9 +19,8 @@ export const ROUTES = {
   },
 
   API: {
-    PLACES_LIST: createApiUrl("/places"),
-    PLACES_CREATE: createApiUrl("/places/create"),
-    PLACES_DETAIL: (id: number) => createApiUrl(`/places/${id}`),
+    PLACES_LIST: createApiUrl("/places/"),
+    PLACES_DETAIL: (id: number) => createApiUrl(`/places/${id}/`),
   },
 
   // Routes for React Router
