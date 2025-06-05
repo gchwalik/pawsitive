@@ -53,8 +53,8 @@ const fetchPlaces = async (): Promise<PlaceEntity[]> => {
 
 const createPlace = async (place: Place): Promise<Place> => {
   try {
-    const validatedInput = PlaceSchema.parse(place);
-    const response = await axios.post(ROUTES.API.PLACES, validatedInput);
+    const validatedPlace = PlaceSchema.parse(place);
+    const response = await axios.post(ROUTES.API.PLACES, validatedPlace);
 
     // Validate created PlaceEntity
     const validatedResponse = PlaceEntitySchema.parse(response.data);
@@ -68,7 +68,10 @@ const createPlace = async (place: Place): Promise<Place> => {
 const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES_DETAIL(id));
-    return response.data;
+
+    // Validate fetched PlaceEntity
+    const validatedResponse = PlaceEntitySchema.parse(response.data);
+    return validatedResponse;
   } catch (error) {
     console.error("Error fetching place:", error);
     throw error; // Re-throw to let components handle it
@@ -77,18 +80,21 @@ const fetchPlace = async (id: number): Promise<PlaceEntity> => {
 
 const updatePlace = async (place: Place, id: number): Promise<Place> => {
   try {
-    const response = await axios.put(ROUTES.API.PLACES_DETAIL(id), place);
-    return response.data;
+    const validatedPlace = PlaceSchema.parse(place);
+    const response = await axios.put(ROUTES.API.PLACES_DETAIL(id), validatedPlace);
+
+    // Validate updated PlaceEntity
+    const validatedResponse = PlaceEntitySchema.parse(response.data);
+    return validatedResponse;
   } catch (error) {
     console.error("Error updating place:", error);
     throw error; // Re-throw to let components handle it
   }
 }
 
-const deletePlace = async (id: number): Promise<Place> => {
+const deletePlace = async (id: number): Promise<void> => {
   try {
-    const response = await axios.delete(ROUTES.API.PLACES_DETAIL(id));
-    return response.data;
+    await axios.delete(ROUTES.API.PLACES_DETAIL(id));
   } catch (error) {
     console.error("Error deleting place:", error);
     throw error; // Re-throw to let components handle it
