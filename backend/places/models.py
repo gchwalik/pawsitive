@@ -1,13 +1,10 @@
-from django.db import models
+from django.db.models import CharField, DateTimeField, Model
 
-class Place(models.Model):
+class Place(Model):
     # Default id field automatically created
-    created = models.DateTimeField(auto_now_add=True, editable=False) # added editable=False for clarity
-    updated = models.DateTimeField(auto_now=True, editable=False) # added editable=False for clarity
-    name = models.CharField(max_length=200)
-
-    class Meta:
-        ordering = ['name']
+    created = DateTimeField(auto_now_add=True, editable=False) # added editable=False for clarity
+    updated = DateTimeField(auto_now=True, editable=False) # added editable=False for clarity
+    name = CharField(max_length=200)
 
     def __str__(self):
         return self.name
