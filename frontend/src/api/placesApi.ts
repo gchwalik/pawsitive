@@ -1,17 +1,30 @@
 import axios from "axios";
+import { z } from "zod";
+
 import { ROUTES } from "../routes";
 
+// Schemas
+
+const PlaceSchema = z.object({
+  name: z.string(),
+})
+
+const PlaceEntitySchema = PlaceSchema.extend({
+  id: z.number(),
+  created: z.coerce.date(),
+  updated: z.coerce.date(),
+});
+
+const PlacesPageSchema = z.object({
+  count: z.number(),
+  next: z.string().nullable(),
+  previous: z.string().nullable(),
+  results: z.array(PlaceEntitySchema),
+});
+
 // Types
-
-interface Place {
-  name: string;
-}
-
-interface PlaceEntity extends Place {
-  id: number;
-  created: Date;
-  updated: Date;
-}
+type Place = z.infer<typeof PlaceSchema>
+type PlaceEntity = z.infer<typeof PlaceEntitySchema>
 
 // Helpers
 
@@ -28,7 +41,10 @@ const toPlace = (placeEntity: PlaceEntity): Place => {
 const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES);
-    return response.data.results; // api has pagination
+
+    // Validate the paginated response
+    const validatedResponse = PlacesPageSchema.parse(response.data);
+    return validatedResponse.results; // api has pagination
   } catch (error) {
     console.error("Error fetching places:", error);
     throw error; // Re-throw to let components handle it
@@ -37,8 +53,12 @@ const fetchPlaces = async (): Promise<PlaceEntity[]> => {
 
 const createPlace = async (place: Place): Promise<Place> => {
   try {
-    const response = await axios.post(ROUTES.API.PLACES, place);
-    return response.data;
+    const validatedInput = PlaceSchema.parse(place);
+    const response = await axios.post(ROUTES.API.PLACES, validatedInput);
+
+    // Validate created PlaceEntity
+    const validatedResponse = PlaceEntitySchema.parse(response.data);
+    return validatedResponse;
   } catch (error) {
     console.error("Error creating place:", error);
     throw error; // Re-throw to let components handle it
