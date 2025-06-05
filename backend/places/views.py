@@ -1,7 +1,9 @@
 from rest_framework import viewsets
+from rest_framework.decorators import action 
+from rest_framework.response import Response
 
-from .models import Place
-from .serializers import PlaceSerializer
+from .models import Place, PlaceType
+from .serializers import PlaceSerializer, PlaceTypeSerializer
 
 
 class PlaceViewSet(viewsets.ModelViewSet):
@@ -11,3 +13,21 @@ class PlaceViewSet(viewsets.ModelViewSet):
     """
     queryset = Place.objects.all()
     serializer_class = PlaceSerializer
+
+
+class PlaceTypeViewSet(viewsets.ModelViewSet):
+    """
+    This ViewSet automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
+    queryset = PlaceType.objects.all()
+    serializer_class = PlaceTypeSerializer
+
+    @action(detail=True, methods=['get'])
+    def places(self, request, pk=None):
+        """Get all places for this place type with pagination"""
+        place_type = self.get_object()
+        places = place_type.places.all()
+
+        serializer = PlaceSerializer(places, many=True)
+        return Response(serializer.data)
