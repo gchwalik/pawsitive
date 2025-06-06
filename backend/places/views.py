@@ -24,6 +24,7 @@ class PlaceTypeViewSet(viewsets.ModelViewSet):
     serializer_class = PlaceTypeSerializer
     pagination_class = None  # Disables pagination
 
+    # Adds GET endpoint for place_type/{id}/places
     @action(detail=True, methods=['get'])
     def places(self, request, pk=None):
         """Get all places for this place type"""
