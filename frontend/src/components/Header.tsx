@@ -24,7 +24,7 @@ function Header() {
         </Link> 
       </div>
       <div className="ml-auto">
-        <Dropdown label="Admin"/>
+        <Dropdown label="Admin" icon={CompassIcon}/>
       </div>
 
     </nav>
