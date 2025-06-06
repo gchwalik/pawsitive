@@ -2,11 +2,13 @@ import axios from "axios";
 import { z } from "zod";
 
 import { ROUTES } from "../routes";
+import { PlaceTypeSchema } from "./placeTypesApi";
 
 // Schemas
 
 const PlaceSchema = z.object({
   name: z.string(),
+  type: PlaceTypeSchema
 })
 
 const PlaceEntitySchema = PlaceSchema.extend({
@@ -28,11 +30,15 @@ type PlaceEntity = z.infer<typeof PlaceEntitySchema>
 
 // Helpers
 
-const getEmptyPlace = (): Place => ({ name: "" })
+const getEmptyPlace = (): Place => ({ 
+  name: "",
+  type: { name: "", place_count: 0 }
+})
 
 const toPlace = (placeEntity: PlaceEntity): Place => {
   return {
-    name: placeEntity.name
+    name: placeEntity.name,
+    type: placeEntity.type
   }
 }
 
@@ -51,7 +57,7 @@ const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   }
 };
 
-const createPlace = async (place: Place): Promise<Place> => {
+const createPlace = async (place: Place): Promise<PlaceEntity> => {
   try {
     const validatedPlace = PlaceSchema.parse(place);
     const response = await axios.post(ROUTES.API.PLACES, validatedPlace);
@@ -78,7 +84,7 @@ const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   }
 };
 
-const updatePlace = async (place: Place, id: number): Promise<Place> => {
+const updatePlace = async (place: Place, id: number): Promise<PlaceEntity> => {
   try {
     const validatedPlace = PlaceSchema.parse(place);
     const response = await axios.put(ROUTES.API.PLACES_DETAIL(id), validatedPlace);
