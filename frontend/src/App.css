@@ -10,7 +10,7 @@
 }
 
 .btn {
-  @apply w-24 rounded-lg text-center px-3 py-2 font-medium cursor-pointer;
+  @apply w-24 rounded-lg text-center px-3 py-2 cursor-pointer;
 }
 
 .btn-primary {
