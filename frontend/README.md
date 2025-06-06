@@ -66,3 +66,6 @@ export default tseslint.config({
   - P1-P4 red colors: https://coolors.co/palette/ffeaec-ffccd1-ef999c-e57272
   - points: https://coolors.co/palette/d9ed92-b5e48c-99d98c-76c893-52b69a-34a0a4-168aad-1a759f-1e6091-184e77
   - domain area: https://coolors.co/palette/f8f9fa-e9ecef-dee2e6-ced4da-adb5bd-6c757d-495057-343a40-212529
+
+# Logo ideas
+- Location pin where the "dot" is a paw print

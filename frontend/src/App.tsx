@@ -4,6 +4,7 @@ import ViewPlace from './pages/PlaceViewPage';
 import DeletePlace from './pages/PlaceDeletePage';
 
 import { ROUTES } from "./routes";
+import { Navigate } from 'react-router';
 
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
@@ -18,6 +19,9 @@ function App() {
         <Route path={ROUTES.PATTERNS.PLACES_VIEW_PATTERN} element={<ViewPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_EDIT_PATTERN} element={<EditPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_DELETE_PATTERN} element={<DeletePlace />} />
+
+        {/* Catch-all route to redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
