@@ -3,7 +3,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 .input {
@@ -23,15 +22,7 @@
 }
 
 .navbar {
-  @apply bg-zinc-50/35 py-3 px-6 flex items-center;
-}
-
-.nav-links {
-  @apply flex items-center px-13 gap-8 font-medium;
-}
-
-.nav-link {
-  @apply p-2
+  @apply bg-zinc-50/38 py-5 px-6 flex items-center;
 }
 
 .place-attributes {
