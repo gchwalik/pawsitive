@@ -3,7 +3,18 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+}
+
+.navbar {
+  @apply bg-zinc-50/35 py-3 px-6 flex items-center;
+}
+
+.nav-links {
+  @apply flex items-center px-13 gap-8 font-medium;
+}
+
+.nav-link {
+  @apply p-2
 }
 
 .input {
@@ -12,6 +23,10 @@
 
 .btn {
   @apply w-24 rounded-lg text-center px-3 py-2 font-medium cursor-pointer;
+}
+
+.nav-option {
+  @apply rounded-lg text-center px-3 font-medium cursor-pointer;
 }
 
 .btn-primary {

@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router';
+
 import PlacesList from './pages/PlacesListPage';
 import CreatePlace from './pages/PlaceCreatePage';
 import ViewPlace from './pages/PlaceViewPage';
@@ -18,6 +20,9 @@ function App() {
         <Route path={ROUTES.PATTERNS.PLACES_VIEW_PATTERN} element={<ViewPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_EDIT_PATTERN} element={<EditPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_DELETE_PATTERN} element={<DeletePlace />} />
+
+        {/* Catch-all route to redirect to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
