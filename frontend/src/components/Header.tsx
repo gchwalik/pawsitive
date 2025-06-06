@@ -1,10 +1,19 @@
+import { CompassIcon, GearSixIcon } from '@phosphor-icons/react';
+import {Link} from "react-router";
+
+
 function Header() {
   return (
-    <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Pawsitive Places</h1>
-        <p className="text-gray-600">Because every dog deserves a peaceful walk</p>
-    </div>
+   <nav className="navbar">
+      <Link to="/" className="flex">
+        <CompassIcon className="text-3xl font-semibold mr-0.5" weight="light" />
+        <h1 className="text-3xl font-medium text-gray-800 leading-none">
+          Pawsitive
+        </h1>
+      </Link>
+    </nav>
   )   
 }
+
 
 export default Header;
