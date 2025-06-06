@@ -37,20 +37,25 @@ const Dropdown = ({ label, icon: Icon, children}: DropdownProps) => {
 
   return (
     <div className="relative z-10 text-md" ref={dropdownRef}>
-      <button className="px-3 w-40 text-center font-medium cursor-pointer bg-zinc-50/90 border border-zinc-300 hover:bg-white rounded-lg shadow-xs focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
-          <div className="py-1.5 flex items-center justify-center ">
-            {Icon && <Icon className="w-5 h-5 mr-1 "/>}
+      <button className="
+        px-3 w-35 text-center font-medium cursor-pointer
+        bg-zinc-50/90 border border-zinc-300 hover:bg-indigo-100/80
+        rounded-lg shadow-xs focus:outline-none"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+          <div className="py-2 flex gap-1 items-center justify-center ">
+            {Icon && <Icon className="w-5 h-5"/>}
             {label}
             <CaretDownIcon weight="fill" 
-              className={`w-4 h-4 ml-1.5 transition-transform duration-325 ${isOpen ? 'rotate-180 mt-0.5' : ''}`}
+              className={`w-3.5 h-3.5 transition-transform duration-325 ${isOpen ? 'rotate-180 mt-0.5' : ''}`}
             />
           </div>
       </button>
 
       <div className="absolute top-full right-0 mt-0.5">
         <div className={`
-          transition-all duration-325 ease-in-out w-45 bg-zinc-50/90 border border-zinc-300 hover:bg-white 
-          rounded-md shadow-lg z-10 ${isOpen ? 'opacity-100' : 'opacity-0'}  
+          w-45 rounded-md z-10 bg-zinc-50/90 border border-zinc-300
+          ${isOpen ? 'opacity-100' : 'opacity-0'} transition-all duration-325 ease-in-out
         `}>
           {children}
         </div>
@@ -68,14 +73,7 @@ interface DropdownItemProps {
 
 // Use when clicking does something or triggers an action, like a button
 const DropdownItem = ({ children, onClick, icon: ListIcon }: DropdownItemProps) => (
-  <button
-    onClick={onClick}
-    className="
-        flex items-center w-full px-4 py-2 text-md 
-        text-gray-700 hover:bg-gray-100 hover:text-gray-900  
-        first:hover:rounded-t-lg last:hover:rounded-b-lg
-      "
-  >
+  <button onClick={onClick} className="dropdown-element">
     {ListIcon && <ListIcon className="w-4 h-4 mr-3" />}
     {children}
   </button>
@@ -90,15 +88,9 @@ interface DropdownLinkProps {
 
 // Use when clicking takes you somewhere else, like navigating to another page
 const DropdownLink = ({ to, children, icon: Icon }: DropdownLinkProps) => (
-  <Link
-    to={to}
-    className="
-        flex items-center w-full px-5 py-2 text-md 
-        text-gray-700 hover:bg-gray-100 hover:text-gray-900  
-        first:hover:rounded-t-lg last:hover:rounded-b-lg
-      "  >
+  <Link to={to} className="dropdown-element">
     {Icon && <Icon className="w-4 h-4 mr-3" />}
-    {children} 
+    {children}
   </Link>
 );
 

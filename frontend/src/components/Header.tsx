@@ -16,7 +16,7 @@ function Header() {
       <div className="ml-auto">
         <Dropdown label="More">
           <DropdownLink to="#">
-            <p className="font-normal">Place Types</p>
+            Place Types
           </DropdownLink>
         </Dropdown>
       </div>

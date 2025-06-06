@@ -25,6 +25,10 @@
   @apply bg-zinc-50/38 py-5 px-6 flex items-center;
 }
 
+.dropdown-element {
+  @apply font-normal flex items-center w-full px-5 py-2 text-stone-700 hover:bg-indigo-100/80 hover:text-stone-900 first:hover:rounded-t-md last:hover:rounded-b-md
+}
+
 .place-attributes {
   @apply px-10 pt-2 flex flex-col gap-3 flex-1;
 }
