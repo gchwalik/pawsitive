@@ -5,24 +5,12 @@
   margin: 0 auto;
 }
 
-.navbar {
-  @apply bg-zinc-50/35 py-3 px-6 flex items-center;
-}
-
-.nav-links {
-  @apply flex items-center px-13 gap-8 font-medium;
-}
-
-.nav-link {
-  @apply p-2
-}
-
 .input {
   @apply flex-1 border-b border-neutral-500 focus:bg-lime-100 focus:border-emerald-800 focus:border-b-2 focus:outline-hidden;
 }
 
 .btn {
-  @apply w-24 rounded-lg text-center px-3 py-2 font-medium cursor-pointer;
+  @apply w-24 rounded-lg text-center px-3 py-2 cursor-pointer;
 }
 
 .nav-option {
@@ -35,6 +23,10 @@
 
 .btn-danger {
   @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900
+}
+
+.navbar {
+  @apply bg-zinc-50/38 py-5 px-6 flex items-center;
 }
 
 .place-attributes {
