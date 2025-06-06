@@ -3,7 +3,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 .input {
@@ -11,7 +10,7 @@
 }
 
 .btn {
-  @apply w-24 rounded-lg text-center px-3 py-2 font-medium cursor-pointer;
+  @apply w-24 rounded-lg text-center px-3 py-2 cursor-pointer;
 }
 
 .btn-primary {
@@ -20,6 +19,10 @@
 
 .btn-danger {
   @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900
+}
+
+.navbar {
+  @apply bg-zinc-50/38 py-5 px-6 flex items-center;
 }
 
 .place-attributes {

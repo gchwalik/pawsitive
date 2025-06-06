@@ -4,8 +4,7 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
-  @apply text-stone-900;
+  @apply text-stone-800 font-medium;
 }
 
 /* body is for layout properties (background, margin, padding) */
