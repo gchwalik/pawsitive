@@ -1,6 +1,7 @@
 import { CompassIcon } from '@phosphor-icons/react';
 import {Link} from "react-router";
 
+import { Dropdown, DropdownLink } from './Dropdown';
 
 function Header() {
   return (
@@ -11,6 +12,14 @@ function Header() {
           Pawsitive
         </h1>
       </Link>
+
+      <div className="ml-auto">
+        <Dropdown label="More">
+          <DropdownLink to="#">
+            Place Types
+          </DropdownLink>
+        </Dropdown>
+      </div>
     </nav>
   )   
 }
