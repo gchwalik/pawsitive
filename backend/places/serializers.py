@@ -10,9 +10,17 @@ class PlaceTypeMinimalSerializer(serializers.ModelSerializer):
 
 
 class PlaceSerializer(serializers.ModelSerializer):
+    type = PlaceTypeMinimalSerializer(read_only=True)
+    type_id = serializers.PrimaryKeyRelatedField(
+        queryset=PlaceType.objects.all(),
+        source='type',
+        write_only=True
+    )
+
     class Meta:
         model = Place
-        fields = ['id', 'name', 'type', 'created', 'updated']
+        fields = ['id', 'name', 'type', 'type_id', 'created', 'updated']
+
 
 class PlaceTypeSerializer(serializers.ModelSerializer):
     place_count = serializers.SerializerMethodField()
