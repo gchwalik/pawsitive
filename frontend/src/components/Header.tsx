@@ -1,13 +1,9 @@
 import { CompassIcon, GearSixIcon } from '@phosphor-icons/react';
 import {Link} from "react-router";
 
-import { Dropdown } from './Dropdown';
+import { Dropdown, DropdownItem, DropdownLink } from './Dropdown';
 
 function Header() {
-    // <div className="text-center mb-8">
-    //     <h1 className="text-3xl font-bold text-gray-800 mb-2">Pawsitive Places</h1>
-    //     <p className="text-gray-600">Because every dog deserves a peaceful walk</p>
-    // </div>
   return (
     <nav className="navbar">
       <Link to="/" className="flex">
@@ -24,7 +20,14 @@ function Header() {
         </Link> 
       </div>
       <div className="ml-auto">
-        <Dropdown label="Admin"/>
+        <Dropdown label="More">
+          <DropdownLink to="/foo">
+            Place Types
+          </DropdownLink>
+          <DropdownLink to="#">
+            Hazards
+          </DropdownLink>
+        </Dropdown>
       </div>
 
     </nav>
