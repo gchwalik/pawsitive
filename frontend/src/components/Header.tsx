@@ -1,4 +1,4 @@
-import { CompassIcon, GearSixIcon } from '@phosphor-icons/react';
+import { CompassIcon } from '@phosphor-icons/react';
 import {Link} from "react-router";
 
 
