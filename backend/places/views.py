@@ -22,10 +22,11 @@ class PlaceTypeViewSet(viewsets.ModelViewSet):
     """
     queryset = PlaceType.objects.all()
     serializer_class = PlaceTypeSerializer
+    pagination_class = None  # Disables pagination
 
     @action(detail=True, methods=['get'])
     def places(self, request, pk=None):
-        """Get all places for this place type with pagination"""
+        """Get all places for this place type"""
         place_type = self.get_object()
         places = place_type.places.all()
 
