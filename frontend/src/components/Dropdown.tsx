@@ -8,14 +8,14 @@ interface DropdownProps {
   children?: React.ReactNode;
 }
 
-const Dropdown = ({ label, icon: Icon, children}: DropdownProps) => {
+const Dropdown = ({ label, children}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as HTMLElement)) {
         setIsOpen(false);
       }
     };
@@ -25,13 +25,24 @@ const Dropdown = ({ label, icon: Icon, children}: DropdownProps) => {
   }, []);
 
   return (
-    <div className="relative right-0 rounded-lg text-center px-3 font-medium cursor-pointer" ref={dropdownRef}>
-      {!isOpen && (
-        <div className="w-40 bg-zinc-50/90 border border-zinc-300 rounded-md shadow-xs z-10">
+    <div className="relative z-10" ref={dropdownRef}>
+      <button className="px-3 w-40 text-center font-medium cursor-pointer bg-zinc-50/90 border border-zinc-300 hover:bg-white rounded-lg shadow-xs ">
           <div className="py-1.5 flex items-center justify-center">
-            {Icon && <Icon className="w-4 h-4 mr-1.5" />}
             {label}
             <CaretDownIcon weight="fill" className="text-lg pl-1 flex-end"/>
+          </div>
+      </button>
+
+      {!isOpen && (
+        <div className="">
+
+        </div>
+      )}
+
+      {isOpen && (
+        <div className="w-40 bg-zinc-50/90 border border-zinc-300 rounded-md shadow-xs z-10">
+          <div className="py-1">
+            df
           </div>
         </div>
       )}
