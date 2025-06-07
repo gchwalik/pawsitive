@@ -18,7 +18,7 @@ function PlacesList() {
   useEffect(() => {
     fetchPlaces()
       .then((response) => {
-        setPlaces([]);
+        setPlaces(response);
       })
       .catch((error) => console.error("Error:", error));
   }, []);
