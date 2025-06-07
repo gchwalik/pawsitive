@@ -39,7 +39,7 @@ function DeletePlace() {
           ) : place ? (
             <>
             <PlaceDetails place={place} />
-            <p className='px-10 pb-4 text-rose-800'>Are you sure you want to delete {`${place.name}`}?</p>
+            <p className='font-medium px-10 pb-4 text-rose-800'>Are you sure you want to delete {`${place.name}`}?</p>
             <ButtonContainer>
               <button onClick={handleDelete} className="btn btn-danger">Yes</button>
               <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>

@@ -38,8 +38,8 @@ function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
   return (
     <form action={ROUTES.FRONTEND.ROOT} method="post" onSubmit={handleSubmit(onSubmit)} className="flex flex-col flex-1">
       <div className="place-attributes">
-        <div className="place-attribute items-end">
-          <label className="label leading-none">Name</label>
+        <div className="place-attribute items-center">
+          <label className="label">Name:</label>
           <input
               type="text"
               {...register("name", { required: "Name is required" })}
