@@ -2,11 +2,13 @@ import axios from "axios";
 import { z } from "zod";
 
 import { ROUTES } from "../routes";
+import { PlaceTypeMinimalSchema } from "./placeTypesApi";
 
 // Schemas
 
 const PlaceSchema = z.object({
   name: z.string(),
+  type: PlaceTypeMinimalSchema,
 })
 
 const PlaceEntitySchema = PlaceSchema.extend({
@@ -28,11 +30,15 @@ type PlaceEntity = z.infer<typeof PlaceEntitySchema>
 
 // Helpers
 
-const getEmptyPlace = (): Place => ({ name: "" })
+const getEmptyPlace = (): Place => ({ 
+  name: "",
+  type: { id: -1, name: "" }
+})
 
 const toPlace = (placeEntity: PlaceEntity): Place => {
   return {
-    name: placeEntity.name
+    name: placeEntity.name,
+    type: placeEntity.type
   }
 }
 
