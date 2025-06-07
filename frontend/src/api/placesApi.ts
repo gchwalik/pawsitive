@@ -51,7 +51,7 @@ const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   }
 };
 
-const createPlace = async (place: Place): Promise<Place> => {
+const createPlace = async (place: Place): Promise<PlaceEntity> => {
   try {
     const validatedPlace = PlaceSchema.parse(place);
     const response = await axios.post(ROUTES.API.PLACES, validatedPlace);
@@ -78,7 +78,7 @@ const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   }
 };
 
-const updatePlace = async (place: Place, id: number): Promise<Place> => {
+const updatePlace = async (place: Place, id: number): Promise<PlaceEntity> => {
   try {
     const validatedPlace = PlaceSchema.parse(place);
     const response = await axios.put(ROUTES.API.PLACES_DETAIL(id), validatedPlace);
