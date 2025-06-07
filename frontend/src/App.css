@@ -38,5 +38,5 @@
 }
 
 .label {
-  @apply w-12 text-right;
+  @apply w-12 font-medium text-right;
 }
