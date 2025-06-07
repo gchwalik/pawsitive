@@ -2,13 +2,13 @@ import axios from "axios";
 import { z } from "zod";
 
 import { ROUTES } from "../routes";
-import { PlaceTypeSchema } from "./placeTypesApi";
+import { PlaceTypeMinimalSchema } from "./placeTypesApi";
 
 // Schemas
 
 const PlaceSchema = z.object({
   name: z.string(),
-  type: PlaceTypeSchema
+  type: PlaceTypeMinimalSchema,
 })
 
 const PlaceEntitySchema = PlaceSchema.extend({
@@ -32,7 +32,7 @@ type PlaceEntity = z.infer<typeof PlaceEntitySchema>
 
 const getEmptyPlace = (): Place => ({ 
   name: "",
-  type: { name: "", place_count: 0 }
+  type: { id: -1, name: "" }
 })
 
 const toPlace = (placeEntity: PlaceEntity): Place => {
@@ -47,9 +47,11 @@ const toPlace = (placeEntity: PlaceEntity): Place => {
 const fetchPlaces = async (): Promise<PlaceEntity[]> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES);
+    console.log(response)
 
     // Validate the paginated response
     const validatedResponse = PlacesPageSchema.parse(response.data);
+    console.log(validatedResponse)
     return validatedResponse.results; // api has pagination
   } catch (error) {
     console.error("Error fetching places:", error);
@@ -74,9 +76,11 @@ const createPlace = async (place: Place): Promise<PlaceEntity> => {
 const fetchPlace = async (id: number): Promise<PlaceEntity> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES_DETAIL(id));
+    console.log(response)
 
     // Validate fetched PlaceEntity
     const validatedResponse = PlaceEntitySchema.parse(response.data);
+    console.log(validatedResponse)
     return validatedResponse;
   } catch (error) {
     console.error("Error fetching place:", error);

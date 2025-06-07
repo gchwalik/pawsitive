@@ -33,7 +33,7 @@ function PlacesList() {
           {/* Places List */}
           <ul className="flex flex-col">
             {places.length === 0 ? (
-              <div className="py-12 text-center">
+              <div className="py-12 text-center font-normal">
                 <p className="text-lg">No places yet!</p>
                 <p className="text-sm">Add a spot to get started</p>
               </div>

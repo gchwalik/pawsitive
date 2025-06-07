@@ -13,4 +13,9 @@ const PlaceTypeEntitySchema = PlaceTypeSchema.extend({
   updated: z.coerce.date(),
 });
 
-export { PlaceTypeSchema, PlaceTypeEntitySchema }
+const PlaceTypeMinimalSchema = z.object({
+  id: z.number(),
+  name: z.string()
+})
+
+export { PlaceTypeSchema, PlaceTypeEntitySchema, PlaceTypeMinimalSchema }
