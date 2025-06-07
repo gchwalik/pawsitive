@@ -9,7 +9,7 @@ function PlaceDetails({ place }: PlaceDetailsProps) {
     <div className="flex flex-col flex-1">
       <div className="place-attributes">
         <div className="place-attribute items-center">
-          <label className="label">Name:</label>
+          <label className="label font-medium">Name:</label>
           <div className="flex-1">{place.name}</div>
         </div>
       </div>
