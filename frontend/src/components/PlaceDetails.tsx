@@ -1,7 +1,7 @@
-import { type PlaceEntity } from "../api/placesApi";
+import { type Place } from "../api/placesApi";
 
 interface PlaceDetailsProps {
-  place: PlaceEntity;
+  place: Place;
 }
 
 function PlaceDetails({ place }: PlaceDetailsProps) {

@@ -1,30 +1,30 @@
 import { Link, useNavigate } from 'react-router';
 import { useForm, type SubmitHandler } from "react-hook-form";
 
-import { createPlace, updatePlace, getEmptyPlace, toPlace } from "../api/placesApi";
-import type { Place, PlaceEntity } from "../api/placesApi";
+import { createPlace, updatePlace, getEmptyPlaceInput, toPlaceInput } from "../api/placesApi";
+import type { Place, PlaceInput } from "../api/placesApi";
 import ButtonContainer from "./Buttons";
 import { ROUTES } from '../routes';
 
 interface PlaceFormProps {
-  placeEntity?: PlaceEntity;
+  place?: Place;
   id?: number;
 }
 
 // only create a separate form interface if have add'l intermediate fields
 
-function PlaceForm( {placeEntity, id}: PlaceFormProps = {}) {
+function PlaceForm( {place, id}: PlaceFormProps = {}) {
   const navigate = useNavigate();
-  const defaultPlace = placeEntity ? toPlace(placeEntity) : getEmptyPlace();
-  const {register, handleSubmit} = useForm<Place>({defaultValues: defaultPlace})
+  const defaultData = place ? toPlaceInput(place) : getEmptyPlaceInput();
+  const {register, handleSubmit} = useForm<PlaceInput>({defaultValues: defaultData});
 
-  const onSubmit: SubmitHandler<Place> = async (data: Place) => {
+  const onSubmit: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
     try {
       if (!id) {
-        const response = createPlace(data);
+        const response = createPlace(placeInput);
         console.log('Place created:', response);
       } else {
-        const response = updatePlace(data, id);
+        const response = updatePlace(placeInput, id);
         console.log('Place updated:', response);
       }
 
