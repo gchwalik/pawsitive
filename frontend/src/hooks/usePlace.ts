@@ -4,7 +4,7 @@ import { fetchPlace as getPlace, type Place } from "../api/placesApi";
 
 interface UsePlaceReturn {
   paramId: string | undefined;
-  place?: Place | null;
+  place: Place | null;
   loading: boolean;
   error: string | null;
 }
