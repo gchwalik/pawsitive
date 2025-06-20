@@ -11,7 +11,7 @@ import ButtonContainer from '../components/Buttons';
 
 
 function ViewPlace() {
-  const { place, loading, id } = usePlace();
+  const { place, loading, paramId } = usePlace();
 
   return (
     <>
@@ -29,7 +29,7 @@ function ViewPlace() {
             </ButtonContainer>
             </>
           ) : (
-            <PlaceNotFound id={id} />
+            <PlaceNotFound id={paramId} />
           )}
         </Container>
       </div>

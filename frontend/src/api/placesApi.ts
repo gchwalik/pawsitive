@@ -34,8 +34,6 @@ const PlacePageSchema = z.object({
 type Place = z.infer<typeof PlaceReadSchema>;
 type PlaceInput = z.infer<typeof PlaceWriteSchema>;
 
-// type Place = z.infer<typeof PlaceSchema>
-// type PlaceEntity = z.infer<typeof PlaceEntitySchema>
 
 // Helpers
 
@@ -67,7 +65,7 @@ const createPlace = async (placeInput: PlaceInput): Promise<Place> => {
     const validatedInput = PlaceWriteSchema.parse(placeInput);
     const response = await axios.post(ROUTES.API.PLACES, validatedInput);
 
-    // Validate created PlaceEntity
+    // Validate created Place
     const place = PlaceReadSchema.parse(response.data);
     return place;
   } catch (error) {
@@ -80,7 +78,7 @@ const fetchPlace = async (id: number): Promise<Place> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES_DETAIL(id));
 
-    // Validate fetched PlaceEntity
+    // Validate fetched Place
     const place = PlaceReadSchema.parse(response.data);
     return place;
   } catch (error) {
@@ -94,7 +92,7 @@ const updatePlace = async (placeInput: PlaceInput, id: number): Promise<Place> =
     const validatedInput = PlaceWriteSchema.parse(placeInput);
     const response = await axios.put(ROUTES.API.PLACES_DETAIL(id), validatedInput);
 
-    // Validate updated PlaceEntity
+    // Validate updated Place
     const place = PlaceReadSchema.parse(response.data);
     return place;
   } catch (error) {
