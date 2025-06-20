@@ -5,7 +5,7 @@ import { usePlace } from '../hooks/usePlace';
 import PlaceNotFound from '../components/PlaceNotFound';
 
 function EditPlace() {
-  const { place, loading, id } = usePlace();
+  const { place, loading, paramId } = usePlace();
 
   return (
     <>
@@ -16,10 +16,10 @@ function EditPlace() {
             <div className="flex justify-center items-center flex-1">Loading...</div>
           ) : place ? (
             <>
-            <PlaceForm placeEntity={place} id={place.id}/>
+            <PlaceForm place={place} id={place.id}/>
             </>
           ) : (
-            <PlaceNotFound id={id} />
+            <PlaceNotFound id={paramId} />
           )}
         </Container>
       </div>

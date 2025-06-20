@@ -10,7 +10,7 @@ import ButtonContainer from '../components/Buttons';
 import { ROUTES } from '../routes';
 
 function DeletePlace() {
-  const { place, loading, id } = usePlace();
+  const { place, loading, paramId } = usePlace();
 
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ function DeletePlace() {
             </ButtonContainer>
             </>            
           ) : (
-            <PlaceNotFound id={id} />
+            <PlaceNotFound id={paramId} />
           )}
         </Container>
       </div>

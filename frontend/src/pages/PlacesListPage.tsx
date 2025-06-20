@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/react';
 
-import { fetchPlaces, type PlaceEntity } from "../api/placesApi";
+import { fetchPlaces, type Place } from "../api/placesApi";
 import Header from "../components/Header";
 import Container from "../components/Container";
 
@@ -12,7 +12,7 @@ import { ROUTES } from "../routes";
 import "../App.css";
 
 function PlacesList() {
-  const [places, setPlaces] = useState<PlaceEntity[]>([]);
+  const [places, setPlaces] = useState<Place[]>([]);
   const iconSize = 20;
 
   useEffect(() => {
