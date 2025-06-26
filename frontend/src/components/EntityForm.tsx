@@ -28,7 +28,7 @@ interface EntityFormProps<TFormValues extends FieldValues> {
   formMethod: FormMethod;
   onSubmit: SubmitHandler<TFormValues>;
   buttons?: React.ReactNode[];
-  children?: (register: UseFormRegister<TFormValues>) => React.ReactNode;
+  children: React.ReactNode;
 }
 
 const EntityForm = <TFormValues extends FieldValues>({ defaultValues, formMethod, onSubmit, children, buttons }: EntityFormProps<TFormValues>) => {
@@ -37,8 +37,8 @@ const EntityForm = <TFormValues extends FieldValues>({ defaultValues, formMethod
 
   return (
     <FormContext value={{register: register as UseFormRegister<FieldValues> }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {children && children(register)}
+      <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
+        {children}
         <ButtonContainer>
             {isEditing ? <button type="submit" className="btn btn-primary">Submit</button> : <></>}
             {/* Render all custom buttons */}
@@ -60,8 +60,13 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const FormInput = ({ label, fieldName, ...props }: FormInputProps) => {
   const { register } = useFormContext();
-  return <input {...register(fieldName)} {...props} />
-}
+  return (
+    <div className="form-attribute">
+      <label className="label">Name:</label>
+      <input {...register(fieldName)} {...props} className="input" />
+    </div>
+)}
+
 
 
 export { EntityForm, FormInput };
