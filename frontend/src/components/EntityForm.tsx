@@ -1,7 +1,9 @@
 import { Fragment } from "react"
+import type { InputHTMLAttributes } from "react";
+
 import { useForm, type FieldValues, type Path } from "react-hook-form"
 import type { UseFormProps, SubmitHandler, UseFormReturn } from "react-hook-form"
-import type { InputHTMLAttributes } from "react"
+
 import ButtonContainer from "./Buttons"
 
 type FormMethod = "GET" | "POST" | "PUT" | "DELETE";
@@ -35,18 +37,18 @@ const EntityForm = <TFormValues extends FieldValues>({ defaultValues, formMethod
   )
 }
 
-interface FormInputProps<TFormValues extends FieldValues>{
+interface FormInputProps<TFormValues extends FieldValues> extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'form'> {
   fieldName: Path<TFormValues>;
   label: string;
   form: UseFormReturn<TFormValues>;
 }
 
-const FormInput = <TFormValues extends FieldValues>({ label, fieldName, form }: FormInputProps<TFormValues>) => {
+const FormInput = <TFormValues extends FieldValues>({ label, fieldName, form, required, ...props }: FormInputProps<TFormValues>) => {
   const { register } = form;
   return (
     <div className="form-attribute">
       <label className="label">{label}</label>
-      <input {...register(fieldName)} className="input" /> 
+      <input {...register(fieldName, {required : required ?  `{label} is required` : false} )}{...props} className="input" />
     </div>
 )}
 
