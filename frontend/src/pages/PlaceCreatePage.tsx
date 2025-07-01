@@ -24,7 +24,11 @@ function CreatePlace() {
             onSubmit={createPlace}
             buttons={formButtons}
           >
-            <FormInput fieldName="name" label="Name:" required/>
+            {(form)=> (
+              <>
+                <FormInput<PlaceInput> label="Name" fieldName="name" form={form} required />
+              </>
+            )}
           </EntityForm>
         </Container>
       </div>

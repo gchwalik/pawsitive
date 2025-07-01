@@ -1,69 +1,52 @@
-import { Fragment, createContext, useContext } from "react"
-import { useForm, type FieldValues } from "react-hook-form"
-import type { UseFormProps, UseFormRegister, SubmitHandler } from "react-hook-form"
+import { Fragment } from "react"
+import { useForm, type FieldValues, type Path } from "react-hook-form"
+import type { UseFormProps, SubmitHandler, UseFormReturn } from "react-hook-form"
 import type { InputHTMLAttributes } from "react"
 import ButtonContainer from "./Buttons"
 
 type FormMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 
-// Define the context type
-interface FormContextType {
-  register: UseFormRegister<FieldValues>;
-  // Add other form methods you need here
-}
-
-const FormContext = createContext<FormContextType | null>(null);
-
-const useFormContext = () => {
-  const context = useContext(FormContext);
-  if (!context) {
-    throw new Error('useFormContext must be used within a Form')
-  }
-  return context
-}
-
 interface EntityFormProps<TFormValues extends FieldValues> {
   defaultValues: UseFormProps<TFormValues>["defaultValues"];
   formMethod: FormMethod;
   onSubmit: SubmitHandler<TFormValues>;
   buttons?: React.ReactNode[];
-  children: React.ReactNode;
+  children: (form: UseFormReturn<TFormValues>) => React.ReactNode;
 }
 
 const EntityForm = <TFormValues extends FieldValues>({ defaultValues, formMethod, onSubmit, children, buttons }: EntityFormProps<TFormValues>) => {
   const isEditing = formMethod === "POST" || formMethod === "PUT";
-  const {register, handleSubmit} = useForm<TFormValues>({defaultValues});
+  const form = useForm<TFormValues>({defaultValues});
 
   return (
-    <FormContext value={{register: register as UseFormRegister<FieldValues> }}>
-      <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
-        {children}
-        <ButtonContainer>
-            {isEditing ? <button type="submit" className="btn btn-primary">Submit</button> : <></>}
-            {/* Render all custom buttons */}
-            {buttons && buttons.map((button, index) => (
-              <Fragment key={index}>
-                {button}
-              </Fragment>
-            ))}
-          </ButtonContainer>
-      </form>
-    </FormContext>
+    <form onSubmit={form.handleSubmit(onSubmit)} className="form-attributes">
+      {children(form)}
+      <ButtonContainer>
+          {isEditing ? <button type="submit" className="btn btn-primary">Submit</button> : <></>}
+          {/* Render all custom buttons */}
+          {buttons && buttons.map((button, index) => (
+            <Fragment key={index}>
+              {button}
+            </Fragment>
+          ))}
+        </ButtonContainer>
+    </form>
   )
 }
 
-interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  fieldName: string;
+interface FormInputProps<TFormValues extends FieldValues>{
+  fieldName: Path<TFormValues>;
   label: string;
+  form: UseFormReturn<TFormValues>;
 }
 
-const FormInput = ({ label, fieldName, ...props }: FormInputProps) => {
-  const { register } = useFormContext();
+const FormInput = <TFormValues extends FieldValues>({ label, fieldName, form }: FormInputProps<TFormValues>) => {
+  const { register } = form;
   return (
     <div className="form-attribute">
-      <label className="label">Name:</label>
-      <input {...register(fieldName)} {...props} className="input" />
+      <label className="label">{label}</label>
+      <input {...register(fieldName)} className="input" /> 
     </div>
 )}
 
