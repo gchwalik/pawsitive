@@ -1,38 +1,40 @@
-import { Link } from 'react-router';
-
-import { usePlace } from '../hooks/usePlace';
+import { useParams } from 'react-router';
+import { useEntity } from '../hooks/useEntity';
 import { ROUTES } from '../routes';
 
 import Header from '../components/Header';
-import PlaceDetails from '../components/PlaceDetails';
-import PlaceNotFound from '../components/PlaceNotFound';
-import Container from '../components/Container';
-import ButtonContainer from '../components/Buttons';
+import { ViewForm } from '../components/form/EntityForm';
+
+import { fetchPlace as getPlace, toPlaceInput } from '../api/placesApi';
+import type { Place, PlaceInput } from '../api/placesApi';
+import { FormInput } from '../components/form/EntityForm';
 
 
 function ViewPlace() {
-  const { place, loading, paramId } = usePlace();
+  const { id: paramId } = useParams<{ id: string }>();
+  const entityId = paramId ? parseInt(paramId) : undefined;
+  const usePlace = (entityId: number | undefined) => {
+    return useEntity<Place>({entityId, getEntity: getPlace});
+  }
 
   return (
     <>
       <Header />
-      <div className="flex justify-center">
-        <Container title={ place?.name || ""}>
-          {loading ? (
-            <div className="flex justify-center items-center flex-1">Loading...</div>
-          ) : place ? (
-            <>
-            <PlaceDetails place={place} />
-              <ButtonContainer>
-              <Link to={ROUTES.FRONTEND.PLACES_EDIT(place.id)} className="btn btn-primary">Edit</Link>
-              <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>
-            </ButtonContainer>
-            </>
-          ) : (
-            <PlaceNotFound id={paramId} />
-          )}
-        </Container>
-      </div>
+      <ViewForm<PlaceInput, Place>
+        containerTitle="View Place"
+        entityId={entityId}
+        useEntity={usePlace}
+        toEntityInput={toPlaceInput}
+        editLink={ROUTES.FRONTEND.PLACES_EDIT(paramId ? parseInt(paramId) : -1)}
+        deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId) : -1)}
+      >
+        {(form) => (
+          <>
+            <FormInput<PlaceInput> label="Name:" fieldName="name" form={form} disabled/>
+            <FormInput<PlaceInput> label="Type:" fieldName="type_id" form={form} disabled/>
+          </>
+        )}
+      </ViewForm>
     </>
   );
 }
