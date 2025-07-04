@@ -4,6 +4,10 @@ Pawsitive is an application that helps dog walkers and owners find safe location
 
 Reactive dogs generally have similar triggers - children, other dogs, loud noises - and Pawsitive aggregates notes about which locations have which triggers and when they might occur.
 
+## Dependencies
+- docker
+- make
+
 ## How to launch the app 
 
 The app is currently made of two servers, a frontend server built with React and Node, and a backend server build with Python and Django. 
