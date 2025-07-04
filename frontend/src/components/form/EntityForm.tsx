@@ -70,8 +70,7 @@ function ViewForm<TEntityInput extends FieldValues, TEntity extends FieldValues>
 }
 
 
-
-interface UpsertFormProps<TFormValues extends FieldValues> {
+interface CreateFormProps<TFormValues extends FieldValues> {
   containerTitle: string;
   defaultValues: UseFormProps<TFormValues>["defaultValues"];
   onSubmit: SubmitHandler<TFormValues>;
@@ -79,7 +78,7 @@ interface UpsertFormProps<TFormValues extends FieldValues> {
 }
 
 
-function UpsertForm<TFormValues extends FieldValues>( {containerTitle, defaultValues, onSubmit, children}: UpsertFormProps<TFormValues> ) {
+function CreateForm<TFormValues extends FieldValues>( {containerTitle, defaultValues, onSubmit, children}: CreateFormProps<TFormValues> ) {
   const reactForm = useForm<TFormValues>({defaultValues});
 
   return (
@@ -94,41 +93,10 @@ function UpsertForm<TFormValues extends FieldValues>( {containerTitle, defaultVa
             </ButtonContainer>
           </form>
         </Container>
-      </div>Here's a more detailed breakdown:
+      </div>
     </>
   );
 }
-
-
-// interface ViewFormProps<TFormValues extends FieldValues> {
-//   containerTitle: string;
-//   defaultValues: UseFormProps<TFormValues>["defaultValues"];
-//   onSubmit: SubmitHandler<TFormValues>;
-//   e
-//   toEntityInput: (entity: TEntity) => TEntityInput;
-//   onSubmit: SubmitHandler<FieldValues>;
-//   children: (form: UseFormReturn<FieldValues>) => React.ReactNode;
-// }
-
-// function ViewForm<TFormValues extends FieldValues>( {containerTitle, defaultValues, onSubmit, editLink, children}: ViewFormProps<TFormValues> ) {
-//   const reactForm = useForm<TFormValues>({defaultValues});
-
-//   return (
-//     <>
-//       <div className="flex justify-center">
-//         <Container title={containerTitle}>
-//           <form onSubmit={reactForm.handleSubmit(onSubmit)} className="form-attributes">
-//             {children(reactForm)}
-//             <ButtonContainer>
-//               <Link to={editLink} className="btn btn-primary">Edit</Link>
-//               <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>
-//             </ButtonContainer>
-//           </form>
-//         </Container>
-//       </div>
-//     </>
-//   );
-// }
 
 
 // function DeleteForm<TFormValues extends FieldValues>( {containerTitle, defaultValues, onSubmit, children}: FormProps<TFormValues> ) {
@@ -171,4 +139,4 @@ const FormInput = <TFormValues extends FieldValues>({ label, fieldName, required
 
 
 
-export { ViewForm, UpsertForm, FormInput };
+export { ViewForm, CreateForm, FormInput };
