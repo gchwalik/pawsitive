@@ -10,6 +10,6 @@ The app is currently made of two servers, a frontend server built with React and
 
 Launching the application is very straightforward:
 1. From the `pawsitive/backend/` folder run `make run`
-  a. The backend server is launched at `localhost:8000`, and this endpoint exposes Django Rest Framework's GUI.
+    1. The backend server is launched at `localhost:8000`, and this endpoint exposes Django Rest Framework's GUI.
 2. From the `pawsitive/frontend/` folder run `make run`
-  a. The frontend server is launched at `localhost:5173`. Accessing this in your brower will show you the pawsitive webpage.
+    1. The frontend server is launched at `localhost:5173`. Accessing this in your brower will show you the pawsitive webpage.
