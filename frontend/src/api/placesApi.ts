@@ -2,7 +2,7 @@ import axios from "axios";
 import { z } from "zod";
 
 import { ROUTES } from "../routes";
-import { PlaceTypeMinimalSchema } from "./placeTypesApi";
+// import { PlaceTypeMinimalSchema } from "./placeTypesApi";
 
 // Schemas
 
@@ -12,13 +12,13 @@ const PlaceBaseSchema = z.object({
 
 // For write operations: create/update
 const PlaceWriteSchema = PlaceBaseSchema.extend({
-  type_id: z.number(),
+  // type_id: z.number(),
 })
 
 // For read operations: fetch
 const PlaceReadSchema = PlaceBaseSchema.extend({
   id: z.number(),
-  type: PlaceTypeMinimalSchema,
+  // type: PlaceTypeMinimalSchema,
   created: z.coerce.date(),
   updated: z.coerce.date(),
 });
@@ -39,12 +39,13 @@ type PlaceInput = z.infer<typeof PlaceWriteSchema>;
 
 // Helpers
 
-const getEmptyPlaceInput = (): PlaceInput => ({ name: "", type_id: 1 });
+// const getEmptyPlaceInput = (): PlaceInput => ({ name: "", type_id: 1 });
+const getEmptyPlaceInput = (): PlaceInput => ({ name: "" });
 
 const toPlaceInput = (place: Place): PlaceInput => {
   return {
     name: place.name,
-    type_id: place.type.id,
+    // type_id: place.type.id,
   }
 }
 

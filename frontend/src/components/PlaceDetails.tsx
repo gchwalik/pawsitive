@@ -12,10 +12,10 @@ function PlaceDetails({ place }: PlaceDetailsProps) {
           <label className="label">Name:</label>
           <div className="flex-1">{place.name}</div>
         </div>
-        <div className="place-attribute items-center">
+        {/* <div className="place-attribute items-center">
           <label className="label">Type:</label>
           <div className="flex-1">{place.type.name}</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ function ViewPlace() {
         {(form) => (
           <>
             <FormInput<PlaceInput> label="Name:" fieldName="name" form={form} disabled/>
-            <FormInput<PlaceInput> label="Type:" fieldName="type_id" form={form} disabled/>
+            {/* <FormInput<PlaceInput> label="Type:" fieldName="type_id" form={form} disabled/> */}
           </>
         )}
       </ViewForm>
