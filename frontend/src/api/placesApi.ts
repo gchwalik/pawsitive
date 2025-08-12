@@ -12,7 +12,7 @@ const PlaceBaseSchema = z.object({
 
 // For write operations: create/update
 const PlaceWriteSchema = PlaceBaseSchema.extend({
-  type_id: z.number(),
+  type_id: z.coerce.number(),
 })
 
 // For read operations: fetch

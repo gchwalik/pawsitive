@@ -28,6 +28,7 @@ function EntityNotFound({error}: EntityNotFoundProps) {
   );
 }
 
+
 interface ViewFormProps<TEntityInput extends FieldValues, TEntity extends FieldValues> {
   containerTitle: string; 
   entityId: number | undefined;
@@ -74,18 +75,29 @@ interface CreateFormProps<TFormValues extends FieldValues> {
   containerTitle: string;
   defaultValues: UseFormProps<TFormValues>["defaultValues"];
   onSubmit: SubmitHandler<TFormValues>;
+  onSuccess?: () => void;
   children: (form: UseFormReturn<TFormValues>) => React.ReactNode;
 }
 
 
-function CreateForm<TFormValues extends FieldValues>( {containerTitle, defaultValues, onSubmit, children}: CreateFormProps<TFormValues> ) {
+function CreateForm<TFormValues extends FieldValues>( {containerTitle, defaultValues, onSubmit, onSuccess, children}: CreateFormProps<TFormValues> ) {
   const reactForm = useForm<TFormValues>({defaultValues});
+
+  const handleSubmit: SubmitHandler<TFormValues> = async (data) => {
+    try {
+      const response = await onSubmit(data);
+      console.log('Operation successful:', response);
+      onSuccess?.();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <>
       <div className="flex justify-center">
         <Container title={containerTitle}>
-          <form onSubmit={reactForm.handleSubmit(onSubmit)} className="form-attributes">
+          <form onSubmit={reactForm.handleSubmit(handleSubmit)} className="form-attributes">
             {children(reactForm)}
             <ButtonContainer>
               <button type="submit" className="btn btn-primary">Create</button>
@@ -122,18 +134,20 @@ function CreateForm<TFormValues extends FieldValues>( {containerTitle, defaultVa
 
 
 interface FormInputProps<TFormValues extends FieldValues> extends Omit<InputHTMLAttributes<HTMLInputElement>, 'name' | 'form'> {
-  fieldName: Path<TFormValues>;
   label: string;
-  form: UseFormReturn<TFormValues>;
+  name: Path<TFormValues>;
+  required?: boolean;
   disabled?: boolean;
+  form: UseFormReturn<TFormValues>;
 }
 
-const FormInput = <TFormValues extends FieldValues>({ label, fieldName, required, disabled, form, ...props }: FormInputProps<TFormValues>) => {
+const FormInput = <TFormValues extends FieldValues>({ label, name, required, disabled, form, ...props }: FormInputProps<TFormValues>) => {
+  console.log(props);
   const { register } = form;
   return (
     <div className="form-attribute">
       <label className="label">{label}</label>
-      <input {...register(fieldName, {required : required ?  `{label} is required` : false, disabled } )}{...props} className={`input ${disabled && "border-none"}`} />
+      <input {...register(name, {required : required ?  `${label} is required` : false, disabled } )}{...props} className={`input ${disabled && "border-none"}`} />
     </div>
 )}
 
