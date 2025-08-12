@@ -39,7 +39,7 @@ type PlaceInput = z.infer<typeof PlaceWriteSchema>;
 
 // Helpers
 
-const getEmptyPlaceInput = (): PlaceInput => ({ name: "", type_id: -1 });
+const getEmptyPlaceInput = (): PlaceInput => ({ name: "", type_id: 1 });
 
 const toPlaceInput = (place: Place): PlaceInput => {
   return {
