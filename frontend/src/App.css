@@ -10,11 +10,19 @@
 }
 
 .btn {
-  @apply w-24 rounded-lg font-medium text-center px-3 py-2 cursor-pointer;
+  @apply w-24 rounded-lg font-medium text-center px-4 py-2 cursor-pointer;
 }
 
 .btn-primary {
-  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900
+  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900 
+}
+
+.btn-dark {
+  @apply  bg-lime-600 hover:bg-lime-700 text-white transition-colors duration-200;
+}
+
+.btn-subtle {
+  @apply text-emerald-800 hover:bg-lime-200 hover:text-lime-900 transition-colors duration-200;
 }
 
 .btn-danger {

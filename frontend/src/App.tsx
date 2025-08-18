@@ -2,6 +2,7 @@ import PlacesList from './pages/PlacesListPage';
 import CreatePlace from './pages/PlaceCreatePage';
 import ViewPlace from './pages/PlaceViewPage';
 import DeletePlace from './pages/PlaceDeletePage';
+import PlacesList2 from './pages/PlacesListPage2';
 
 import { ROUTES } from "./routes";
 import { Navigate } from 'react-router';
@@ -14,7 +15,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<PlacesList />} />
+        <Route path="/" element={<PlacesList2 />} />
+        <Route path="/old" element={<PlacesList />} />
+        
         <Route path={ROUTES.FRONTEND.PLACES_CREATE} element={<CreatePlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_VIEW_PATTERN} element={<ViewPlace />} />
         <Route path={ROUTES.PATTERNS.PLACES_EDIT_PATTERN} element={<EditPlace />} />
