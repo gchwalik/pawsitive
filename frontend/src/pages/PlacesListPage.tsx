@@ -21,7 +21,7 @@ const EmptyState = () => (
           <p className="text-sm text-gray-600 mb-6">Add your first spot to get started</p>
           <Link 
           to={ROUTES.FRONTEND.PLACES_CREATE}
-          className="btn btn-dark inline-flex items-center gap-2 !w-auto "
+          className="btn btn-dark inline-flex items-center gap-2 !w-auto"
           >
               <PlusIcon size={16} />
               Create First Place
@@ -110,4 +110,4 @@ function PlacesList() {
   );
 }
 
-export default PlacesList
+export default PlacesList;
