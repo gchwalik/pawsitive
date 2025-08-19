@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
-import { EyeIcon, TrashIcon, PencilSimpleIcon, PlusIcon } from '@phosphor-icons/react';
+import { TrashIcon, MapPinIcon, PlusIcon } from '@phosphor-icons/react';
 
 import { fetchPlaces, type Place } from "../api/placesApi";
 import Header from "../components/Header";
@@ -10,6 +10,53 @@ import Container from "../components/Container";
 import { ROUTES } from "../routes";
 
 import "../App.css";
+
+const EmptyState = () => (
+    <div className="flex items-center justify-center text-center h-4/5">
+        <div>
+          <div className="text-gray-400 mb-4">
+              <MapPinIcon size={48} className="mx-auto" />
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">No places yet!</h3>
+          <p className="text-sm text-gray-600 mb-6">Add your first spot to get started</p>
+          <Link 
+          to={ROUTES.FRONTEND.PLACES_CREATE}
+          className="btn btn-dark inline-flex items-center gap-2 !w-auto"
+          >
+              <PlusIcon size={16} />
+              Create First Place
+          </Link>
+      </div>
+    </div>
+);
+
+
+interface PlaceItemProps {
+  place: Place;
+  iconSize: number;
+}
+
+const PlaceItem = ({ place, iconSize }: PlaceItemProps) => (
+    <Link to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}          
+      aria-label={`View ${place.name}`}
+      title="View place"
+      className="group flex justify-between items-center hover:bg-lime-200 hover:text-lime-900 px-4 py-2 transition-colors duration-200"
+    >
+      <div className="mx-1 text-gray-800 truncate">{place.name}</div>
+
+      <div className="flex gap-1 opacity-70 group-hover:opacity-100 transition-opacity duration-200">
+        <Link 
+          to={ROUTES.FRONTEND.PLACES_DELETE(place.id)} 
+          className="p-2 text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200" 
+          aria-label={`Delete ${place.name}`}
+          title="Delete place"
+        >
+          <TrashIcon size={iconSize} />
+        </Link>
+      </div>
+    </Link>
+);
+
 
 function PlacesList() {
   const [places, setPlaces] = useState<Place[]>([]);
@@ -23,49 +70,40 @@ function PlacesList() {
       .catch((error) => console.error("Error:", error));
   }, []);
 
-
   return (
     <>
       <Header />
       {/* Main Content */}
       <div className="flex justify-center">
         <Container title="Places" showTitleBorder={true}>
-          {/* Places List */}
-          <ul className="flex flex-col">
             {places.length === 0 ? (
-              <div className="py-12 text-center">
-                <p className="text-lg">No places yet!</p>
-                <p className="text-sm">Add a spot to get started</p>
-              </div>
-            ) : (
-            places.map((place) =>
-              <li key={place.id} className="flex justify-between items-center hover:bg-lime-100 px-4 py-2">
-                <div className="mx-1">{place.name}</div>
-
-                {/* Buttons */}
-                <div className="flex gap-2">
-                  <Link to={ROUTES.FRONTEND.PLACES_VIEW(place.id)} className="p-1 text-indigo-600 hover:text-indigo-800 hover:bg-cyan-50 rounded-lg" aria-label="View">
-                    <EyeIcon size={iconSize} />
-                  </Link>
-                  <Link to={ROUTES.FRONTEND.PLACES_EDIT(place.id)} className="p-1 text-emerald-600 hover:text-emerald-700 hover:bg-lime-50 rounded-lg" aria-label="Edit">
-                    <PencilSimpleIcon size={iconSize} />
-                  </Link>
-                  <Link to={ROUTES.FRONTEND.PLACES_DELETE(place.id)} className="p-1 text-rose-700 hover:text-rose-800 hover:bg-fuchsia-50 rounded-lg" aria-label="Delete">
-                    <TrashIcon size={iconSize}/>
-                  </Link>
+                <EmptyState />
+              ) : (
+              <>
+                {/* Places List */}
+                <div className="flex-1 overflow-y-auto">
+                    <ul className="flex flex-col gap-1">
+                    {places.map((place) => (
+                        <>
+                          <PlaceItem key={place.id} place={place} iconSize={iconSize} />
+                        </>
+                    ))}
+                    </ul>
                 </div>
 
-              </li>
+                {/* Create Button - Only show when there are places */}
+                <div className="border-t border-gray-200 mt-4">
+                  <Link 
+                  to={ROUTES.FRONTEND.PLACES_CREATE} 
+                  className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
+                  >
+                  <PlusIcon size={18} />
+                  Add Another Place
+                  </Link>
+                </div>
+              </>
             )
-            )}
-          </ul>
-          <div className="border-t border-gray-200 mt-auto">
-              <Link to={ROUTES.FRONTEND.PLACES_CREATE} className="flex items-center font-medium justify-center gap-2 rounded-b-lg text-emerald-800 hover:bg-lime-100 px-3 py-3">
-                <PlusIcon size={18} />
-                Create New Place
-              </Link>
-          </div>
-        
+          }
         </Container>
       </div>
     </>
