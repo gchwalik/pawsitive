@@ -14,11 +14,11 @@
 }
 
 .btn-primary {
-  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900
+  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900;
 }
 
 .btn-danger {
-  @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900
+  @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900;
 }
 
 .btn-dark {
@@ -34,7 +34,7 @@
 }
 
 .dropdown-element {
-  @apply flex items-center w-full px-5 py-2 text-stone-700 hover:bg-indigo-100/80 hover:text-stone-900 first:hover:rounded-t-md last:hover:rounded-b-md
+  @apply flex items-center w-full px-5 py-2 text-stone-700 hover:bg-indigo-100/80 hover:text-stone-900 first:hover:rounded-t-md last:hover:rounded-b-md;
 }
 
 .place-attributes {
