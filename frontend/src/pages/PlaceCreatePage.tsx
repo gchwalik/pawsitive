@@ -1,18 +1,17 @@
+import { useNavigate } from 'react-router';
+import type { SubmitHandler } from 'react-hook-form';
+
 import Header from '../components/Header';
+import { CreateForm, FormInput } from '../components/form/EntityForm';
 
 import { getEmptyPlaceInput, createPlace } from '../api/placesApi';
-import { CreateForm, FormInput } from '../components/form/EntityForm';
 import type { PlaceInput } from '../api/placesApi';
-
-import { useNavigate } from 'react-router';
 
 import { ROUTES } from '../routes';
 
-import type { SubmitHandler } from 'react-hook-form';
-
 function CreatePlace() {
   const navigate = useNavigate();
-    
+
   const handleCreate: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
     try {
       const response = createPlace(placeInput);
