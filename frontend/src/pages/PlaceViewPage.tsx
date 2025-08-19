@@ -2,7 +2,7 @@ import { useParams } from 'react-router';
 import { useEntity } from '../hooks/useEntity';
 import { ROUTES } from '../routes';
 
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import { ViewForm } from '../components/form/EntityForm';
 
 import { fetchPlace as getPlace, toPlaceInput } from '../api/placesApi';
@@ -19,7 +19,7 @@ function ViewPlace() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <ViewForm<PlaceInput, Place>
         containerTitle="View Place"
         entityId={entityId}

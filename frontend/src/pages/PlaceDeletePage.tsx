@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import PlaceDetails from '../components/PlaceDetails';
 import PlaceNotFound from '../components/PlaceNotFound';
 import Container from '../components/Container';
@@ -31,7 +31,7 @@ function DeletePlace() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <div className="flex justify-center">
         <Container title={ place?.name || ""}>
           {loading ? (

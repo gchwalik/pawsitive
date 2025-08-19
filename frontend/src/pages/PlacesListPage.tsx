@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { TrashIcon, MapPinIcon, PlusIcon } from '@phosphor-icons/react';
 
 import { fetchPlaces, type Place } from "../api/placesApi";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 import Container from "../components/Container";
 
 import { ROUTES } from "../routes";
@@ -72,7 +72,7 @@ function PlacesList() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       {/* Main Content */}
       <div className="flex justify-center">
         <Container title="Places" showTitleBorder={true}>

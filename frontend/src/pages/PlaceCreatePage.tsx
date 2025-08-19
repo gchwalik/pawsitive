@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import type { SubmitHandler } from 'react-hook-form';
 
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import { CreateForm, FormInput } from '../components/form/EntityForm';
 
 import { getEmptyPlaceInput, createPlace } from '../api/placesApi';
@@ -25,7 +25,7 @@ function CreatePlace() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <CreateForm containerTitle='Create Place'
         defaultValues={getEmptyPlaceInput()}
         onSubmit={handleCreate}

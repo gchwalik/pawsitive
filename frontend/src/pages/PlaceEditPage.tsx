@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 import PlaceForm from '../components/PlaceForm';
 import Container from '../components/Container';
 import { usePlace } from '../hooks/usePlace';
@@ -9,7 +9,7 @@ function EditPlace() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <div className="flex justify-center">
         <Container title="Edit Place">
           {loading ? (

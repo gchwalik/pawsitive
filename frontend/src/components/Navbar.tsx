@@ -3,7 +3,7 @@ import {Link} from "react-router";
 
 import { Dropdown, DropdownLink } from './Dropdown';
 
-function Header() {
+function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="flex">
@@ -25,4 +25,4 @@ function Header() {
 }
 
 
-export default Header;
+export default Navbar;
