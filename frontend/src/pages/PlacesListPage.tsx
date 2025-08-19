@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-import { TrashIcon, MapPinIcon, PlusIcon } from '@phosphor-icons/react';
+import { TrashIcon, MapPinIcon, PlusIcon, PenIcon } from '@phosphor-icons/react';
 
 import { fetchPlaces, type Place } from "../api/placesApi";
 import Navbar from "../components/Navbar";
@@ -37,26 +37,28 @@ interface PlaceItemProps {
 }
 
 const PlaceItem = ({ place, iconSize }: PlaceItemProps) => (
-    <Link to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}          
+  <div className="group relative btn-subtle">
+    <Link 
+      to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}          
       aria-label={`View ${place.name}`}
       title="View place"
-      className="group flex justify-between items-center hover:bg-lime-200 hover:text-lime-900 px-4 py-2 transition-colors duration-200"
+      className="flex items-start p-4"
     >
-      <div className="mx-1 text-gray-800 truncate">{place.name}</div>
-
-      <div className="flex gap-1 opacity-70 group-hover:opacity-100 transition-opacity duration-200">
-        <Link 
-          to={ROUTES.FRONTEND.PLACES_DELETE(place.id)} 
-          className="p-2 text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200" 
-          aria-label={`Delete ${place.name}`}
-          title="Delete place"
-        >
-          <TrashIcon size={iconSize} />
-        </Link>
-      </div>
+      <div className="flex-1 mx-1 text-gray-800 truncate">{place.name}</div>
     </Link>
-);
 
+    <div className="absolute top-1/5 right-4 flex gap-1">
+      <button 
+        onClick={() => ""}
+        className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200" 
+        aria-label={`Delete ${place.name}`}
+        title="Delete place"
+      >
+        <TrashIcon size={iconSize} />
+      </button>
+    </div>
+  </div>
+);
 
 function PlacesList() {
   const [places, setPlaces] = useState<Place[]>([]);
