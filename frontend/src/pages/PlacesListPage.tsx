@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 
-import { TrashIcon, MapPinIcon, PlusIcon, PenIcon } from '@phosphor-icons/react';
+import { TrashIcon, MapPinIcon, PlusIcon } from '@phosphor-icons/react';
 
-import { fetchPlaces, type Place } from "../api/placesApi";
+import { fetchPlaces, deletePlace, type Place } from "../api/placesApi";
 import Navbar from "../components/Navbar";
 import Container from "../components/Container";
 
 import { ROUTES } from "../routes";
 
 import "../App.css";
+import ButtonContainer from "../components/Buttons";
 
 const EmptyState = () => (
     <div className="flex items-center justify-center text-center h-4/5">
@@ -30,13 +31,46 @@ const EmptyState = () => (
     </div>
 );
 
+interface DeleteModalProps {
+  place: Place | null;
+  onConfirm: (place: Place) => void;
+  onCancel: () => void;
+  isOpen: boolean;
+}
+
+const DeleteModal = ({place, isOpen, onConfirm, onCancel}: DeleteModalProps) => {
+  if (!isOpen || !place) {
+    return null;
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black/50 z-50 p-4 flex items-center justify-center">
+      <div className="bg-fuchsia-50 rounded-lg p-7 w-full max-w-md">        
+        <div className="mb-6 flex flex-col gap-4">
+          <div>
+            <p className="text-gray-700 mb-1">Are you sure you want to delete:</p>
+            <p className="font-medium">{place.name}</p>
+          </div>
+          <p className="text-sm text-gray-600">This action cannot be undone.</p>
+        </div>
+
+        <ButtonContainer>
+          <button onClick={onCancel} className="btn btn-primary">Cancel</button>
+          <button onClick={() => onConfirm(place)} className="btn btn-danger">Delete</button>
+        </ButtonContainer>
+      </div>
+    </div>
+  );
+};
+
 
 interface PlaceItemProps {
   place: Place;
+  onDelete: (place: Place) => void;
   iconSize: number;
 }
 
-const PlaceItem = ({ place, iconSize }: PlaceItemProps) => (
+const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
   <div className="group relative btn-subtle">
     <Link 
       to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}          
@@ -49,7 +83,7 @@ const PlaceItem = ({ place, iconSize }: PlaceItemProps) => (
 
     <div className="absolute top-1/5 right-4 flex gap-1">
       <button 
-        onClick={() => ""}
+        onClick={() => onDelete(place)}
         className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200" 
         aria-label={`Delete ${place.name}`}
         title="Delete place"
@@ -62,6 +96,9 @@ const PlaceItem = ({ place, iconSize }: PlaceItemProps) => (
 
 function PlacesList() {
   const [places, setPlaces] = useState<Place[]>([]);
+  const [reloadPlaces, setReloadPlaces] = useState(false);
+  const [placeToDelete, setPlaceToDelete] = useState<Place | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const iconSize = 20;
 
   useEffect(() => {
@@ -70,7 +107,28 @@ function PlacesList() {
         setPlaces(response);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+
+    setReloadPlaces(false);
+  }, [reloadPlaces]);
+
+  const openDeleteModal = (place: Place) => {
+    setShowDeleteModal(true);
+    setPlaceToDelete(place);
+  };
+
+  const confirmDelete = (place: Place) => {
+    console.log(place.name);
+    deletePlace(place.id);
+    setReloadPlaces(true);
+    setPlaceToDelete(null);
+    setShowDeleteModal(false);
+    return null;
+  }
+
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setPlaceToDelete(null);
+  }
 
   return (
     <>
@@ -87,7 +145,7 @@ function PlacesList() {
                     <ul className="flex flex-col gap-1">
                     {places.map((place) => (
                         <>
-                          <PlaceItem key={place.id} place={place} iconSize={iconSize} />
+                          <PlaceItem key={place.id} place={place} onDelete={openDeleteModal} iconSize={iconSize} />
                         </>
                     ))}
                     </ul>
@@ -108,6 +166,7 @@ function PlacesList() {
           }
         </Container>
       </div>
+      <DeleteModal isOpen={showDeleteModal} place={placeToDelete} onConfirm={confirmDelete} onCancel={cancelDelete}/>
     </>
   );
 }
