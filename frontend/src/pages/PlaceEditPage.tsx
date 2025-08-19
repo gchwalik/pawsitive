@@ -11,7 +11,7 @@ function EditPlace() {
     <>
       <Navbar />
       <div className="flex justify-center">
-        <Container title="Edit Place">
+        <Container title="Edit Place" className="p-5">
           {loading ? (
             <div className="flex justify-center items-center flex-1">Loading...</div>
           ) : place ? (
