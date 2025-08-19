@@ -51,7 +51,7 @@ function ViewForm<TEntityInput extends FieldValues, TEntity extends FieldValues>
   return (
     <>
       <div className="flex justify-center">
-        <Container title={containerTitle}>
+        <Container title={containerTitle} className="p-5">
           {loading ? <div className="flex justify-center items-center flex-1">Loading...</div>
             : !entity ? <EntityNotFound error={error} />
             : <form className="form-attributes">
@@ -84,7 +84,7 @@ function CreateForm<TFormValues extends FieldValues>( {containerTitle, defaultVa
   return (
     <>
       <div className="flex justify-center">
-        <Container title={containerTitle}>
+        <Container title={containerTitle} className="p-5">
           <form onSubmit={reactForm.handleSubmit(onSubmit)} className="form-attributes">
             {children(reactForm)}
             <ButtonContainer>
