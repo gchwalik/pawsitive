@@ -33,7 +33,7 @@ function DeletePlace() {
     <>
       <Navbar />
       <div className="flex justify-center">
-        <Container title={ place?.name || ""}>
+        <Container title={ place?.name || ""} className="p-5">
           {loading ? (
             <div className="flex justify-center items-center flex-1">Loading...</div>
           ) : place ? (

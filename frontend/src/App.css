@@ -14,7 +14,7 @@
 }
 
 .btn-primary {
-  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900
+  @apply text-emerald-800 bg-lime-100 hover:bg-lime-200 hover:text-emerald-900;
 }
 
 .btn-danger {
