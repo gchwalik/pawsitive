@@ -1,18 +1,18 @@
-import Navbar from '../components/Navbar';
-import Container from '../components/Container';
-import { EditForm, FormInput } from '../components/form/EntityForm';
+import { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router';
-import { useEntity } from '../hooks/useEntity';
-import type { Place, PlaceInput } from '../api/placesApi';
-import { fetchPlace as getPlace, updatePlace, toPlaceInput } from '../api/placesApi';
-import { usePlace } from '../hooks/usePlace';
-
-import { ROUTES } from '../routes';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import ButtonContainer from '../components/Buttons';
+import Container from '../components/Container';
+import Navbar from '../components/Navbar';
 
-import { useEffect } from 'react';
+import { usePlace } from '../hooks/usePlace';
+
+import type { PlaceInput } from '../api/placesApi';
+import { updatePlace, toPlaceInput } from '../api/placesApi';
+
+import { ROUTES } from '../routes';
+
 
 interface PlaceNotFoundProps {
   error: string | null;
