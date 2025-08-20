@@ -1,26 +1,56 @@
 import Navbar from '../components/Navbar';
-import PlaceForm from '../components/PlaceForm';
 import Container from '../components/Container';
-import { usePlace } from '../hooks/usePlace';
-import PlaceNotFound from '../components/PlaceNotFound';
+import { EditForm, FormInput } from '../components/form/EntityForm';
+import { useParams, useNavigate } from 'react-router';
+import { useEntity } from '../hooks/useEntity';
+import type { Place, PlaceInput } from '../api/placesApi';
+import { fetchPlace as getPlace, updatePlace, toPlaceInput } from '../api/placesApi';
+
+import { ROUTES } from '../routes';
+import { type SubmitHandler } from 'react-hook-form';
 
 function EditPlace() {
-  const { place, loading, paramId } = usePlace();
+  const { id: paramId } = useParams<{ id: string }>();
+  const entityId = paramId ? parseInt(paramId) : undefined;
+  const usePlace = (entityId: number | undefined) => {
+    return useEntity<Place>({entityId, getEntity: getPlace});
+  }
+
+  const navigate = useNavigate();
+
+  const handleUpdate: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
+    try {
+      if (!entityId) {
+        console.error("No place id available.");
+      return;
+      }
+      const response = updatePlace(placeInput, entityId);
+      console.log('Place updated:', response);
+      // After successful creation, navigate back
+      navigate(ROUTES.FRONTEND.ROOT);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <>
       <Navbar />
       <div className="flex justify-center">
         <Container title="Edit Place" className="p-5">
-          {loading ? (
-            <div className="flex justify-center items-center flex-1">Loading...</div>
-          ) : place ? (
-            <>
-            <PlaceForm place={place} id={place.id}/>
-            </>
-          ) : (
-            <PlaceNotFound id={paramId} />
-          )}
+          <EditForm<PlaceInput, Place>
+            entityId={entityId}
+            useEntity={usePlace}
+            toEntityInput={toPlaceInput}
+            onSubmit={handleUpdate}
+            deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId) : -1)}
+          >
+            {(form) => (
+              <>
+                <FormInput<PlaceInput> label="Name:" fieldName="name" form={form}/>
+              </>
+            )}
+          </EditForm>
         </Container>
       </div>
     </>

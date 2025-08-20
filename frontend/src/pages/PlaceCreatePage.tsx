@@ -9,6 +9,8 @@ import type { PlaceInput } from '../api/placesApi';
 
 import { ROUTES } from '../routes';
 
+import Container from '../components/Container';
+
 function CreatePlace() {
   const navigate = useNavigate();
 
@@ -26,16 +28,20 @@ function CreatePlace() {
   return (
     <>
       <Navbar />
-      <CreateForm containerTitle='Create Place'
-        defaultValues={getEmptyPlaceInput()}
-        onSubmit={handleCreate}
-      >
-        {(form) => (
-          <>
-            <FormInput<PlaceInput> label="Name:" fieldName="name" form={form}/>
-          </>
-        )}
-      </CreateForm>
+      <div className="flex justify-center">
+        <Container title="Create Place" className="p-5">
+          <CreateForm
+            defaultValues={getEmptyPlaceInput()}
+            onSubmit={handleCreate}
+          >
+            {(form) => (
+              <>
+                <FormInput<PlaceInput> label="Name:" fieldName="name" form={form}/>
+              </>
+            )}
+          </CreateForm>
+        </Container>
+      </div>
     </>
   );
 }
