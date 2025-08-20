@@ -12,7 +12,7 @@ import Container from '../components/Container';
 
 function ViewPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const entityId = paramId ? parseInt(paramId) : undefined;
+  const entityId = paramId ? parseInt(paramId, 10) : undefined;
   const usePlace = (entityId: number | undefined) => {
     return useEntity<Place>({entityId, getEntity: getPlace});
   }
@@ -26,8 +26,8 @@ function ViewPlace() {
             entityId={entityId}
             useEntity={usePlace}
             toEntityInput={toPlaceInput}
-            editLink={ROUTES.FRONTEND.PLACES_EDIT(paramId ? parseInt(paramId) : -1)}
-            deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId) : -1)}
+            editLink={ROUTES.FRONTEND.PLACES_EDIT(paramId ? parseInt(paramId, 10) : -1)}
+            deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId, 10) : -1)}
           >
             {(form) => (
               <>

@@ -23,7 +23,7 @@ export const usePlace = (): UsePlaceReturn => {
     }
 
     setLoading(true);
-    getPlace(parseInt(paramId))
+    getPlace(parseInt(paramId, 10))
       .then((response) => {
         setPlace(response);
         setError(null);
