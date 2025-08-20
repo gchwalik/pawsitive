@@ -1,15 +1,16 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router';
 import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
+import ButtonContainer from '../components/Buttons';
+import Container from '../components/Container';
 import Navbar from '../components/Navbar';
-import { CreateForm, FormInput } from '../components/form/EntityForm';
 
-import { getEmptyPlaceInput, createPlace } from '../api/placesApi';
 import type { PlaceInput } from '../api/placesApi';
+import { createPlace } from '../api/placesApi';
 
 import { ROUTES } from '../routes';
 
-import Container from '../components/Container';
 
 function CreatePlace() {
   const navigate = useNavigate();
@@ -18,28 +19,30 @@ function CreatePlace() {
     try {
       const response = createPlace(placeInput);
       console.log('Place created:', response);
-      // After successful creation, navigate back
+      // After successful creation, navigate to home
       navigate(ROUTES.FRONTEND.ROOT);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
+  const { register, handleSubmit } = useForm<PlaceInput>({})
+
   return (
     <>
       <Navbar />
       <div className="flex justify-center">
         <Container title="Create Place" className="p-5">
-          <CreateForm
-            defaultValues={getEmptyPlaceInput()}
-            onSubmit={handleCreate}
-          >
-            {(form) => (
-              <>
-                <FormInput<PlaceInput> label="Name:" fieldName="name" form={form}/>
-              </>
-            )}
-          </CreateForm>
+          <form onSubmit={handleSubmit(handleCreate)} className="form-attributes">
+            <div className="form-attribute">
+              <label className="label">Name:</label>
+              <input {...register("name", {required: "Name is required"})} className="input"/>
+            </div>
+              <ButtonContainer>
+                <button type="submit" className="btn btn-primary">Create</button>
+                <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Cancel</Link>
+              </ButtonContainer>
+          </form>
         </Container>
       </div>
     </>
