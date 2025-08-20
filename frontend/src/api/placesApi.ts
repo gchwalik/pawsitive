@@ -78,7 +78,7 @@ const createPlace = async (placeInput: PlaceInput): Promise<Place> => {
   }
 }
 
-const fetchPlace = async (id: number): Promise<Place> => {
+const fetchPlace = async (id: number | undefined): Promise<Place> => {
   try {
     const response = await axios.get(ROUTES.API.PLACES_DETAIL(id));
 
