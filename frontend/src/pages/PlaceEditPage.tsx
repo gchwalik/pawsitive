@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router';
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm, type FieldValues, type SubmitHandler, type UseFormReturn } from 'react-hook-form';
 
 import ButtonContainer from '../components/Buttons';
 import Container from '../components/Container';
 import Navbar from '../components/Navbar';
+import PlaceNotFound from '../components/PlaceNotFound';
 
 import { usePlace } from '../hooks/usePlace';
 
@@ -14,32 +15,17 @@ import { updatePlace, toPlaceInput } from '../api/placesApi';
 import { ROUTES } from '../routes';
 
 
-interface PlaceNotFoundProps {
-  error: string | null;
-}
-
-function PlaceNotFound({error}: PlaceNotFoundProps) {
-  return (
-    <div className="flex flex-col flex-1">
-      <div className="flex justify-center items-center flex-1">
-        <p>{error}</p>
-      </div>
-      <ButtonContainer>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>
-      </ButtonContainer>
-    </div>
-  );
+interface EditPlaceFormProps {
+  placeId: number,
+  onSubmit: SubmitHandler<PlaceInput>,
+  reactForm: UseFormReturn<PlaceInput>,
 }
 
 function EditPlaceForm({ 
   placeId, 
-  onSubmit, 
-  reactForm 
-}: { 
-  placeId: number; 
-  onSubmit: SubmitHandler<PlaceInput>;
-  reactForm: ReturnType<typeof useForm<PlaceInput>>;
-}) {
+  onSubmit,
+  reactForm
+}: EditPlaceFormProps) {
   const { register } = reactForm;
 
   return (
