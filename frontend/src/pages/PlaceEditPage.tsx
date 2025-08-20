@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router';
-import { useForm, type FieldValues, type SubmitHandler, type UseFormReturn } from 'react-hook-form';
+import { useForm, type SubmitHandler, type UseFormReturn } from 'react-hook-form';
 
 import ButtonContainer from '../components/Buttons';
 import Container from '../components/Container';
@@ -56,7 +56,7 @@ function EditPlaceForm({
 
 function EditPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const placeId = paramId ? parseInt(paramId) : null;
+  const placeId = paramId ? parseInt(paramId, 10) : null;
   if (!placeId || isNaN(placeId)) {
     return (
       <>
@@ -73,14 +73,13 @@ function EditPlace() {
   const { place, loading, error } = usePlace();
   const reactForm = useForm<PlaceInput>();
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (!loading && place) {
       reactForm.reset(toPlaceInput(place));
     }
   }, [place, loading, reactForm])
 
+  const navigate = useNavigate();
   const handleUpdate: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
     try {
       const response = updatePlace(placeInput, placeId);
