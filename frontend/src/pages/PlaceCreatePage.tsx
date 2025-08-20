@@ -1,5 +1,5 @@
 import { useNavigate, Link } from 'react-router';
-import type { SubmitHandler } from 'react-hook-form';
+import type { SubmitHandler, UseFormReturn } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import ButtonContainer from '../components/Buttons';
@@ -11,6 +11,31 @@ import { createPlace } from '../api/placesApi';
 
 import { ROUTES } from '../routes';
 
+
+interface CreatePlaceFormProps {
+  onSubmit: SubmitHandler<PlaceInput>,
+  reactForm: UseFormReturn<PlaceInput>,
+}
+
+function CreatePlaceForm({ 
+  onSubmit,
+  reactForm
+}: CreatePlaceFormProps) {
+  const { register, handleSubmit } = reactForm;
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
+      <div className="form-attribute">
+        <label className="label">Name:</label>
+        <input {...register("name", {required: "Name is required"})} className="input" placeholder="Enter place name"/>
+      </div>
+      <ButtonContainer>
+        <button type="submit" className="btn btn-primary">Create</button>
+        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Cancel</Link>
+      </ButtonContainer>
+    </form>
+  );
+}
 
 function CreatePlace() {
   const navigate = useNavigate();
@@ -26,23 +51,17 @@ function CreatePlace() {
     }
   };
 
-  const { register, handleSubmit } = useForm<PlaceInput>({})
+  const reactForm = useForm<PlaceInput>({})
 
   return (
     <>
       <Navbar />
       <div className="flex justify-center">
         <Container title="Create Place" className="p-5">
-          <form onSubmit={handleSubmit(handleCreate)} className="form-attributes">
-            <div className="form-attribute">
-              <label className="label">Name:</label>
-              <input {...register("name", {required: "Name is required"})} className="input"/>
-            </div>
-            <ButtonContainer>
-              <button type="submit" className="btn btn-primary">Create</button>
-              <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Cancel</Link>
-            </ButtonContainer>
-          </form>
+          <CreatePlaceForm
+            onSubmit={handleCreate}
+            reactForm={reactForm}
+          />
         </Container>
       </div>
     </>
