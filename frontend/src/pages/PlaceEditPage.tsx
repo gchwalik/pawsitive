@@ -11,7 +11,7 @@ import { type SubmitHandler } from 'react-hook-form';
 
 function EditPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const entityId = paramId ? parseInt(paramId) : undefined;
+  const entityId = paramId ? parseInt(paramId, 10) : undefined;
   const usePlace = (entityId: number | undefined) => {
     return useEntity<Place>({entityId, getEntity: getPlace});
   }
@@ -43,7 +43,7 @@ function EditPlace() {
             useEntity={usePlace}
             toEntityInput={toPlaceInput}
             onSubmit={handleUpdate}
-            deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId) : -1)}
+            deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId, 10) : -1)}
           >
             {(form) => (
               <>
