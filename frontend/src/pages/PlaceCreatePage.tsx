@@ -38,10 +38,10 @@ function CreatePlace() {
               <label className="label">Name:</label>
               <input {...register("name", {required: "Name is required"})} className="input"/>
             </div>
-              <ButtonContainer>
-                <button type="submit" className="btn btn-primary">Create</button>
-                <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Cancel</Link>
-              </ButtonContainer>
+            <ButtonContainer>
+              <button type="submit" className="btn btn-primary">Create</button>
+              <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Cancel</Link>
+            </ButtonContainer>
           </form>
         </Container>
       </div>
