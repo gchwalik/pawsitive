@@ -97,12 +97,8 @@ function EditPlace() {
 
   const handleUpdate: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
     try {
-      if (!placeId) {
-        console.error("No place id available.");
-      return;
-      }
       const response = updatePlace(placeInput, placeId);
-      console.log('Place updated:', response);
+      console.log('Place updated successfully:', response);
       // After successful creation, navigate back
       navigate(ROUTES.FRONTEND.ROOT);
     } catch (error) {
@@ -117,7 +113,10 @@ function EditPlace() {
         <Container title="Edit Place" className="p-5">
           {loading ? <div className="flex justify-center items-center flex-1">Loading...</div>
         : !place ? <PlaceNotFound error={error} />
-        : <EditPlaceForm placeId={placeId} onSubmit={handleUpdate} reactForm={reactForm}></EditPlaceForm>
+        : <EditPlaceForm
+            placeId={placeId}
+            onSubmit={handleUpdate}
+            reactForm={reactForm}/>
       }
         </Container>
       </div>
