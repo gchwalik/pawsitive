@@ -1,29 +1,26 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
 import { fetchPlace as getPlace, type Place } from "../api/placesApi";
 
 interface UsePlaceReturn {
-  paramId: string | undefined;
   place: Place | null;
   loading: boolean;
   error: string | null;
 }
 
-export const usePlace = (): UsePlaceReturn => {
-  const { id: paramId } = useParams<{ id: string }>();
+export const usePlace = (placeId: number): UsePlaceReturn => {
   const [place, setPlace] = useState<Place | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!paramId) {
-      setError("No ID provided in URL parameters");
+    if (isNaN(placeId)) {
+      setError("Invalid place ID provided");
       setLoading(false);
       return;
     }
 
     setLoading(true);
-    getPlace(parseInt(paramId, 10))
+    getPlace(placeId)
       .then((response) => {
         setPlace(response);
         setError(null);
@@ -36,7 +33,7 @@ export const usePlace = (): UsePlaceReturn => {
       .finally(() => {
         setLoading(false);
       });
-  }, [paramId]);
+  }, [placeId]);
 
-  return { place, paramId, loading, error };
+  return { place, loading, error };
 };

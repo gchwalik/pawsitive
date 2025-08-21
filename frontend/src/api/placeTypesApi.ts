@@ -7,11 +7,13 @@ const PlaceTypeBaseSchema = z.object({
 })
 
 // For write operations: create/update
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PlaceTypeWriteSchema = PlaceTypeBaseSchema.extend({
   // Add any additional fields needed for write operations here
 })
 
 // For read operations: fetch
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PlaceTypeReadSchema = PlaceTypeBaseSchema.extend({
   id: z.number(),
   created: z.coerce.date(),
