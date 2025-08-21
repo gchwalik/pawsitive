@@ -22,7 +22,7 @@
 }
 
 .btn-dark {
-  @apply  bg-lime-600 hover:bg-lime-700 text-white transition-colors duration-200;
+  @apply bg-lime-600 hover:bg-lime-700 text-white transition-colors duration-200;
 }
 
 .btn-subtle {

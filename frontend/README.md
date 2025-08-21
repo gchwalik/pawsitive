@@ -60,6 +60,7 @@ export default tseslint.config({
 - https://vite.dev/guide/features.html
 
 ## Tools
+
 - background image [unsplash link](https://unsplash.com/photos/a-field-with-yellow-flowers-and-trees-in-the-background-uNxpbV-D8hI)
 - git issues color pallette links:
   - issue type: https://coolors.co/palette/fb7d89-bad1c9-85b873-e5db9e-f3a46c-f6bb5d-55abb8
@@ -68,4 +69,5 @@ export default tseslint.config({
   - domain area: https://coolors.co/palette/f8f9fa-e9ecef-dee2e6-ced4da-adb5bd-6c757d-495057-343a40-212529
 
 # Logo ideas
+
 - Location pin where the "dot" is a paw print

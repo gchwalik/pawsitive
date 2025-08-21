@@ -8,12 +8,12 @@ import { ROUTES } from "../routes";
 
 const PlaceBaseSchema = z.object({
   name: z.string(),
-})
+});
 
 // For write operations: create/update
 const PlaceWriteSchema = PlaceBaseSchema.extend({
   // type_id: z.number(),
-})
+});
 
 // For read operations: fetch
 const PlaceReadSchema = PlaceBaseSchema.extend({
@@ -30,12 +30,10 @@ const PlacePageSchema = z.object({
   results: z.array(PlaceReadSchema),
 });
 
-
 // Types
 
 type Place = z.infer<typeof PlaceReadSchema>;
 type PlaceInput = z.infer<typeof PlaceWriteSchema>;
-
 
 // Helpers
 
@@ -46,8 +44,8 @@ const toPlaceInput = (place: Place): PlaceInput => {
   return {
     name: place.name,
     // type_id: place.type.id,
-  }
-}
+  };
+};
 
 // APIs
 
@@ -76,7 +74,7 @@ const createPlace = async (placeInput: PlaceInput): Promise<Place> => {
     console.error("Error creating place:", error);
     throw error; // Re-throw to let components handle it
   }
-}
+};
 
 const fetchPlace = async (id: number): Promise<Place> => {
   try {
@@ -91,10 +89,16 @@ const fetchPlace = async (id: number): Promise<Place> => {
   }
 };
 
-const updatePlace = async (placeInput: PlaceInput, id: number): Promise<Place> => {
+const updatePlace = async (
+  placeInput: PlaceInput,
+  id: number,
+): Promise<Place> => {
   try {
     const validatedInput = PlaceWriteSchema.parse(placeInput);
-    const response = await axios.put(ROUTES.API.PLACES_DETAIL(id), validatedInput);
+    const response = await axios.put(
+      ROUTES.API.PLACES_DETAIL(id),
+      validatedInput,
+    );
 
     // Validate updated Place
     const place = PlaceReadSchema.parse(response.data);
@@ -103,7 +107,7 @@ const updatePlace = async (placeInput: PlaceInput, id: number): Promise<Place> =
     console.error("Error updating place:", error);
     throw error; // Re-throw to let components handle it
   }
-}
+};
 
 const deletePlace = async (id: number): Promise<void> => {
   try {
@@ -112,7 +116,7 @@ const deletePlace = async (id: number): Promise<void> => {
     console.error("Error deleting place:", error);
     throw error; // Re-throw to let components handle it
   }
-}
+};
 
 export type { Place, PlaceInput };
 export { getEmptyPlaceInput, toPlaceInput };
