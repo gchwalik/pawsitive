@@ -48,13 +48,12 @@ const Dropdown = ({ label, icon: Icon, children }: DropdownProps) => {
   return (
     <div className="relative z-10 text-md" ref={dropdownRef}>
       <button
-        className="
-        px-3 w-35 text-center font-medium cursor-pointer
-        bg-zinc-50/90 border border-zinc-300 hover:bg-indigo-100/80
-        rounded-lg shadow-xs focus:outline-none"
+        className="px-3 w-35 text-center font-medium cursor-pointer
+          bg-zinc-50/90 border border-zinc-300 hover:bg-indigo-100/80
+          rounded-lg shadow-xs focus:outline-none"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className="py-2 flex gap-1 items-center justify-center ">
+        <div className="py-2 flex gap-1 items-center justify-center">
           {Icon && <Icon className="w-5 h-5" />}
           {label}
           <CaretDownIcon
