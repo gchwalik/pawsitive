@@ -1,41 +1,82 @@
-import { useParams } from 'react-router';
-import { useEntity } from '../hooks/useEntity';
+import { useEffect } from 'react';
+import { useParams, Link } from 'react-router';
+import { useForm } from 'react-hook-form';
+import type { UseFormReturn } from 'react-hook-form';
+
+import ButtonContainer from '../components/Buttons';
+import Container from '../components/Container';
+import Navbar from '../components/Navbar';
+import PlaceNotFound from '../components/PlaceNotFound';
+
+import { toPlaceInput } from '../api/placesApi';
+import type { PlaceInput } from '../api/placesApi';
+
+import { usePlace } from '../hooks/usePlace';
+
 import { ROUTES } from '../routes';
 
-import Navbar from '../components/Navbar';
-import { ViewForm } from '../components/form/EntityForm';
 
-import { fetchPlace as getPlace, toPlaceInput } from '../api/placesApi';
-import type { Place, PlaceInput } from '../api/placesApi';
-import { FormInput } from '../components/form/EntityForm';
-import Container from '../components/Container';
+interface ViewPlaceFormProps {
+  placeId: number,
+  reactForm: UseFormReturn<PlaceInput>,
+}
+
+function ViewPlaceForm({ 
+  placeId,
+  reactForm
+}: ViewPlaceFormProps) {
+  const { register } = reactForm;
+
+  return (
+    <form className="form-attributes">
+      <div className="form-attribute">
+        <label className="label">Name:</label>
+        <input {...register("name", { disabled: true } )} className="border-none" />
+      </div>
+      <ButtonContainer>
+        <Link to={ROUTES.FRONTEND.PLACES_EDIT(placeId)} className="btn btn-primary">Edit</Link>
+        <Link to={ROUTES.FRONTEND.PLACES_DELETE(placeId)} className="btn btn-primary">Delete</Link>
+        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">Back</Link>
+      </ButtonContainer>
+    </form>
+  );
+}
+
 
 function ViewPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const entityId = paramId ? parseInt(paramId, 10) : undefined;
-  const usePlace = (entityId: number | undefined) => {
-    return useEntity<Place>({entityId, getEntity: getPlace});
+  const placeId = paramId ? parseInt(paramId, 10) : null;
+  if (!placeId || isNaN(placeId)) {
+    return (
+      <>
+        <Navbar />
+        <div className="flex justify-center">
+          <Container title="View Place" className="p-5">
+            <PlaceNotFound error="Invalid place ID" />
+          </Container>
+        </div>
+      </>
+    );
   }
+
+  const { place, loading, error } = usePlace();
+  const reactForm = useForm<PlaceInput>();
+
+  useEffect(() => {
+    if (!loading && place) {
+      reactForm.reset(toPlaceInput(place));
+    }
+  }, [place, loading, reactForm])
 
   return (
     <>
       <Navbar />
       <div className="flex justify-center">
         <Container title="View Place" className="p-5">
-          <ViewForm<PlaceInput, Place>
-            entityId={entityId}
-            useEntity={usePlace}
-            toEntityInput={toPlaceInput}
-            editLink={ROUTES.FRONTEND.PLACES_EDIT(paramId ? parseInt(paramId, 10) : -1)}
-            deleteLink={ROUTES.FRONTEND.PLACES_DELETE(paramId ? parseInt(paramId, 10) : -1)}
-          >
-            {(form) => (
-              <>
-                <FormInput<PlaceInput> label="Name:" fieldName="name" form={form} disabled/>
-                {/* <FormInput<PlaceInput> label="Type:" fieldName="type_id" form={form} disabled/> */}
-              </>
-            )}
-          </ViewForm>
+          {loading ? <div className="flex justify-center items-center flex-1">Loading...</div>
+          : !place ? <PlaceNotFound error={error} />
+          : <ViewPlaceForm placeId={placeId} reactForm={reactForm}  />
+          }
         </Container>
       </div>
     </>
