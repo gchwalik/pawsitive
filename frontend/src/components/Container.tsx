@@ -20,7 +20,8 @@ function Container({
         bg-amber-50 rounded-lg m-5 pt-1 shadow-lg
         w-full sm:w-3/4 md:w-2/3 lg:w-1/2
         max-h-[70vh] ${minHeight ? `min-h-96 sm:min-h-[24rem] md:min-h-[32rem] lg:min-h-[40rem]` : ""}
-        ${className}`}
+        ${className}
+      `}
     >
       <div className="flex flex-col h-full">
         {title && (

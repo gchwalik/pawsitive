@@ -66,9 +66,9 @@ const Dropdown = ({ label, icon: Icon, children }: DropdownProps) => {
       <div className="absolute top-full right-0 mt-0.5">
         <div
           className={`
-          w-45 rounded-md z-10 bg-zinc-50/90 border border-zinc-300
-          ${isOpen ? "opacity-100" : "opacity-0"} transition-all duration-325 ease-in-out
-        `}
+            w-45 rounded-md z-10 bg-zinc-50/90 border border-zinc-300
+            ${isOpen ? "opacity-100" : "opacity-0"} transition-all duration-325 ease-in-out
+          `}
         >
           {children}
         </div>
