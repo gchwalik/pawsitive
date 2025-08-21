@@ -26,10 +26,10 @@ function EditPlaceForm({
   onSubmit,
   reactForm
 }: EditPlaceFormProps) {
-  const { register } = reactForm;
+  const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={reactForm.handleSubmit(onSubmit)} className="form-attributes">
+    <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
       <div className="form-attribute">
         <label className="label">Name:</label>
         <input 
@@ -56,28 +56,15 @@ function EditPlaceForm({
 
 function EditPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const placeId = paramId ? parseInt(paramId, 10) : null;
-  if (!placeId || isNaN(placeId)) {
-    return (
-      <>
-        <Navbar />
-        <div className="flex justify-center">
-          <Container title="Edit Place" className="p-5">
-            <PlaceNotFound error="Invalid place ID" />
-          </Container>
-        </div>
-      </>
-    );
-  }
-
-  const { place, loading, error } = usePlace();
+  const placeId = Number(paramId)
+  const { place, loading, error } = usePlace(placeId);
   const reactForm = useForm<PlaceInput>();
 
   useEffect(() => {
     if (!loading && place) {
       reactForm.reset(toPlaceInput(place));
     }
-  }, [place, loading, reactForm])
+  }, [loading, place, reactForm])
 
   const navigate = useNavigate();
   const handleUpdate: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
@@ -97,9 +84,9 @@ function EditPlace() {
       <div className="flex justify-center">
         <Container title="Edit Place" className="p-5">
           {loading ? <div className="flex justify-center items-center flex-1">Loading...</div>
-        : !place ? <PlaceNotFound error={error} />
+        : !place || isNaN(placeId) ? <PlaceNotFound error={error} />
         : <EditPlaceForm
-            placeId={placeId}
+            placeId={place.id}
             onSubmit={handleUpdate}
             reactForm={reactForm}/>
       }
