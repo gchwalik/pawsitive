@@ -7,7 +7,6 @@ interface UsePlaceReturn {
   error: string | null;
 }
 
-// should take id as param
 export const usePlace = (placeId: number): UsePlaceReturn => {
   const [place, setPlace] = useState<Place | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
