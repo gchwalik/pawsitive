@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { fetchPlace as getPlace, type Place } from "../api/placesApi";
 
 interface UsePlaceReturn {

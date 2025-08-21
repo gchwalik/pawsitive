@@ -2,12 +2,12 @@ interface ButtonContainerProps {
   children?: React.ReactNode; // This receives whatever is between the tags
 }
 
-function ButtonContainer({children}: ButtonContainerProps) {
+function ButtonContainer({ children }: ButtonContainerProps) {
   return (
     <div className="flex justify-center items-center gap-4 mt-auto">
-        {children}
+      {children}
     </div>
-  )   
+  );
 }
 
 export default ButtonContainer;

@@ -1,49 +1,51 @@
-import { useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router';
-import { useForm, type SubmitHandler, type UseFormReturn } from 'react-hook-form';
+import { useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router";
+import {
+  useForm,
+  type SubmitHandler,
+  type UseFormReturn,
+} from "react-hook-form";
 
-import ButtonContainer from '../components/Buttons';
-import Container from '../components/Container';
-import Navbar from '../components/Navbar';
-import PlaceNotFound from '../components/PlaceNotFound';
+import ButtonContainer from "../components/Buttons";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
+import PlaceNotFound from "../components/PlaceNotFound";
 
-import { usePlace } from '../hooks/usePlace';
+import { usePlace } from "../hooks/usePlace";
 
-import type { PlaceInput } from '../api/placesApi';
-import { updatePlace, toPlaceInput } from '../api/placesApi';
+import type { PlaceInput } from "../api/placesApi";
+import { updatePlace, toPlaceInput } from "../api/placesApi";
 
-import { ROUTES } from '../routes';
-
+import { ROUTES } from "../routes";
 
 interface EditPlaceFormProps {
-  placeId: number,
-  onSubmit: SubmitHandler<PlaceInput>,
-  reactForm: UseFormReturn<PlaceInput>,
+  placeId: number;
+  onSubmit: SubmitHandler<PlaceInput>;
+  reactForm: UseFormReturn<PlaceInput>;
 }
 
-function EditPlaceForm({ 
-  placeId, 
-  onSubmit,
-  reactForm
-}: EditPlaceFormProps) {
+function EditPlaceForm({ placeId, onSubmit, reactForm }: EditPlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
       <div className="form-attribute">
         <label className="label">Name:</label>
-        <input 
-          {...register("name", { required: "Name is required" })} 
+        <input
+          {...register("name", { required: "Name is required" })}
           className="input"
           placeholder="Enter place name"
         />
       </div>
-      
+
       <ButtonContainer>
         <button type="submit" className="btn btn-primary">
           Update
         </button>
-        <Link to={ROUTES.FRONTEND.PLACES_DELETE(placeId)} className="btn btn-danger">
+        <Link
+          to={ROUTES.FRONTEND.PLACES_DELETE(placeId)}
+          className="btn btn-danger"
+        >
           Delete
         </Link>
         <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
@@ -56,7 +58,7 @@ function EditPlaceForm({
 
 function EditPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const placeId = Number(paramId)
+  const placeId = Number(paramId);
   const { place, loading, error } = usePlace(placeId);
   const reactForm = useForm<PlaceInput>();
 
@@ -64,13 +66,15 @@ function EditPlace() {
     if (!loading && place) {
       reactForm.reset(toPlaceInput(place));
     }
-  }, [loading, place, reactForm])
+  }, [loading, place, reactForm]);
 
   const navigate = useNavigate();
-  const handleUpdate: SubmitHandler<PlaceInput> = async (placeInput: PlaceInput) => {
+  const handleUpdate: SubmitHandler<PlaceInput> = async (
+    placeInput: PlaceInput,
+  ) => {
     try {
       const response = updatePlace(placeInput, placeId);
-      console.log('Place updated successfully:', response);
+      console.log("Place updated successfully:", response);
       // After successful creation, navigate back
       navigate(ROUTES.FRONTEND.ROOT);
     } catch (error) {
@@ -83,13 +87,19 @@ function EditPlace() {
       <Navbar />
       <div className="flex justify-center">
         <Container title="Edit Place" className="p-5">
-          {loading ? <div className="flex justify-center items-center flex-1">Loading...</div>
-            : !place || isNaN(placeId) ? <PlaceNotFound error={error} />
-            : <EditPlaceForm
-                placeId={place.id}
-                onSubmit={handleUpdate}
-                reactForm={reactForm}/>
-          }
+          {loading ? (
+            <div className="flex justify-center items-center flex-1">
+              Loading...
+            </div>
+          ) : !place || isNaN(placeId) ? (
+            <PlaceNotFound error={error} />
+          ) : (
+            <EditPlaceForm
+              placeId={place.id}
+              onSubmit={handleUpdate}
+              reactForm={reactForm}
+            />
+          )}
         </Container>
       </div>
     </>

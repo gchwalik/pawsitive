@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 
-import { TrashIcon, MapPinIcon, PlusIcon } from '@phosphor-icons/react';
+import { TrashIcon, MapPinIcon, PlusIcon } from "@phosphor-icons/react";
 
 import { fetchPlaces, deletePlace, type Place } from "../api/placesApi";
 import Navbar from "../components/Navbar";
@@ -13,22 +13,24 @@ import "../App.css";
 import ButtonContainer from "../components/Buttons";
 
 const EmptyState = () => (
-    <div className="flex items-center justify-center text-center h-4/5">
-        <div>
-          <div className="text-gray-400 mb-4">
-              <MapPinIcon size={48} className="mx-auto" />
-          </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No places yet!</h3>
-          <p className="text-sm text-gray-600 mb-6">Add your first spot to get started</p>
-          <Link 
-          to={ROUTES.FRONTEND.PLACES_CREATE}
-          className="btn btn-dark inline-flex items-center gap-2 !w-auto"
-          >
-              <PlusIcon size={16} />
-              Create First Place
-          </Link>
+  <div className="flex items-center justify-center text-center h-4/5">
+    <div>
+      <div className="text-gray-400 mb-4">
+        <MapPinIcon size={48} className="mx-auto" />
       </div>
+      <h3 className="text-lg font-medium text-gray-900 mb-2">No places yet!</h3>
+      <p className="text-sm text-gray-600 mb-6">
+        Add your first spot to get started
+      </p>
+      <Link
+        to={ROUTES.FRONTEND.PLACES_CREATE}
+        className="btn btn-dark inline-flex items-center gap-2 !w-auto"
+      >
+        <PlusIcon size={16} />
+        Create First Place
+      </Link>
     </div>
+  </div>
 );
 
 interface DeleteModalProps {
@@ -38,31 +40,41 @@ interface DeleteModalProps {
   isOpen: boolean;
 }
 
-const DeleteModal = ({place, isOpen, onConfirm, onCancel}: DeleteModalProps) => {
+const DeleteModal = ({
+  place,
+  isOpen,
+  onConfirm,
+  onCancel,
+}: DeleteModalProps) => {
   if (!isOpen || !place) {
     return null;
   }
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 p-4 flex items-center justify-center">
-      <div className="bg-fuchsia-50 rounded-lg p-7 w-full max-w-md">        
+      <div className="bg-fuchsia-50 rounded-lg p-7 w-full max-w-md">
         <div className="mb-6 flex flex-col gap-4">
           <div>
-            <p className="text-gray-700 mb-1">Are you sure you want to delete:</p>
+            <p className="text-gray-700 mb-1">
+              Are you sure you want to delete:
+            </p>
             <p className="font-medium">{place.name}</p>
           </div>
           <p className="text-sm text-gray-600">This action cannot be undone.</p>
         </div>
 
         <ButtonContainer>
-          <button onClick={onCancel} className="btn btn-primary">Cancel</button>
-          <button onClick={() => onConfirm(place)} className="btn btn-danger">Delete</button>
+          <button onClick={onCancel} className="btn btn-primary">
+            Cancel
+          </button>
+          <button onClick={() => onConfirm(place)} className="btn btn-danger">
+            Delete
+          </button>
         </ButtonContainer>
       </div>
     </div>
   );
 };
-
 
 interface PlaceItemProps {
   place: Place;
@@ -72,8 +84,8 @@ interface PlaceItemProps {
 
 const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
   <div className="group relative btn-subtle">
-    <Link 
-      to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}          
+    <Link
+      to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}
       aria-label={`View ${place.name}`}
       title="View place"
       className="flex items-start p-4"
@@ -82,9 +94,9 @@ const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
     </Link>
 
     <div className="absolute top-1/5 right-4 flex gap-1">
-      <button 
+      <button
         onClick={() => onDelete(place)}
-        className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200" 
+        className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200"
         aria-label={`Delete ${place.name}`}
         title="Delete place"
       >
@@ -123,12 +135,12 @@ function PlacesList() {
     setPlaceToDelete(null);
     setShowDeleteModal(false);
     return null;
-  }
+  };
 
   const cancelDelete = () => {
     setShowDeleteModal(false);
     setPlaceToDelete(null);
-  }
+  };
 
   return (
     <>
@@ -136,37 +148,46 @@ function PlacesList() {
       {/* Main Content */}
       <div className="flex justify-center">
         <Container title="Places" showTitleBorder={true}>
-            {places.length === 0 ? (
-                <EmptyState />
-              ) : (
-              <>
-                {/* Places List */}
-                <div className="flex-1 overflow-y-auto">
-                    <ul className="flex flex-col gap-1">
-                    {places.map((place) => (
-                        <>
-                          <PlaceItem key={place.id} place={place} onDelete={openDeleteModal} iconSize={iconSize} />
-                        </>
-                    ))}
-                    </ul>
-                </div>
+          {places.length === 0 ? (
+            <EmptyState />
+          ) : (
+            <>
+              {/* Places List */}
+              <div className="flex-1 overflow-y-auto">
+                <ul className="flex flex-col gap-1">
+                  {places.map((place) => (
+                    <>
+                      <PlaceItem
+                        key={place.id}
+                        place={place}
+                        onDelete={openDeleteModal}
+                        iconSize={iconSize}
+                      />
+                    </>
+                  ))}
+                </ul>
+              </div>
 
-                {/* Create Button - Only show when there are places */}
-                <div className="border-t border-gray-200 mt-4">
-                  <Link 
-                  to={ROUTES.FRONTEND.PLACES_CREATE} 
+              {/* Create Button - Only show when there are places */}
+              <div className="border-t border-gray-200 mt-4">
+                <Link
+                  to={ROUTES.FRONTEND.PLACES_CREATE}
                   className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
-                  >
+                >
                   <PlusIcon size={18} />
                   Add Another Place
-                  </Link>
-                </div>
-              </>
-            )
-          }
+                </Link>
+              </div>
+            </>
+          )}
         </Container>
       </div>
-      <DeleteModal isOpen={showDeleteModal} place={placeToDelete} onConfirm={confirmDelete} onCancel={cancelDelete}/>
+      <DeleteModal
+        isOpen={showDeleteModal}
+        place={placeToDelete}
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+      />
     </>
   );
 }
