@@ -45,21 +45,8 @@ function ViewPlaceForm({
 
 function ViewPlace() {
   const { id: paramId } = useParams<{ id: string }>();
-  const placeId = paramId ? parseInt(paramId, 10) : null;
-  if (!placeId || isNaN(placeId)) {
-    return (
-      <>
-        <Navbar />
-        <div className="flex justify-center">
-          <Container title="View Place" className="p-5">
-            <PlaceNotFound error="Invalid place ID" />
-          </Container>
-        </div>
-      </>
-    );
-  }
-
-  const { place, loading, error } = usePlace();
+  const placeId = Number(paramId)
+  const { place, loading, error } = usePlace(placeId);
   const reactForm = useForm<PlaceInput>();
 
   useEffect(() => {
