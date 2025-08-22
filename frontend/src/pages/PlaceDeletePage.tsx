@@ -57,22 +57,17 @@ function DeletePlace() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center">
-        <Container title="Delete Place" className="p-5">
-          {loading ? (
-            <div className="flex justify-center items-center flex-1">
-              Loading...
-            </div>
-          ) : !place || isNaN(placeId) ? (
-            <PlaceNotFound error={error} />
-          ) : (
-            <DeletePlaceForm place={place} onSubmit={handleDelete} />
-          )}
-        </Container>
-      </div>
-    </>
+    <Container title="Delete Place" className="p-5">
+      {loading ? (
+        <div className="flex justify-center items-center flex-1">
+          Loading...
+        </div>
+      ) : !place || isNaN(placeId) ? (
+        <PlaceNotFound error={error} />
+      ) : (
+        <DeletePlaceForm place={place} onSubmit={handleDelete} />
+      )}
+    </Container>
   );
 }
 

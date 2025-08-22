@@ -141,44 +141,41 @@ function PlacesList() {
 
   return (
     <>
-      <Navbar />
-      {/* Main Content */}
-      <div className="flex justify-center">
-        <Container title="Places" showTitleBorder={true}>
-          {places.length === 0 ? (
-            <EmptyState />
-          ) : (
-            <>
-              {/* Places List */}
-              <div className="flex-1 overflow-y-auto">
-                <ul className="flex flex-col gap-1">
-                  {places.map((place) => (
-                    <>
-                      <PlaceItem
-                        key={place.id}
-                        place={place}
-                        onDelete={openDeleteModal}
-                        iconSize={iconSize}
-                      />
-                    </>
-                  ))}
-                </ul>
-              </div>
+      <Container title="Places" showTitleBorder={true}>
+        {places.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <>
+            {/* Places List */}
+            <div className="flex-1 overflow-y-auto">
+              <ul className="flex flex-col gap-1">
+                {places.map((place) => (
+                  <>
+                    <PlaceItem
+                      key={place.id}
+                      place={place}
+                      onDelete={openDeleteModal}
+                      iconSize={iconSize}
+                    />
+                  </>
+                ))}
+              </ul>
+            </div>
 
-              {/* Create Button - Only show when there are places */}
-              <div className="border-t border-gray-200 mt-4">
-                <Link
-                  to={ROUTES.FRONTEND.PLACES_CREATE}
-                  className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
-                >
-                  <PlusIcon size={18} />
-                  Add Another Place
-                </Link>
-              </div>
-            </>
-          )}
-        </Container>
-      </div>
+            {/* Create Button - Only show when there are places */}
+            <div className="border-t border-gray-200 mt-4">
+              <Link
+                to={ROUTES.FRONTEND.PLACES_CREATE}
+                className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
+              >
+                <PlusIcon size={18} />
+                Add Another Place
+              </Link>
+            </div>
+          </>
+        )}
+      </Container>
+
       <DeleteModal
         isOpen={showDeleteModal}
         place={placeToDelete}

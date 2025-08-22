@@ -58,14 +58,9 @@ function CreatePlace() {
   const reactForm = useForm<PlaceInput>({});
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center">
-        <Container title="Create Place" className="p-5">
-          <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
-        </Container>
-      </div>
-    </>
+    <Container title="Create Place" className="p-5">
+      <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
+    </Container>
   );
 }
 

@@ -63,22 +63,17 @@ function ViewPlace() {
   }, [place, loading, reactForm]);
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center">
-        <Container title="View Place" className="p-5">
-          {loading ? (
-            <div className="flex justify-center items-center flex-1">
-              Loading...
-            </div>
-          ) : !place ? (
-            <PlaceNotFound error={error} />
-          ) : (
-            <ViewPlaceForm placeId={placeId} reactForm={reactForm} />
-          )}
-        </Container>
-      </div>
-    </>
+    <Container title="View Place" className="p-5">
+      {loading ? (
+        <div className="flex justify-center items-center flex-1">
+          Loading...
+        </div>
+      ) : !place ? (
+        <PlaceNotFound error={error} />
+      ) : (
+        <ViewPlaceForm placeId={placeId} reactForm={reactForm} />
+      )}
+    </Container>
   );
 }
 
