@@ -1,12 +1,11 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  type MouseEventHandler,
-} from "react";
 import { CaretDownIcon } from "@phosphor-icons/react";
-
 import type { Icon } from "@phosphor-icons/react";
+import React, {
+  type MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Link } from "react-router";
 
 interface DropdownProps {

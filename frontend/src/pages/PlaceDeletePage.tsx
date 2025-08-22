@@ -1,16 +1,13 @@
+import { Link, useNavigate, useParams } from "react-router";
+
+import { deletePlace } from "../api/placesApi";
+import type { Place } from "../api/placesApi";
+import ButtonContainer from "../components/Buttons";
+import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import PlaceNotFound from "../components/PlaceNotFound";
-import Container from "../components/Container";
 import { usePlace } from "../hooks/usePlace";
-import { deletePlace } from "../api/placesApi";
-
-import { Link, useNavigate } from "react-router";
-import ButtonContainer from "../components/Buttons";
 import { ROUTES } from "../routes";
-
-import { useParams } from "react-router";
-
-import type { Place } from "../api/placesApi";
 
 interface DeletePlaceFormProps {
   place: Place;

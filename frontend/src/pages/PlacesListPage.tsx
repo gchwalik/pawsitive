@@ -1,16 +1,13 @@
-import { useState, useEffect } from "react";
+import { MapPinIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-import { TrashIcon, MapPinIcon, PlusIcon } from "@phosphor-icons/react";
-
-import { fetchPlaces, deletePlace, type Place } from "../api/placesApi";
-import Navbar from "../components/Navbar";
-import Container from "../components/Container";
-
-import { ROUTES } from "../routes";
-
 import "../App.css";
+import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
+import { ROUTES } from "../routes";
 
 const EmptyState = () => (
   <div className="flex items-center justify-center text-center h-4/5">

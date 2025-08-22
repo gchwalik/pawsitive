@@ -1,14 +1,12 @@
-import { useNavigate, Link } from "react-router";
 import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useForm } from "react-hook-form";
-
-import ButtonContainer from "../components/Buttons";
-import Container from "../components/Container";
-import Navbar from "../components/Navbar";
+import { Link, useNavigate } from "react-router";
 
 import type { PlaceInput } from "../api/placesApi";
 import { createPlace } from "../api/placesApi";
-
+import ButtonContainer from "../components/Buttons";
+import Container from "../components/Container";
+import Navbar from "../components/Navbar";
 import { ROUTES } from "../routes";
 
 interface CreatePlaceFormProps {
@@ -48,7 +46,7 @@ function CreatePlace() {
     placeInput: PlaceInput,
   ) => {
     try {
-      const response = createPlace(placeInput);
+      const response = await createPlace(placeInput);
       console.log("Place created:", response);
       // After successful creation, navigate to home
       navigate(ROUTES.FRONTEND.ROOT);

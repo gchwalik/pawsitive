@@ -1,14 +1,12 @@
-import PlacesList from "./pages/PlacesListPage";
-import CreatePlace from "./pages/PlaceCreatePage";
-import ViewPlace from "./pages/PlaceViewPage";
-import DeletePlace from "./pages/PlaceDeletePage";
-
-import { ROUTES } from "./routes";
-import { Navigate } from "react-router";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router";
 
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import CreatePlace from "./pages/PlaceCreatePage";
+import DeletePlace from "./pages/PlaceDeletePage";
 import EditPlace from "./pages/PlaceEditPage";
+import PlacesList from "./pages/PlacesListPage";
+import ViewPlace from "./pages/PlaceViewPage";
+import { ROUTES } from "./routes";
 
 function App() {
   return (

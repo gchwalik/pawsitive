@@ -1,21 +1,18 @@
 import { useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router";
 import {
-  useForm,
   type SubmitHandler,
   type UseFormReturn,
+  useForm,
 } from "react-hook-form";
+import { Link, useNavigate, useParams } from "react-router";
 
+import type { PlaceInput } from "../api/placesApi";
+import { toPlaceInput, updatePlace } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import PlaceNotFound from "../components/PlaceNotFound";
-
 import { usePlace } from "../hooks/usePlace";
-
-import type { PlaceInput } from "../api/placesApi";
-import { updatePlace, toPlaceInput } from "../api/placesApi";
-
 import { ROUTES } from "../routes";
 
 interface EditPlaceFormProps {
@@ -73,7 +70,7 @@ function EditPlace() {
     placeInput: PlaceInput,
   ) => {
     try {
-      const response = updatePlace(placeInput, placeId);
+      const response = await updatePlace(placeInput, placeId);
       console.log("Place updated successfully:", response);
       // After successful creation, navigate back
       navigate(ROUTES.FRONTEND.ROOT);
