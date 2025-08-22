@@ -9,14 +9,16 @@ import PlacesList from "./pages/PlacesListPage";
 import ViewPlace from "./pages/PlaceViewPage";
 import { ROUTES } from "./routes";
 
-
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout/>}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<PlacesList />} />
-          <Route path={ROUTES.FRONTEND.PLACES_CREATE} element={<CreatePlace />} />
+          <Route
+            path={ROUTES.FRONTEND.PLACES_CREATE}
+            element={<CreatePlace />}
+          />
           <Route
             path={ROUTES.PATTERNS.PLACES_VIEW_PATTERN}
             element={<ViewPlace />}

@@ -6,7 +6,6 @@ import "../App.css";
 import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
 import { ROUTES } from "../routes";
 
 const EmptyState = () => (

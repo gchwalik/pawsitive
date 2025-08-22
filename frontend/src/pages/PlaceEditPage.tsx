@@ -10,7 +10,6 @@ import type { PlaceInput } from "../api/placesApi";
 import { toPlaceInput, updatePlace } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";

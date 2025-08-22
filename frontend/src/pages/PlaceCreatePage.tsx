@@ -6,7 +6,6 @@ import type { PlaceInput } from "../api/placesApi";
 import { createPlace } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
 import { ROUTES } from "../routes";
 
 interface CreatePlaceFormProps {
