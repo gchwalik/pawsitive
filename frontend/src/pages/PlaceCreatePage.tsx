@@ -6,7 +6,6 @@ import type { PlaceInput } from "../api/placesApi";
 import { createPlace } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
 import { ROUTES } from "../routes";
 
 interface CreatePlaceFormProps {
@@ -58,14 +57,9 @@ function CreatePlace() {
   const reactForm = useForm<PlaceInput>({});
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center">
-        <Container title="Create Place" className="p-5">
-          <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
-        </Container>
-      </div>
-    </>
+    <Container title="Create Place" className="p-5">
+      <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
+    </Container>
   );
 }
 

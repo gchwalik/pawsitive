@@ -10,7 +10,6 @@ import type { PlaceInput } from "../api/placesApi";
 import { toPlaceInput, updatePlace } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
@@ -80,26 +79,21 @@ function EditPlace() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center">
-        <Container title="Edit Place" className="p-5">
-          {loading ? (
-            <div className="flex justify-center items-center flex-1">
-              Loading...
-            </div>
-          ) : !place || isNaN(placeId) ? (
-            <PlaceNotFound error={error} />
-          ) : (
-            <EditPlaceForm
-              placeId={place.id}
-              onSubmit={handleUpdate}
-              reactForm={reactForm}
-            />
-          )}
-        </Container>
-      </div>
-    </>
+    <Container title="Edit Place" className="p-5">
+      {loading ? (
+        <div className="flex justify-center items-center flex-1">
+          Loading...
+        </div>
+      ) : !place || isNaN(placeId) ? (
+        <PlaceNotFound error={error} />
+      ) : (
+        <EditPlaceForm
+          placeId={place.id}
+          onSubmit={handleUpdate}
+          reactForm={reactForm}
+        />
+      )}
+    </Container>
   );
 }
 

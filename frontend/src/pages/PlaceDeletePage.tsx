@@ -4,7 +4,6 @@ import { deletePlace } from "../api/placesApi";
 import type { Place } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
@@ -57,22 +56,17 @@ function DeletePlace() {
   };
 
   return (
-    <>
-      <Navbar />
-      <div className="flex justify-center">
-        <Container title="Delete Place" className="p-5">
-          {loading ? (
-            <div className="flex justify-center items-center flex-1">
-              Loading...
-            </div>
-          ) : !place || isNaN(placeId) ? (
-            <PlaceNotFound error={error} />
-          ) : (
-            <DeletePlaceForm place={place} onSubmit={handleDelete} />
-          )}
-        </Container>
-      </div>
-    </>
+    <Container title="Delete Place" className="p-5">
+      {loading ? (
+        <div className="flex justify-center items-center flex-1">
+          Loading...
+        </div>
+      ) : !place || isNaN(placeId) ? (
+        <PlaceNotFound error={error} />
+      ) : (
+        <DeletePlaceForm place={place} onSubmit={handleDelete} />
+      )}
+    </Container>
   );
 }
 
