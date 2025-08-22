@@ -1,0 +1,8 @@
+name: lint_test
+on: pull_request
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run linting
+        run: make lint
