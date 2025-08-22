@@ -2,21 +2,23 @@
 
 PROFILE?=dev
 
+COMPOSE = docker compose --profile ${PROFILE}
+CONTAINER = frontend-pawsitive-${PROFILE}-1
 
 run:
-	docker compose --profile ${PROFILE} up --build
+	$(COMPOSE) up --build
 
 exec:
-	docker exec -it frontend-pawsitive-${PROFILE}-1 bash
+	docker exec -it $(CONTAINER) bash
 
 lint:
-	npm run lint
+	$(COMPOSE) run --build --rm pawsitive-dev npm run lint
 
 fmt:
-	npm run format
+	$(COMPOSE) run --build --rm pawsitive-dev npm run format
 
 check:
-	docker compose --profile ${PROFILE} run --build --rm pawsitive-${PROFILE} npm run check
+	$(COMPOSE) run --build --rm pawsitive-${PROFILE} npm run check
 
 debug-build:
 	docker compose --profile dev build --no-cache --progress plain
