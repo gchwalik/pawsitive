@@ -1,14 +1,14 @@
+import { type SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
-import { useForm, type SubmitHandler } from "react-hook-form";
 
+import ButtonContainer from "./Buttons";
 import {
   createPlace,
-  updatePlace,
   getEmptyPlaceInput,
   toPlaceInput,
+  updatePlace,
 } from "../api/placesApi";
 import type { Place, PlaceInput } from "../api/placesApi";
-import ButtonContainer from "./Buttons";
 import { ROUTES } from "../routes";
 
 interface PlaceFormProps {
@@ -30,10 +30,10 @@ function PlaceForm({ place, id }: PlaceFormProps = {}) {
   ) => {
     try {
       if (!id) {
-        const response = createPlace(placeInput);
+        const response = await createPlace(placeInput);
         console.log("Place created:", response);
       } else {
-        const response = updatePlace(placeInput, id);
+        const response = await updatePlace(placeInput, id);
         console.log("Place updated:", response);
       }
 

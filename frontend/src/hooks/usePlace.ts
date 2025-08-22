@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import { fetchPlace as getPlace, type Place } from "../api/placesApi";
+import { useEffect, useState } from "react";
+
+import { type Place, fetchPlace as getPlace } from "../api/placesApi";
 
 interface UsePlaceReturn {
   place: Place | null;

@@ -1,18 +1,15 @@
 import { useEffect } from "react";
-import { useParams, Link } from "react-router";
 import { useForm } from "react-hook-form";
 import type { UseFormReturn } from "react-hook-form";
+import { Link, useParams } from "react-router";
 
+import { toPlaceInput } from "../api/placesApi";
+import type { PlaceInput } from "../api/placesApi";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import Navbar from "../components/Navbar";
 import PlaceNotFound from "../components/PlaceNotFound";
-
-import { toPlaceInput } from "../api/placesApi";
-import type { PlaceInput } from "../api/placesApi";
-
 import { usePlace } from "../hooks/usePlace";
-
 import { ROUTES } from "../routes";
 
 interface ViewPlaceFormProps {
