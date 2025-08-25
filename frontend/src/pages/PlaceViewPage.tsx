@@ -37,7 +37,7 @@ function ViewPlaceForm({ placeId, reactForm }: ViewPlaceFormProps) {
         </Link>
         <Link
           to={ROUTES.FRONTEND.PLACES_DELETE(placeId)}
-          className="btn btn-primary"
+          className="btn btn-danger"
         >
           Delete
         </Link>
