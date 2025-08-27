@@ -8,6 +8,8 @@ import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { ROUTES } from "../routes";
 
+import { MyListBox, MyItem } from "../components/ListBox";
+
 const EmptyState = () => (
   <div className="flex items-center justify-center text-center h-4/5">
     <div>
@@ -140,6 +142,12 @@ function PlacesList() {
 
   return (
     <>
+      <MyListBox>
+        
+        <MyItem>foo</MyItem>
+        <MyItem>bar</MyItem>
+      </MyListBox>
+
       <Container title="Places" showTitleBorder={true}>
         {places.length === 0 ? (
           <EmptyState />

@@ -6,7 +6,7 @@ COMPOSE = docker compose --profile ${PROFILE}
 CONTAINER = frontend-pawsitive-${PROFILE}-1
 
 run:
-	$(COMPOSE) up --build
+	$(COMPOSE) up --build --force-recreate
 
 exec:
 	docker exec -it $(CONTAINER) bash
