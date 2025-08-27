@@ -16,9 +16,11 @@
     "@tailwindcss/vite": "^4.1.7",
     "axios": "^1.9.0",
     "react": "^19.1.0",
+    "react-aria-components": "^1.12.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.57.0",
     "react-router": "^7.6.1",
+    "react-router-dom": "^7.8.2",
     "zod": "^3.25.51"
   },
   "devDependencies": {
