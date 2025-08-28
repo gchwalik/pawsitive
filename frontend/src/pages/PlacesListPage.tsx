@@ -4,6 +4,7 @@ import { Link } from "react-router";
 
 import "../App.css";
 import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
+import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { ROUTES } from "../routes";
@@ -163,13 +164,13 @@ function PlacesList() {
 
             {/* Create Button - Only show when there are places */}
             <div className="border-t border-gray-200 mt-4">
-              <Link
+              <AppLink
                 to={ROUTES.FRONTEND.PLACES_CREATE}
                 className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
               >
                 <PlusIcon size={18} />
                 Add Another Place
-              </Link>
+              </AppLink>
             </div>
           </>
         )}
