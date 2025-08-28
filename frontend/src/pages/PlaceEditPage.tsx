@@ -8,13 +8,12 @@ import { useNavigate, useParams } from "react-router";
 
 import type { PlaceInput } from "../api/placesApi";
 import { toPlaceInput, updatePlace } from "../api/placesApi";
+import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
-
-import AppLink from "../components/AppLink";
 
 interface EditPlaceFormProps {
   placeId: number;

@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import type { UseFormReturn } from "react-hook-form";
 import { useParams } from "react-router";
-import AppLink from "../components/AppLink";
 
 import { toPlaceInput } from "../api/placesApi";
 import type { PlaceInput } from "../api/placesApi";
+import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";

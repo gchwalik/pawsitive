@@ -1,7 +1,7 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import AppLink from "./AppLink";
 
+import AppLink from "./AppLink";
 import ButtonContainer from "./Buttons";
 import {
   createPlace,

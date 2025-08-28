@@ -1,8 +1,6 @@
-
+import AppLink from "./AppLink";
 import ButtonContainer from "./Buttons";
 import { ROUTES } from "../routes";
-
-import AppLink from "./AppLink";
 
 interface PlaceNotFoundProps {
   error: string | null;

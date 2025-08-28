@@ -1,8 +1,7 @@
 import { CompassIcon } from "@phosphor-icons/react";
 
-import { Dropdown, DropdownLink } from "./Dropdown";
-
 import AppLink from "./AppLink";
+import { Dropdown, DropdownLink } from "./Dropdown";
 
 function Navbar() {
   return (
