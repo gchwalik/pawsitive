@@ -1,9 +1,10 @@
 import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import type { PlaceInput } from "../api/placesApi";
 import { createPlace } from "../api/placesApi";
+import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { ROUTES } from "../routes";
@@ -30,9 +31,9 @@ function CreatePlaceForm({ onSubmit, reactForm }: CreatePlaceFormProps) {
         <button type="submit" className="btn btn-primary">
           Create
         </button>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
+        <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Cancel
-        </Link>
+        </AppLink>
       </ButtonContainer>
     </form>
   );

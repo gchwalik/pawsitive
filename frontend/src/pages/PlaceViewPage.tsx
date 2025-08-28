@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import type { UseFormReturn } from "react-hook-form";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
 
 import { toPlaceInput } from "../api/placesApi";
 import type { PlaceInput } from "../api/placesApi";
+import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";
@@ -29,21 +30,21 @@ function ViewPlaceForm({ placeId, reactForm }: ViewPlaceFormProps) {
         />
       </div>
       <ButtonContainer>
-        <Link
+        <AppLink
           to={ROUTES.FRONTEND.PLACES_EDIT(placeId)}
           className="btn btn-primary"
         >
           Edit
-        </Link>
-        <Link
+        </AppLink>
+        <AppLink
           to={ROUTES.FRONTEND.PLACES_DELETE(placeId)}
           className="btn btn-danger"
         >
           Delete
-        </Link>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
+        </AppLink>
+        <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Back
-        </Link>
+        </AppLink>
       </ButtonContainer>
     </form>
   );

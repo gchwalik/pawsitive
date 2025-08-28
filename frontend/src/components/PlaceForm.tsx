@@ -1,6 +1,7 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
+import AppLink from "./AppLink";
 import ButtonContainer from "./Buttons";
 import {
   createPlace,
@@ -65,9 +66,9 @@ function PlaceForm({ place, id }: PlaceFormProps = {}) {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
+        <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Cancel
-        </Link>
+        </AppLink>
       </ButtonContainer>
     </form>
   );

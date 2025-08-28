@@ -1,6 +1,5 @@
 import { MapPinIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 
 import "../App.css";
 import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
@@ -19,13 +18,13 @@ const EmptyState = () => (
       <p className="text-sm text-gray-600 mb-6">
         Add your first spot to get started
       </p>
-      <Link
+      <AppLink
         to={ROUTES.FRONTEND.PLACES_CREATE}
         className="btn btn-dark inline-flex items-center gap-2 !w-auto"
       >
         <PlusIcon size={16} />
         Create First Place
-      </Link>
+      </AppLink>
     </div>
   </div>
 );
@@ -81,14 +80,14 @@ interface PlaceItemProps {
 
 const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
   <div className="group relative btn-subtle">
-    <Link
+    <AppLink
       to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}
       aria-label={`View ${place.name}`}
       title="View place"
       className="flex items-start p-4"
     >
       <div className="flex-1 mx-1 text-gray-800 truncate">{place.name}</div>
-    </Link>
+    </AppLink>
 
     <div className="absolute top-1/5 right-4 flex gap-1">
       <button

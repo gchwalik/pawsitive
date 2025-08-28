@@ -6,7 +6,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Link } from "react-router";
+
+import AppLink from "./AppLink";
 
 interface DropdownProps {
   label: string;
@@ -102,10 +103,10 @@ interface DropdownLinkProps {
 
 // Use when clicking takes you somewhere else, like navigating to another page
 const DropdownLink = ({ to, children, icon: Icon }: DropdownLinkProps) => (
-  <Link to={to} className="dropdown-element">
+  <AppLink to={to} className="dropdown-element">
     {Icon && <Icon className="w-4 h-4 mr-3" />}
     {children}
-  </Link>
+  </AppLink>
 );
 
 export { Dropdown, DropdownItem, DropdownLink };
