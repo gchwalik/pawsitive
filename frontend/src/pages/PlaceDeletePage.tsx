@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import { deletePlace } from "../api/placesApi";
 import type { Place } from "../api/placesApi";
@@ -7,6 +7,8 @@ import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
+
+import AppLink from "../components/AppLink";
 
 interface DeletePlaceFormProps {
   place: Place;
@@ -30,9 +32,9 @@ function DeletePlaceForm({ place, onSubmit }: DeletePlaceFormProps) {
         <button onClick={() => onSubmit(place.id)} className="btn btn-danger">
           Yes
         </button>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
+        <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Back
-        </Link>
+        </AppLink>
       </ButtonContainer>
     </>
   );

@@ -1,7 +1,8 @@
-import { Link } from "react-router";
 
 import ButtonContainer from "./Buttons";
 import { ROUTES } from "../routes";
+
+import AppLink from "./AppLink";
 
 interface PlaceNotFoundProps {
   error: string | null;
@@ -14,9 +15,9 @@ function PlaceNotFound({ error }: PlaceNotFoundProps) {
         <p>{error}</p>
       </div>
       <ButtonContainer>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
+        <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Back
-        </Link>
+        </AppLink>
       </ButtonContainer>
     </div>
   );

@@ -4,7 +4,7 @@ import {
   type UseFormReturn,
   useForm,
 } from "react-hook-form";
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import type { PlaceInput } from "../api/placesApi";
 import { toPlaceInput, updatePlace } from "../api/placesApi";
@@ -13,6 +13,8 @@ import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
+
+import AppLink from "../components/AppLink";
 
 interface EditPlaceFormProps {
   placeId: number;
@@ -38,15 +40,15 @@ function EditPlaceForm({ placeId, onSubmit, reactForm }: EditPlaceFormProps) {
         <button type="submit" className="btn btn-primary">
           Update
         </button>
-        <Link
+        <AppLink
           to={ROUTES.FRONTEND.PLACES_DELETE(placeId)}
           className="btn btn-danger"
         >
           Delete
-        </Link>
-        <Link to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
+        </AppLink>
+        <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Cancel
-        </Link>
+        </AppLink>
       </ButtonContainer>
     </form>
   );
