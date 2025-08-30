@@ -4,17 +4,11 @@ import {
 } from "react-aria-components";
 
 interface ListBoxProps {
-  boxTitle?: string;
-  showTitleBorder?: boolean; // sets a border under the title
-  minHeight?: boolean; // sets a minimum height for the container
   className?: string; // additional classes for styling
   children: React.ReactNode; // This receives whatever is between the tags
 }
 
 function AppListBox({
-  boxTitle,
-  showTitleBorder = false,
-  minHeight = true,
   className = "",
   children,
   ...props

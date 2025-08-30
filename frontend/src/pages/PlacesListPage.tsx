@@ -9,6 +9,7 @@ import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { AppListBox, AppListBoxItem } from "../components/ListBox";
 import { ROUTES } from "../routes";
+import { ListBox as AriaListBox, ListBoxItem as AriaListBoxItem } from "react-aria-components";
 
 const EmptyState = () => (
   <div className="flex items-center justify-center text-center h-4/5">
@@ -153,24 +154,23 @@ function PlacesList() {
           ) : (
             <>
               <div className="flex-1 overflow-y-auto">
-                <AppListBox
+                <AriaListBox
                   aria-label="Places"
-                  showTitleBorder={true}
                   className="flex flex-col"
                 >
                   {places.map((place) => (
                     <>
-                      <AppListBoxItem textValue={place.name}>
+                      <AriaListBoxItem textValue={place.name}>
                         <PlaceItem
                           key={place.id}
                           place={place}
                           onDelete={openDeleteModal}
                           iconSize={iconSize}
                         />
-                      </AppListBoxItem>
+                      </AriaListBoxItem>
                     </>
                   ))}
-                </AppListBox>
+                </AriaListBox>
               </div>
 
               {/* Create Button - Only show when there are places */}
