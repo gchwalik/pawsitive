@@ -1,17 +1,17 @@
 import { MapPinIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
+import {
+  ListBox as AriaListBox,
+  ListBoxItem as AriaListBoxItem,
+  Header,
+} from "react-aria-components";
 
-import { Header } from "react-aria-components";
 import "../App.css";
 import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
 import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { ROUTES } from "../routes";
-import {
-  ListBox as AriaListBox,
-  ListBoxItem as AriaListBoxItem,
-} from "react-aria-components";
 
 const EmptyState = () => (
   <div className="flex items-center justify-center text-center h-4/5">
