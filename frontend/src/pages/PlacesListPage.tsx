@@ -7,9 +7,11 @@ import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
 import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
-import { AppListBox, AppListBoxItem } from "../components/ListBox";
 import { ROUTES } from "../routes";
-import { ListBox as AriaListBox, ListBoxItem as AriaListBoxItem } from "react-aria-components";
+import {
+  ListBox as AriaListBox,
+  ListBoxItem as AriaListBoxItem,
+} from "react-aria-components";
 
 const EmptyState = () => (
   <div className="flex items-center justify-center text-center h-4/5">
@@ -154,10 +156,7 @@ function PlacesList() {
           ) : (
             <>
               <div className="flex-1 overflow-y-auto">
-                <AriaListBox
-                  aria-label="Places"
-                  className="flex flex-col"
-                >
+                <AriaListBox aria-label="Places" className="flex flex-col">
                   {places.map((place) => (
                     <>
                       <AriaListBoxItem textValue={place.name}>
