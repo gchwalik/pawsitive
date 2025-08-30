@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useLink } from "react-aria";
 import { Link } from "react-router";
 
-interface AppLinkProps {
+interface AppLinkProps extends React.DOMAttributes<Element> {
   to: string;
   className: string;
   children?: React.ReactNode;
@@ -13,10 +13,10 @@ export default function AppLink({
   to,
   className = "",
   children,
-  ...ariaProps
+  ...props
 }: AppLinkProps) {
   const ref = useRef(null);
-  const { linkProps } = useLink(ariaProps, ref);
+  const { linkProps } = useLink(props, ref);
 
   return (
     <Link to={to} ref={ref} className={className} {...linkProps}>
