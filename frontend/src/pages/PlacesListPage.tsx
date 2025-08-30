@@ -146,7 +146,7 @@ function PlacesList() {
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
         <Header
-          className={`text-center text-xl font-medium p-3 border-b-1 border-neutral-500"`}
+          className="text-center header bottom-border"
         >
           Places
         </Header>

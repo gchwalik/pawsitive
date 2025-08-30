@@ -9,6 +9,8 @@ import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { ROUTES } from "../routes";
 
+import { Header } from "react-aria-components";
+
 interface CreatePlaceFormProps {
   onSubmit: SubmitHandler<PlaceInput>;
   reactForm: UseFormReturn<PlaceInput>;
@@ -18,7 +20,8 @@ function CreatePlaceForm({ onSubmit, reactForm }: CreatePlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
+    <form onSubmit={handleSubmit(onSubmit)} className="form px-10 pt-2 flex-1">
+      <div className="form-fields flex-1">
       <div className="form-attribute">
         <label className="label">Name:</label>
         <input
@@ -26,8 +29,8 @@ function CreatePlaceForm({ onSubmit, reactForm }: CreatePlaceFormProps) {
           className="input"
           placeholder="Enter place name"
         />
-      </div>
-      <ButtonContainer>
+      </div></div>
+      <ButtonContainer className="mb-5">
         <button type="submit" className="btn btn-primary">
           Create
         </button>
@@ -58,9 +61,16 @@ function CreatePlace() {
   const reactForm = useForm<PlaceInput>({});
 
   return (
-    <Container title="Create Place" className="p-5">
+    <div className="flex justify-center">
+    <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+      <Header
+        className="text-center header"
+      >
+        Create Place
+      </Header>
       <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
     </Container>
+    </div>
   );
 }
 
