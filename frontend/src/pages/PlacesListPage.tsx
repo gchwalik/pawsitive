@@ -10,7 +10,6 @@ import Container from "../components/Container";
 import { AppListBox, AppListBoxItem } from "../components/ListBox";
 import { ROUTES } from "../routes";
 
-
 const EmptyState = () => (
   <div className="flex items-center justify-center text-center h-4/5">
     <div>
@@ -143,7 +142,9 @@ function PlacesList() {
   return (
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
-        <Header className={`text-center text-xl font-medium p-3 border-b-1 border-neutral-500"`}>
+        <Header
+          className={`text-center text-xl font-medium p-3 border-b-1 border-neutral-500"`}
+        >
           Places
         </Header>
         <div className="flex flex-col flex-1">
@@ -152,7 +153,11 @@ function PlacesList() {
           ) : (
             <>
               <div className="flex-1 overflow-y-auto">
-                <AppListBox aria-label="Places" showTitleBorder={true} className="flex flex-col">
+                <AppListBox
+                  aria-label="Places"
+                  showTitleBorder={true}
+                  className="flex flex-col"
+                >
                   {places.map((place) => (
                     <>
                       <AppListBoxItem textValue={place.name}>
@@ -167,7 +172,7 @@ function PlacesList() {
                   ))}
                 </AppListBox>
               </div>
-            
+
               {/* Create Button - Only show when there are places */}
               <div className="border-t border-gray-200 mt-4">
                 <AppLink
@@ -181,7 +186,7 @@ function PlacesList() {
             </>
           )}
         </div>
-      </Container>     
+      </Container>
 
       <DeleteModal
         isOpen={showDeleteModal}

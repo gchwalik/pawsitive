@@ -1,4 +1,7 @@
-import {ListBox as AriaListBox, ListBoxItem as AriaListItem} from 'react-aria-components';
+import {
+  ListBox as AriaListBox,
+  ListBoxItem as AriaListItem,
+} from "react-aria-components";
 
 interface ListBoxProps {
   boxTitle?: string;
@@ -8,7 +11,7 @@ interface ListBoxProps {
   children: React.ReactNode; // This receives whatever is between the tags
 }
 
-function AppListBox({ 
+function AppListBox({
   boxTitle,
   showTitleBorder = false,
   minHeight = true,
@@ -28,12 +31,8 @@ interface AppListBoxItemProps {
   textValue: string;
 }
 
-function AppListBoxItem({children, ...props}: AppListBoxItemProps) {
-  return (
-    <AriaListItem {...props}>
-      {children}
-    </AriaListItem>
-  );
-} 
+function AppListBoxItem({ children, ...props }: AppListBoxItemProps) {
+  return <AriaListItem {...props}>{children}</AriaListItem>;
+}
 
-export {AppListBox, AppListBoxItem};
+export { AppListBox, AppListBoxItem };
