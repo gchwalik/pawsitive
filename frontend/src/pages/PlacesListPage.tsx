@@ -149,14 +149,12 @@ function PlacesList() {
             <div className="flex-1 overflow-y-auto">
               <ul className="flex flex-col gap-1">
                 {places.map((place) => (
-                  <>
-                    <PlaceItem
-                      key={place.id}
-                      place={place}
-                      onDelete={openDeleteModal}
-                      iconSize={iconSize}
-                    />
-                  </>
+                  <PlaceItem
+                    key={place.id}
+                    place={place}
+                    onDelete={openDeleteModal}
+                    iconSize={iconSize}
+                  />
                 ))}
               </ul>
             </div>
