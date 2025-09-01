@@ -38,62 +38,20 @@ const EmptyState = () => (
   </div>
 );
 
+
 interface DeleteModalProps {
-  place: Place | null;
-  onConfirm: (place: Place) => void;
-  onCancel: () => void;
-  isOpen: boolean;
-}
-
-const DeleteModal = ({
-  place,
-  isOpen,
-  onConfirm,
-  onCancel,
-}: DeleteModalProps) => {
-  if (!isOpen || !place) {
-    return null;
-  }
-
-  return (
-    <div className="fixed inset-0 bg-black/50 z-50 p-4 flex items-center justify-center">
-      <div className="bg-fuchsia-50 rounded-lg p-7 w-full max-w-md">
-        <div className="mb-6 flex flex-col gap-4">
-          <div>
-            <p className="text-gray-700 mb-1">
-              Are you sure you want to delete:
-            </p>
-            <p className="font-medium">{place.name}</p>
-          </div>
-          <p className="text-sm text-gray-600">This action cannot be undone.</p>
-        </div>
-
-        <ButtonContainer>
-          <button onClick={onCancel} className="btn btn-primary">
-            Cancel
-          </button>
-          <button onClick={() => onConfirm(place)} className="btn btn-danger">
-            Delete
-          </button>
-        </ButtonContainer>
-      </div>
-    </div>
-  );
-};
-
-interface DeleteModalProps2 {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: (place: Place) => void;
   place: Place | null;
 }
 
-const DeleteModal2 = ({
+const DeleteModal = ({
   place,
   isOpen,
   onClose,
   onConfirm,
-}: DeleteModalProps2) => {
+}: DeleteModalProps) => {
   if (!isOpen || !place) {
     return null;
   }
@@ -185,13 +143,11 @@ function PlacesList() {
   }, [reloadPlaces]);
 
   const openDeleteModal = (place: Place) => {
-    console.log("open");
     setShowDeleteModal(true);
     setPlaceToDelete(place);
   };
 
   const confirmDelete = (place: Place) => {
-    console.log(place.name);
     deletePlace(place.id);
     setReloadPlaces(true);
     setPlaceToDelete(null);
@@ -200,7 +156,6 @@ function PlacesList() {
   };
 
   const cancelDelete = () => {
-    console.log("cancl");
     setShowDeleteModal(false);
     setPlaceToDelete(null);
   };
@@ -246,14 +201,7 @@ function PlacesList() {
         </div>
       </Container>
 
-      {/* <DeleteModal
-        isOpen={showDeleteModal}
-        place={placeToDelete}
-        onConfirm={confirmDelete}
-        onCancel={cancelDelete}
-      /> */}
-
-      <DeleteModal2
+      <DeleteModal
         isOpen={showDeleteModal}
         place={placeToDelete}
         onConfirm={confirmDelete}
