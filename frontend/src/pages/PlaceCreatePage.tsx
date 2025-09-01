@@ -1,7 +1,7 @@
 import { Header } from "react-aria-components";
 import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import type { PlaceInput } from "../api/placesApi";
 import { createPlace } from "../api/placesApi";

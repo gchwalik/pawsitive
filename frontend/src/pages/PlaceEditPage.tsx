@@ -5,7 +5,7 @@ import {
   type UseFormReturn,
   useForm,
 } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router";
 
 import type { PlaceInput } from "../api/placesApi";
 import { toPlaceInput, updatePlace } from "../api/placesApi";
