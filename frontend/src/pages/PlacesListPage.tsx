@@ -81,7 +81,7 @@ const DeleteModal = ({
           <p className="text-sm text-gray-600">This action cannot be undone.</p>
         </div>
 
-        <ButtonContainer className="">
+        <ButtonContainer>
           <Button onPress={onClose} className="btn btn-primary">
             Cancel
           </Button>
