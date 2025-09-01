@@ -68,3 +68,7 @@
 .label {
   @apply w-12 font-medium text-right;
 }
+
+.react-aria-ModalOverlay {
+  @apply fixed inset-0 bg-black/50 z-50 flex items-center justify-center;
+}
