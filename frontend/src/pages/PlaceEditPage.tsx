@@ -15,27 +15,32 @@ import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
 
+import { Header } from "react-aria-components";
+
 interface EditPlaceFormProps {
+  className?: string;
   placeId: number;
   onSubmit: SubmitHandler<PlaceInput>;
   reactForm: UseFormReturn<PlaceInput>;
 }
 
-function EditPlaceForm({ placeId, onSubmit, reactForm }: EditPlaceFormProps) {
+function EditPlaceForm({ className = "", placeId, onSubmit, reactForm }: EditPlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
-      <div className="form-attribute">
-        <label className="label">Name:</label>
-        <input
-          {...register("name", { required: "Name is required" })}
-          className="input"
-          placeholder="Enter place name"
-        />
+    <form onSubmit={handleSubmit(onSubmit)} className={`form flex-1 ${className}`}>
+      <div className="form-fields flex-1">
+        <div className="form-attribute">
+          <label className="label">Name:</label>
+          <input
+            {...register("name", { required: "Name is required" })}
+            className="input"
+            placeholder="Enter place name"
+          />
+        </div>
       </div>
 
-      <ButtonContainer>
+      <ButtonContainer className="mb-5">
         <button type="submit" className="btn btn-primary">
           Update
         </button>
@@ -80,21 +85,21 @@ function EditPlace() {
   };
 
   return (
-    <Container title="Edit Place" className="p-5">
-      {loading ? (
-        <div className="flex justify-center items-center flex-1">
-          Loading...
+    <div className="flex justify-center">
+      <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+        <Header className="text-center header">Edit Place</Header>
+        {loading ? ( 
+          <div className="flex justify-center items-center flex-1">
+            Loading...
         </div>
-      ) : !place || isNaN(placeId) ? (
-        <PlaceNotFound error={error} />
-      ) : (
-        <EditPlaceForm
-          placeId={place.id}
-          onSubmit={handleUpdate}
-          reactForm={reactForm}
-        />
-      )}
-    </Container>
+        ) : !place || isNaN(placeId) ? ( 
+          <PlaceNotFound error={error} />
+        ) : (
+          <EditPlaceForm className="px-10 pt-2" placeId={place.id} onSubmit={handleUpdate} reactForm={reactForm} />
+        )
+        }
+      </Container>
+    </div>
   );
 }
 
