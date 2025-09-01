@@ -55,10 +55,7 @@ const DeleteModal = ({
   }
 
   return (
-    <Modal
-      isOpen={isOpen}
-      className="w-full max-w-md"
-    >
+    <Modal isOpen={isOpen} className="w-full max-w-md">
       <Dialog
         role="alertdialog"
         className="bg-fuchsia-50 rounded-lg p-7 max-w-md"
@@ -154,7 +151,6 @@ function PlacesList() {
     setShowDeleteModal(false);
     return null;
   };
-
 
   return (
     <div className="flex justify-center">
