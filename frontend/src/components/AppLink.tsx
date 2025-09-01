@@ -1,7 +1,7 @@
 import type React from "react";
 import { useRef } from "react";
 import { useLink } from "react-aria";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 interface AppLinkProps extends React.DOMAttributes<Element> {
   to: string;

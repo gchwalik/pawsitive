@@ -1,5 +1,5 @@
 import { Header } from "react-aria-components";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 import type { Place } from "../api/placesApi";
 import AppLink from "../components/AppLink";
