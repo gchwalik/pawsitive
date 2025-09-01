@@ -57,8 +57,6 @@ const DeleteModal = ({
   return (
     <Modal
       isOpen={isOpen}
-      onOpenChange={onClose}
-      isDismissable
       className="w-full max-w-md"
     >
       <Dialog
@@ -76,7 +74,7 @@ const DeleteModal = ({
             <p className="text-gray-700 mb-1">
               Are you sure you want to delete:
             </p>
-            <p className="font-medium">{place?.name}</p>
+            <p className="font-medium">{place.name}</p>
           </div>
           <p className="text-sm text-gray-600">This action cannot be undone.</p>
         </div>
@@ -144,6 +142,11 @@ function PlacesList() {
     setPlaceToDelete(place);
   };
 
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+    setPlaceToDelete(null);
+  };
+
   const confirmDelete = (place: Place) => {
     deletePlace(place.id);
     setReloadPlaces(true);
@@ -152,10 +155,6 @@ function PlacesList() {
     return null;
   };
 
-  const closeDeleteModal = () => {
-    setShowDeleteModal(false);
-    setPlaceToDelete(null);
-  };
 
   return (
     <div className="flex justify-center">
