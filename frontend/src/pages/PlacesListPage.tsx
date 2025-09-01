@@ -145,11 +145,7 @@ function PlacesList() {
   return (
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
-        <Header
-          className="text-center header bottom-border"
-        >
-          Places
-        </Header>
+        <Header className="text-center header bottom-border">Places</Header>
         <div className="flex flex-col flex-1">
           {places.length === 0 ? (
             <EmptyState />

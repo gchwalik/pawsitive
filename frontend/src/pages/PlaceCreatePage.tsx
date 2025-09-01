@@ -22,14 +22,15 @@ function CreatePlaceForm({ onSubmit, reactForm }: CreatePlaceFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form px-10 pt-2 flex-1">
       <div className="form-fields flex-1">
-      <div className="form-attribute">
-        <label className="label">Name:</label>
-        <input
-          {...register("name", { required: "Name is required" })}
-          className="input"
-          placeholder="Enter place name"
-        />
-      </div></div>
+        <div className="form-attribute">
+          <label className="label">Name:</label>
+          <input
+            {...register("name", { required: "Name is required" })}
+            className="input"
+            placeholder="Enter place name"
+          />
+        </div>
+      </div>
       <ButtonContainer className="mb-5">
         <button type="submit" className="btn btn-primary">
           Create
@@ -62,14 +63,10 @@ function CreatePlace() {
 
   return (
     <div className="flex justify-center">
-    <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
-      <Header
-        className="text-center header"
-      >
-        Create Place
-      </Header>
-      <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
-    </Container>
+      <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+        <Header className="text-center header">Create Place</Header>
+        <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
+      </Container>
     </div>
   );
 }
