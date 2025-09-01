@@ -1,3 +1,4 @@
+import { Header } from "react-aria-components";
 import { useNavigate, useParams } from "react-router";
 
 import { deletePlace } from "../api/placesApi";
@@ -10,16 +11,21 @@ import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
 
 interface DeletePlaceFormProps {
+  className?: string;
   place: Place;
   onSubmit: (id: number) => void;
 }
 
-function DeletePlaceForm({ place, onSubmit }: DeletePlaceFormProps) {
+function DeletePlaceForm({
+  className = "",
+  place,
+  onSubmit,
+}: DeletePlaceFormProps) {
   return (
-    <>
-      <div className="form-attributes">
+    <div className={`form flex-1 ${className}`}>
+      <div className="form-fields flex-1">
         <div className="form-attribute">
-          <label className="label">Name:</label>
+          <div className="label">Name:</div>
           <div className="flex-1">{place.name}</div>
         </div>
       </div>
@@ -27,7 +33,7 @@ function DeletePlaceForm({ place, onSubmit }: DeletePlaceFormProps) {
       <p className="font-medium text-center pb-4 text-rose-800">
         Are you sure you want to delete {`${place.name}`}?
       </p>
-      <ButtonContainer>
+      <ButtonContainer className="mb-5">
         <button onClick={() => onSubmit(place.id)} className="btn btn-danger">
           Yes
         </button>
@@ -35,7 +41,7 @@ function DeletePlaceForm({ place, onSubmit }: DeletePlaceFormProps) {
           Back
         </AppLink>
       </ButtonContainer>
-    </>
+    </div>
   );
 }
 
@@ -57,17 +63,24 @@ function DeletePlace() {
   };
 
   return (
-    <Container title="Delete Place" className="p-5">
-      {loading ? (
-        <div className="flex justify-center items-center flex-1">
-          Loading...
-        </div>
-      ) : !place || isNaN(placeId) ? (
-        <PlaceNotFound error={error} />
-      ) : (
-        <DeletePlaceForm place={place} onSubmit={handleDelete} />
-      )}
-    </Container>
+    <div className="flex justify-center">
+      <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+        <Header className="text-center header">Delete Place</Header>
+        {loading ? (
+          <div className="flex justify-center items-center flex-1">
+            Loading...
+          </div>
+        ) : !place || isNaN(placeId) ? (
+          <PlaceNotFound error={error} />
+        ) : (
+          <DeletePlaceForm
+            className="px-10 pt-2"
+            place={place}
+            onSubmit={handleDelete}
+          />
+        )}
+      </Container>
+    </div>
   );
 }
 

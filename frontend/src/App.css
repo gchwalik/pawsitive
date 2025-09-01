@@ -9,6 +9,10 @@
   @apply flex-1 border-b border-neutral-500 focus:bg-lime-100 focus:border-emerald-800 focus:border-b-2 focus:outline-hidden;
 }
 
+.bottom-border {
+  @apply border-b-1 border-neutral-500;
+}
+
 .btn {
   @apply w-24 rounded-lg font-medium text-center px-4 py-2 cursor-pointer;
 }
@@ -37,6 +41,10 @@
   @apply flex items-center w-full px-5 py-2 text-stone-700 hover:bg-indigo-100/80 hover:text-stone-900 first:hover:rounded-t-md last:hover:rounded-b-md;
 }
 
+.header {
+  @apply text-xl font-medium p-3;
+}
+
 .place-attributes {
   @apply px-10 pt-2 flex flex-col gap-1 flex-1;
 }
@@ -45,8 +53,12 @@
   @apply flex gap-4;
 }
 
-.form-attributes {
-  @apply px-10 pt-2 flex flex-col gap-1 flex-1;
+.form {
+  @apply flex flex-col gap-1;
+}
+
+.form-fields {
+  @apply flex flex-col gap-1;
 }
 
 .form-attribute {
@@ -55,4 +67,8 @@
 
 .label {
   @apply w-12 font-medium text-right;
+}
+
+.react-aria-ModalOverlay {
+  @apply fixed inset-0 bg-black/50 z-50 flex items-center justify-center;
 }

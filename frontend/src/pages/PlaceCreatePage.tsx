@@ -1,3 +1,4 @@
+import { Header } from "react-aria-components";
 import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -10,24 +11,34 @@ import Container from "../components/Container";
 import { ROUTES } from "../routes";
 
 interface CreatePlaceFormProps {
+  className?: string;
   onSubmit: SubmitHandler<PlaceInput>;
   reactForm: UseFormReturn<PlaceInput>;
 }
 
-function CreatePlaceForm({ onSubmit, reactForm }: CreatePlaceFormProps) {
+function CreatePlaceForm({
+  className = "",
+  onSubmit,
+  reactForm,
+}: CreatePlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form-attributes">
-      <div className="form-attribute">
-        <label className="label">Name:</label>
-        <input
-          {...register("name", { required: "Name is required" })}
-          className="input"
-          placeholder="Enter place name"
-        />
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`form flex-1 ${className}`}
+    >
+      <div className="form-fields flex-1">
+        <div className="form-attribute">
+          <label className="label">Name:</label>
+          <input
+            {...register("name", { required: "Name is required" })}
+            className="input"
+            placeholder="Enter place name"
+          />
+        </div>
       </div>
-      <ButtonContainer>
+      <ButtonContainer className="mb-5">
         <button type="submit" className="btn btn-primary">
           Create
         </button>
@@ -58,9 +69,16 @@ function CreatePlace() {
   const reactForm = useForm<PlaceInput>({});
 
   return (
-    <Container title="Create Place" className="p-5">
-      <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
-    </Container>
+    <div className="flex justify-center">
+      <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+        <Header className="text-center header">Create Place</Header>
+        <CreatePlaceForm
+          className="px-10 pt-2"
+          onSubmit={handleCreate}
+          reactForm={reactForm}
+        />
+      </Container>
+    </div>
   );
 }
 

@@ -6,9 +6,7 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <div className="flex justify-center">
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 }
