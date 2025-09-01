@@ -12,15 +12,16 @@ import { ROUTES } from "../routes";
 import { Header } from "react-aria-components";
 
 interface CreatePlaceFormProps {
+  className?: string;
   onSubmit: SubmitHandler<PlaceInput>;
   reactForm: UseFormReturn<PlaceInput>;
 }
 
-function CreatePlaceForm({ onSubmit, reactForm }: CreatePlaceFormProps) {
+function CreatePlaceForm({ className = "", onSubmit, reactForm }: CreatePlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form px-10 pt-2 flex-1">
+    <form onSubmit={handleSubmit(onSubmit)} className={`form flex-1 ${className}`}>
       <div className="form-fields flex-1">
         <div className="form-attribute">
           <label className="label">Name:</label>
@@ -65,7 +66,7 @@ function CreatePlace() {
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
         <Header className="text-center header">Create Place</Header>
-        <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} />
+        <CreatePlaceForm onSubmit={handleCreate} reactForm={reactForm} className="px-10 pt-2"/>
       </Container>
     </div>
   );
