@@ -78,5 +78,5 @@ export default tseslint.config(
       },
     },
   },
-  eslintConfigPrettier
+  eslintConfigPrettier,
 );
