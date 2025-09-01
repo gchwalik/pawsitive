@@ -26,7 +26,7 @@ function DeletePlaceForm({
     <div className={`form flex-1 ${className}`}>
       <div className="form-fields flex-1">
         <div className="form-attribute">
-          <label className="label">Name:</label>
+          <div className="label">Name:</div>
           <div className="flex-1">{place.name}</div>
         </div>
       </div>

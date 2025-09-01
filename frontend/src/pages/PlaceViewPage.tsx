@@ -1,10 +1,6 @@
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import type { UseFormReturn } from "react-hook-form";
 import { useParams } from "react-router";
 
-import { toPlaceInput } from "../api/placesApi";
-import type { PlaceInput } from "../api/placesApi";
+import type { Place } from "../api/placesApi";
 import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
@@ -16,33 +12,27 @@ import { Header } from "react-aria-components";
 
 interface ViewPlaceFormProps {
   className?: string;
-  placeId: number;
-  reactForm: UseFormReturn<PlaceInput>;
+  place: Place;
 }
 
-function ViewPlaceForm({ className, placeId, reactForm }: ViewPlaceFormProps) {
-  const { register } = reactForm;
-
+function ViewPlaceForm({ className, place }: ViewPlaceFormProps) {
   return (
-    <form className={`form flex-1 ${className}`}>
+    <div className={`form flex-1 ${className}`}>
       <div className="form-fields flex-1">
         <div className="form-attribute">
-          <label className="label">Name:</label>
-          <input
-            {...register("name", { disabled: true })}
-            className="border-none"
-          />
+          <div className="label">Name:</div>
+          <div className="flex-1">{place.name}</div>
         </div>
       </div>
       <ButtonContainer className="mb-5">
         <AppLink
-          to={ROUTES.FRONTEND.PLACES_EDIT(placeId)}
+          to={ROUTES.FRONTEND.PLACES_EDIT(place.id)}
           className="btn btn-primary"
         >
           Edit
         </AppLink>
         <AppLink
-          to={ROUTES.FRONTEND.PLACES_DELETE(placeId)}
+          to={ROUTES.FRONTEND.PLACES_DELETE(place.id)}
           className="btn btn-danger"
         >
           Delete
@@ -51,7 +41,7 @@ function ViewPlaceForm({ className, placeId, reactForm }: ViewPlaceFormProps) {
           Back
         </AppLink>
       </ButtonContainer>
-    </form>
+    </div>
   );
 }
 
@@ -59,13 +49,6 @@ function ViewPlace() {
   const { id: paramId } = useParams<{ id: string }>();
   const placeId = Number(paramId);
   const { place, loading, error } = usePlace(placeId);
-  const reactForm = useForm<PlaceInput>();
-
-  useEffect(() => {
-    if (!loading && place) {
-      reactForm.reset(toPlaceInput(place));
-    }
-  }, [place, loading, reactForm]);
 
   return (
     <div className="flex justify-center">
@@ -80,8 +63,7 @@ function ViewPlace() {
         ) : (
           <ViewPlaceForm
             className="px-10 pt-2"
-            placeId={placeId}
-            reactForm={reactForm}
+            place={place}
           />
         )}
       </Container>
