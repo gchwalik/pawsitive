@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import {
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
-  Dialog,
   Button,
+  Dialog,
   Heading,
-  ModalOverlay,
   Modal,
 } from "react-aria-components";
 
@@ -37,7 +36,6 @@ const EmptyState = () => (
     </div>
   </div>
 );
-
 
 interface DeleteModalProps {
   isOpen: boolean;
@@ -84,12 +82,12 @@ const DeleteModal = ({
         </div>
 
         <ButtonContainer className="">
-          <button onClick={onClose} className="btn btn-primary">
+          <Button onPress={onClose} className="btn btn-primary">
             Cancel
-          </button>
-          <button onClick={() => onConfirm(place)} className="btn btn-danger">
+          </Button>
+          <Button onPress={() => onConfirm(place)} className="btn btn-danger">
             Delete
-          </button>
+          </Button>
         </ButtonContainer>
       </Dialog>
     </Modal>
@@ -113,14 +111,13 @@ const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
     </AppLink>
 
     <div className="absolute top-1/5 right-4 flex gap-1">
-      <button
-        onClick={() => onDelete(place)}
+      <Button
+        onPress={() => onDelete(place)}
         className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg"
         aria-label={`Delete ${place.name}`}
-        title="Delete place"
       >
         <TrashIcon size={iconSize} />
-      </button>
+      </Button>
     </div>
   </div>
 );
