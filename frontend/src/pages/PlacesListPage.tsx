@@ -155,7 +155,7 @@ function PlacesList() {
     return null;
   };
 
-  const cancelDelete = () => {
+  const closeDeleteModal = () => {
     setShowDeleteModal(false);
     setPlaceToDelete(null);
   };
@@ -205,7 +205,7 @@ function PlacesList() {
         isOpen={showDeleteModal}
         place={placeToDelete}
         onConfirm={confirmDelete}
-        onClose={cancelDelete}
+        onClose={closeDeleteModal}
       />
     </div>
   );
