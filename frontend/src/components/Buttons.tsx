@@ -5,9 +5,7 @@ interface ButtonContainerProps {
 
 function ButtonContainer({ className = "", children }: ButtonContainerProps) {
   return (
-    <div
-      className={`flex justify-center items-center gap-4 mt-auto ${className}`}
-    >
+    <div className={`flex justify-center items-center gap-4 ${className}`}>
       {children}
     </div>
   );

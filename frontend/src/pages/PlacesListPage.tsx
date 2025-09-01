@@ -1,5 +1,10 @@
 import { MapPinIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
+import {
+  ListBox as AriaListBox,
+  ListBoxItem as AriaListBoxItem,
+  Header,
+} from "react-aria-components";
 
 import "../App.css";
 import { type Place, deletePlace, fetchPlaces } from "../api/placesApi";
@@ -83,7 +88,6 @@ const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
     <AppLink
       to={ROUTES.FRONTEND.PLACES_VIEW(place.id)}
       aria-label={`View ${place.name}`}
-      title="View place"
       className="flex items-start p-4"
     >
       <div className="flex-1 mx-1 text-gray-800 truncate">{place.name}</div>
@@ -139,40 +143,44 @@ function PlacesList() {
   };
 
   return (
-    <>
-      <Container title="Places" showTitleBorder={true}>
-        {places.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <>
-            {/* Places List */}
-            <div className="flex-1 overflow-y-auto">
-              <ul className="flex flex-col gap-1">
-                {places.map((place) => (
-                  <>
-                    <PlaceItem
-                      key={place.id}
-                      place={place}
-                      onDelete={openDeleteModal}
-                      iconSize={iconSize}
-                    />
-                  </>
-                ))}
-              </ul>
-            </div>
+    <div className="flex justify-center">
+      <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+        <Header className="text-center header bottom-border">Places</Header>
+        <div className="flex flex-col flex-1">
+          {places.length === 0 ? (
+            <EmptyState />
+          ) : (
+            <>
+              <div className="flex-1 overflow-y-auto">
+                <AriaListBox aria-label="Places" className="flex flex-col">
+                  {places.map((place) => (
+                    <>
+                      <AriaListBoxItem textValue={place.name}>
+                        <PlaceItem
+                          key={place.id}
+                          place={place}
+                          onDelete={openDeleteModal}
+                          iconSize={iconSize}
+                        />
+                      </AriaListBoxItem>
+                    </>
+                  ))}
+                </AriaListBox>
+              </div>
 
-            {/* Create Button - Only show when there are places */}
-            <div className="border-t border-gray-200 mt-4">
-              <AppLink
-                to={ROUTES.FRONTEND.PLACES_CREATE}
-                className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
-              >
-                <PlusIcon size={18} />
-                Add Another Place
-              </AppLink>
-            </div>
-          </>
-        )}
+              {/* Create Button - Only show when there are places */}
+              <div className="border-t border-gray-200 mt-4">
+                <AppLink
+                  to={ROUTES.FRONTEND.PLACES_CREATE}
+                  className="flex items-center font-medium btn-subtle justify-center gap-2 px-4 py-3 rounded-b-lg"
+                >
+                  <PlusIcon size={18} />
+                  Add Another Place
+                </AppLink>
+              </div>
+            </>
+          )}
+        </div>
       </Container>
 
       <DeleteModal
@@ -181,7 +189,7 @@ function PlacesList() {
         onConfirm={confirmDelete}
         onCancel={cancelDelete}
       />
-    </>
+    </div>
   );
 }
 
