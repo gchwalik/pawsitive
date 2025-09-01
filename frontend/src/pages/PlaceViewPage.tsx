@@ -12,24 +12,29 @@ import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
 
+import { Header } from "react-aria-components";
+
 interface ViewPlaceFormProps {
+  className?: string;
   placeId: number;
   reactForm: UseFormReturn<PlaceInput>;
 }
 
-function ViewPlaceForm({ placeId, reactForm }: ViewPlaceFormProps) {
+function ViewPlaceForm({ className, placeId, reactForm }: ViewPlaceFormProps) {
   const { register } = reactForm;
 
   return (
-    <form className="form-attributes">
-      <div className="form-attribute">
-        <label className="label">Name:</label>
-        <input
-          {...register("name", { disabled: true })}
-          className="border-none"
-        />
+    <form className={`form flex-1 ${className}`}>
+      <div className="form-fields flex-1">
+        <div className="form-attribute">
+          <label className="label">Name:</label>
+          <input
+            {...register("name", { disabled: true })}
+            className="border-none"
+          />
+        </div>
       </div>
-      <ButtonContainer>
+      <ButtonContainer className="mb-5">
         <AppLink
           to={ROUTES.FRONTEND.PLACES_EDIT(placeId)}
           className="btn btn-primary"
@@ -63,17 +68,24 @@ function ViewPlace() {
   }, [place, loading, reactForm]);
 
   return (
-    <Container title="View Place" className="p-5">
-      {loading ? (
-        <div className="flex justify-center items-center flex-1">
-          Loading...
-        </div>
-      ) : !place ? (
-        <PlaceNotFound error={error} />
-      ) : (
-        <ViewPlaceForm placeId={placeId} reactForm={reactForm} />
-      )}
-    </Container>
+    <div className="flex justify-center">
+      <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
+        <Header className="text-center header">View Place</Header>
+        {loading ? (
+          <div className="flex justify-center items-center flex-1">
+            Loading...
+          </div>
+        ) : !place ? (
+          <PlaceNotFound error={error} />
+        ) : (
+          <ViewPlaceForm
+            className="px-10 pt-2"
+            placeId={placeId}
+            reactForm={reactForm}
+          />
+        )}
+      </Container>
+    </div>
   );
 }
 
