@@ -12,7 +12,7 @@ function PlaceNotFound({ error }: PlaceNotFoundProps) {
       <div className="flex justify-center items-center flex-1">
         <p>{error}</p>
       </div>
-      <ButtonContainer>
+      <ButtonContainer className="mb-5">
         <AppLink to={ROUTES.FRONTEND.ROOT} className="btn btn-primary">
           Back
         </AppLink>
