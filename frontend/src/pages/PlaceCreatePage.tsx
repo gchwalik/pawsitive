@@ -17,11 +17,18 @@ interface CreatePlaceFormProps {
   reactForm: UseFormReturn<PlaceInput>;
 }
 
-function CreatePlaceForm({ className = "", onSubmit, reactForm }: CreatePlaceFormProps) {
+function CreatePlaceForm({
+  className = "",
+  onSubmit,
+  reactForm,
+}: CreatePlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={`form flex-1 ${className}`}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`form flex-1 ${className}`}
+    >
       <div className="form-fields flex-1">
         <div className="form-attribute">
           <label className="label">Name:</label>
@@ -66,7 +73,11 @@ function CreatePlace() {
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
         <Header className="text-center header">Create Place</Header>
-        <CreatePlaceForm className="px-10 pt-2" onSubmit={handleCreate} reactForm={reactForm}/>
+        <CreatePlaceForm
+          className="px-10 pt-2"
+          onSubmit={handleCreate}
+          reactForm={reactForm}
+        />
       </Container>
     </div>
   );

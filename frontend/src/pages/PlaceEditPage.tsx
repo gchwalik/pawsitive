@@ -24,11 +24,19 @@ interface EditPlaceFormProps {
   reactForm: UseFormReturn<PlaceInput>;
 }
 
-function EditPlaceForm({ className = "", placeId, onSubmit, reactForm }: EditPlaceFormProps) {
+function EditPlaceForm({
+  className = "",
+  placeId,
+  onSubmit,
+  reactForm,
+}: EditPlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={`form flex-1 ${className}`}>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className={`form flex-1 ${className}`}
+    >
       <div className="form-fields flex-1">
         <div className="form-attribute">
           <label className="label">Name:</label>
@@ -88,16 +96,20 @@ function EditPlace() {
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
         <Header className="text-center header">Edit Place</Header>
-        {loading ? ( 
+        {loading ? (
           <div className="flex justify-center items-center flex-1">
             Loading...
-        </div>
-        ) : !place || isNaN(placeId) ? ( 
+          </div>
+        ) : !place || isNaN(placeId) ? (
           <PlaceNotFound error={error} />
         ) : (
-          <EditPlaceForm className="px-10 pt-2" placeId={place.id} onSubmit={handleUpdate} reactForm={reactForm} />
-        )
-        }
+          <EditPlaceForm
+            className="px-10 pt-2"
+            placeId={place.id}
+            onSubmit={handleUpdate}
+            reactForm={reactForm}
+          />
+        )}
       </Container>
     </div>
   );
