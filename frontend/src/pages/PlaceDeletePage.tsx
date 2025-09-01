@@ -1,6 +1,5 @@
-import { useNavigate, useParams } from "react-router";
-
 import { Header } from "react-aria-components";
+import { useNavigate, useParams } from "react-router";
 
 import { deletePlace } from "../api/placesApi";
 import type { Place } from "../api/placesApi";

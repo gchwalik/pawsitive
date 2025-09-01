@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Header } from "react-aria-components";
 import {
   type SubmitHandler,
   type UseFormReturn,
@@ -14,8 +15,6 @@ import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
-
-import { Header } from "react-aria-components";
 
 interface EditPlaceFormProps {
   className?: string;

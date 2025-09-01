@@ -1,3 +1,4 @@
+import { Header } from "react-aria-components";
 import { useParams } from "react-router";
 
 import type { Place } from "../api/placesApi";
@@ -7,8 +8,6 @@ import Container from "../components/Container";
 import PlaceNotFound from "../components/PlaceNotFound";
 import { usePlace } from "../hooks/usePlace";
 import { ROUTES } from "../routes";
-
-import { Header } from "react-aria-components";
 
 interface ViewPlaceFormProps {
   className?: string;
@@ -61,10 +60,7 @@ function ViewPlace() {
         ) : !place ? (
           <PlaceNotFound error={error} />
         ) : (
-          <ViewPlaceForm
-            className="px-10 pt-2"
-            place={place}
-          />
+          <ViewPlaceForm className="px-10 pt-2" place={place} />
         )}
       </Container>
     </div>
