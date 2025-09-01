@@ -22,7 +22,7 @@
 }
 
 .btn-danger {
-  @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900;
+  @apply text-rose-800 bg-red-100 hover:bg-red-200 hover:text-rose-900 transition-colors duration-200;
 }
 
 .btn-dark {
@@ -67,4 +67,8 @@
 
 .label {
   @apply w-12 font-medium text-right;
+}
+
+.react-aria-ModalOverlay {
+  @apply fixed inset-0 bg-black/50 z-50 flex items-center justify-center;
 }

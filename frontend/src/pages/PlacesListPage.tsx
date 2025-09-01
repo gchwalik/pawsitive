@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import {
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
-  Header,
+  Dialog,
+  Button,
+  Heading,
+  ModalOverlay,
+  Modal,
 } from "react-aria-components";
 
 import "../App.css";
@@ -77,6 +81,63 @@ const DeleteModal = ({
   );
 };
 
+interface DeleteModalProps2 {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: (place: Place) => void;
+  place: Place | null;
+}
+
+const DeleteModal2 = ({
+  place,
+  isOpen,
+  onClose,
+  onConfirm,
+}: DeleteModalProps2) => {
+  if (!isOpen || !place) {
+    return null;
+  }
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={onClose}
+      isDismissable
+      className="w-full max-w-md"
+    >
+      <Dialog
+        role="alertdialog"
+        className="bg-fuchsia-50 rounded-lg p-7 max-w-md"
+      >
+        <Heading
+          slot="title"
+          className="text-xxl font-semibold leading-6 mb-3 text-slate-700"
+        >
+          Delete place?
+        </Heading>
+        <div className="mb-6 flex flex-col gap-4">
+          <div>
+            <p className="text-gray-700 mb-1">
+              Are you sure you want to delete:
+            </p>
+            <p className="font-medium">{place?.name}</p>
+          </div>
+          <p className="text-sm text-gray-600">This action cannot be undone.</p>
+        </div>
+
+        <ButtonContainer className="">
+          <button onClick={onClose} className="btn btn-primary">
+            Cancel
+          </button>
+          <button onClick={() => onConfirm(place)} className="btn btn-danger">
+            Delete
+          </button>
+        </ButtonContainer>
+      </Dialog>
+    </Modal>
+  );
+};
+
 interface PlaceItemProps {
   place: Place;
   onDelete: (place: Place) => void;
@@ -96,7 +157,7 @@ const PlaceItem = ({ place, onDelete, iconSize }: PlaceItemProps) => (
     <div className="absolute top-1/5 right-4 flex gap-1">
       <button
         onClick={() => onDelete(place)}
-        className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg transition-colors duration-200"
+        className="p-2 cursor-pointer text-rose-700 hover:text-rose-800 hover:bg-rose-50 rounded-lg"
         aria-label={`Delete ${place.name}`}
         title="Delete place"
       >
@@ -124,6 +185,7 @@ function PlacesList() {
   }, [reloadPlaces]);
 
   const openDeleteModal = (place: Place) => {
+    console.log("open");
     setShowDeleteModal(true);
     setPlaceToDelete(place);
   };
@@ -138,6 +200,7 @@ function PlacesList() {
   };
 
   const cancelDelete = () => {
+    console.log("cancl");
     setShowDeleteModal(false);
     setPlaceToDelete(null);
   };
@@ -145,7 +208,7 @@ function PlacesList() {
   return (
     <div className="flex justify-center">
       <Container className="bg-amber-50 rounded-lg m-5 pt-1 shadow-lg flex flex-col">
-        <Header className="text-center header bottom-border">Places</Header>
+        <Heading className="text-center header bottom-border">Places</Heading>
         <div className="flex flex-col flex-1">
           {places.length === 0 ? (
             <EmptyState />
@@ -183,11 +246,18 @@ function PlacesList() {
         </div>
       </Container>
 
-      <DeleteModal
+      {/* <DeleteModal
         isOpen={showDeleteModal}
         place={placeToDelete}
         onConfirm={confirmDelete}
         onCancel={cancelDelete}
+      /> */}
+
+      <DeleteModal2
+        isOpen={showDeleteModal}
+        place={placeToDelete}
+        onConfirm={confirmDelete}
+        onClose={cancelDelete}
       />
     </div>
   );
