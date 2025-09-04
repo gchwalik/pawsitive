@@ -62,7 +62,7 @@
 }
 
 .form-attribute {
-  @apply flex gap-4;
+  @apply flex gap-4 h-9;
 }
 
 .label {
