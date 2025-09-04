@@ -1,4 +1,14 @@
-import { Header } from "react-aria-components";
+import { CaretDownIcon } from "@phosphor-icons/react";
+import {
+  Button,
+  Header,
+  Label,
+  ListBox,
+  ListBoxItem,
+  Popover,
+  Select,
+  SelectValue,
+} from "react-aria-components";
 import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -9,8 +19,6 @@ import AppLink from "../components/AppLink";
 import ButtonContainer from "../components/Buttons";
 import Container from "../components/Container";
 import { ROUTES } from "../routes";
-import {Button, Label, ListBox, ListBoxItem, Popover, Select, SelectValue} from 'react-aria-components';
-import { CaretDownIcon } from "@phosphor-icons/react";
 
 interface CreatePlaceFormProps {
   className?: string;
@@ -26,8 +34,8 @@ function CreatePlaceForm({
   const { register, handleSubmit } = reactForm;
 
   const placeTypes: { name: string }[] = [
-    {"name": "Hiking Trail"},
-    {"name": "Park"},
+    { name: "Hiking Trail" },
+    { name: "Park" },
   ];
 
   return (
@@ -48,17 +56,23 @@ function CreatePlaceForm({
           <Label className="label">Type:</Label>
           <Select placeholder="Select a type">
             <Button className="flex items-center text-ellipses w-50 h-9 bg-white border border-neutral-300 rounded-md px-3  text-left transition-all duration-200 hover:border-neutral-500">
-              <SelectValue/>
-              <span aria-hidden="true"><CaretDownIcon className="ml-1" size={16} /></span>
+              <SelectValue />
+              <span aria-hidden="true">
+                <CaretDownIcon className="ml-1" size={16} />
+              </span>
             </Button>
             <Popover className="max-h-60 w-(--trigger-width) overflow-auto rounded-md bg-white border-neutral-200 border-1">
               <ListBox className="p-1 flex flex-col gap-1">
                 {placeTypes.length === 0 ? (
-                  <ListBoxItem className="px-3 py-1">No place types yet</ListBoxItem>
-                ) : ( 
+                  <ListBoxItem className="px-3 py-1">
+                    No place types yet
+                  </ListBoxItem>
+                ) : (
                   <>
                     {placeTypes.map((placeType) => (
-                      <ListBoxItem className="px-3 py-1">{placeType.name}</ListBoxItem>
+                      <ListBoxItem className="px-3 py-1">
+                        {placeType.name}
+                      </ListBoxItem>
                     ))}
                   </>
                 )}
