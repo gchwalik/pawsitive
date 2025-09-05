@@ -1,13 +1,13 @@
-import { CompassIcon, CaretDownIcon } from "@phosphor-icons/react";
-
-import AppLink from "./AppLink";
+import { CaretDownIcon, CompassIcon } from "@phosphor-icons/react";
 import {
   Button,
+  Menu,
+  MenuItem,
   MenuTrigger,
   Popover,
-  Menu,
-  MenuItem
 } from "react-aria-components";
+
+import AppLink from "./AppLink";
 
 function Navbar() {
   return (
@@ -20,7 +20,7 @@ function Navbar() {
         <h1 className="text-3xl font-medium">Pawsitive</h1>
       </AppLink>
 
-      <MenuTrigger >
+      <MenuTrigger>
         <Button className="dropdown-button w-30" aria-label="Menu">
           <span className="flex-1">More</span>
           <span aria-hidden="true">

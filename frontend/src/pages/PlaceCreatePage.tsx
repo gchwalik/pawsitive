@@ -65,7 +65,10 @@ function CreatePlaceForm({
             <Popover className="dropdown-popover w-50">
               <ListBox items={placeTypes} className="flex flex-col gap-1">
                 {(placeType) => (
-                  <ListBoxItem key={placeType.id} className="px-3 py-1 dropdown-element">
+                  <ListBoxItem
+                    key={placeType.id}
+                    className="px-3 py-1 dropdown-element"
+                  >
                     {placeType.name}
                   </ListBoxItem>
                 )}
