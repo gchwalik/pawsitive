@@ -33,9 +33,9 @@ function CreatePlaceForm({
 }: CreatePlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
-  const placeTypes: { name: string }[] = [
-    { name: "Hiking Trail" },
-    { name: "Park" },
+  const placeTypes: { id: number; name: string }[] = [
+    { id: 1, name: "Hiking Trail" },
+    { id: 2, name: "Park" },
   ];
 
   return (
@@ -62,19 +62,11 @@ function CreatePlaceForm({
               </span>
             </Button>
             <Popover className="max-h-60 w-(--trigger-width) overflow-auto rounded-md bg-white border-neutral-200 border-1">
-              <ListBox className="p-1 flex flex-col gap-1">
-                {placeTypes.length === 0 ? (
-                  <ListBoxItem className="px-3 py-1">
-                    No place types yet
+              <ListBox items={placeTypes} className="p-1 flex flex-col gap-1">
+                {(placeType) => (
+                  <ListBoxItem key={placeType.id} className="px-3 py-1">
+                    {placeType.name}
                   </ListBoxItem>
-                ) : (
-                  <>
-                    {placeTypes.map((placeType) => (
-                      <ListBoxItem className="px-3 py-1">
-                        {placeType.name}
-                      </ListBoxItem>
-                    ))}
-                  </>
                 )}
               </ListBox>
             </Popover>
