@@ -56,7 +56,7 @@ function CreatePlaceForm({
           <Label className="label">Type:</Label>
           <Select placeholder="Select a type">
             <Button className="flex items-center text-ellipses w-50 h-9 bg-white border border-neutral-300 rounded-md px-3  text-left transition-all duration-200 hover:border-neutral-500">
-              <SelectValue />
+              <SelectValue className="flex-1"/>
               <span aria-hidden="true">
                 <CaretDownIcon className="ml-1" size={16} />
               </span>
