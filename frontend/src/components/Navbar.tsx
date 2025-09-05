@@ -1,16 +1,11 @@
 import { CompassIcon, CaretDownIcon } from "@phosphor-icons/react";
 
 import AppLink from "./AppLink";
-import { Dropdown, DropdownLink } from "./Dropdown";
 import { Link } from "react-router";
 import {
   Button,
-  ListBox,
-  ListBoxItem,
   MenuTrigger,
   Popover,
-  Select,
-  SelectValue,
   Menu,
   MenuItem
 } from "react-aria-components";
