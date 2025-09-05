@@ -1,7 +1,6 @@
 import { CompassIcon, CaretDownIcon } from "@phosphor-icons/react";
 
 import AppLink from "./AppLink";
-import { Link } from "react-router";
 import {
   Button,
   MenuTrigger,
@@ -31,9 +30,9 @@ function Navbar() {
         <Popover className="dropdown-popover w-40" placement="bottom end">
           <Menu className="flex flex-col gap-1">
             <MenuItem className="px-3 py-1 dropdown-element">
-              <Link to="/place-types" className="block w-full">
+              <AppLink to="/place-types" className="block w-full">
                 Place Types
-              </Link>
+              </AppLink>
             </MenuItem>
           </Menu>
         </Popover>
