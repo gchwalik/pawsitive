@@ -1,4 +1,14 @@
-import { Header } from "react-aria-components";
+import { CaretDownIcon } from "@phosphor-icons/react";
+import {
+  Button,
+  Header,
+  Label,
+  ListBox,
+  ListBoxItem,
+  Popover,
+  Select,
+  SelectValue,
+} from "react-aria-components";
 import type { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -23,19 +33,44 @@ function CreatePlaceForm({
 }: CreatePlaceFormProps) {
   const { register, handleSubmit } = reactForm;
 
+  const placeTypes: { id: number; name: string }[] = [
+    { id: 1, name: "Hiking Trail" },
+    { id: 2, name: "Park" },
+  ];
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className={`form flex-1 ${className}`}
     >
       <div className="form-fields flex-1">
-        <div className="form-attribute">
-          <label className="label">Name:</label>
+        <div className="flex items-center form-attribute">
+          <Label className="label">Name:</Label>
           <input
             {...register("name", { required: "Name is required" })}
             className="input"
             placeholder="Enter place name"
           />
+        </div>
+        <div className="flex items-center form-attribute">
+          <Label className="label">Type:</Label>
+          <Select placeholder="Select a type">
+            <Button className="flex items-center text-ellipses w-50 h-9 bg-white border border-neutral-300 rounded-md px-3  text-left transition-all duration-200 hover:border-neutral-500">
+              <SelectValue className="flex-1" />
+              <span aria-hidden="true">
+                <CaretDownIcon className="ml-1" size={16} />
+              </span>
+            </Button>
+            <Popover className="max-h-60 w-(--trigger-width) overflow-auto rounded-md bg-white border-neutral-200 border-1">
+              <ListBox items={placeTypes} className="p-1 flex flex-col gap-1">
+                {(placeType) => (
+                  <ListBoxItem key={placeType.id} className="px-3 py-1">
+                    {placeType.name}
+                  </ListBoxItem>
+                )}
+              </ListBox>
+            </Popover>
+          </Select>
         </div>
       </div>
       <ButtonContainer className="mb-5">
