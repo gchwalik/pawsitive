@@ -12,7 +12,7 @@ import AppLink from "./AppLink";
 function Navbar() {
   return (
     <nav className="navbar">
-      <AppLink to="/" className="flex ml-auto flex-1">
+      <AppLink to="/" className="flex flex-1">
         <CompassIcon
           className="text-4xl font-semibold mr-0.75"
           weight="light"

@@ -66,7 +66,7 @@ function CreatePlaceForm({
                 {(placeType) => (
                   <ListBoxItem
                     key={placeType.id}
-                    className="px-3 py-1 dropdown-element"
+                    className="dropdown-element"
                   >
                     {placeType.name}
                   </ListBoxItem>
