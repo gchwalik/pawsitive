@@ -55,16 +55,16 @@ function CreatePlaceForm({
         <div className="flex items-center form-attribute">
           <Label className="label">Type:</Label>
           <Select placeholder="Select a type">
-            <Button className="flex items-center text-ellipses w-50 h-9 bg-white border border-neutral-300 rounded-md px-3  text-left transition-all duration-200 hover:border-neutral-500">
-              <SelectValue className="flex-1" />
+            <Button className="dropdown-button text-left w-44">
+              <SelectValue className="flex-1 truncate-text" />
               <span aria-hidden="true">
                 <CaretDownIcon className="ml-1" size={16} />
               </span>
             </Button>
-            <Popover className="max-h-60 w-(--trigger-width) overflow-auto rounded-md bg-white border-neutral-200 border-1">
-              <ListBox items={placeTypes} className="p-1 flex flex-col gap-1">
+            <Popover className="dropdown-popover w-50">
+              <ListBox items={placeTypes} className="flex flex-col gap-1">
                 {(placeType) => (
-                  <ListBoxItem key={placeType.id} className="px-3 py-1">
+                  <ListBoxItem key={placeType.id} className="dropdown-element">
                     {placeType.name}
                   </ListBoxItem>
                 )}

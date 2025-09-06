@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 interface AppLinkProps extends React.DOMAttributes<Element> {
   to: string;
-  className: string;
+  className?: string;
   children?: React.ReactNode;
 }
 
