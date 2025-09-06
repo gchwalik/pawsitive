@@ -36,7 +36,6 @@ function CreatePlaceForm({
   const placeTypes: { id: number; name: string }[] = [
     { id: 1, name: "Hiking Trail" },
     { id: 2, name: "Park" },
-    { id: 3, name: "Park adfasfd asdfa sadasdff eee " },
   ];
 
   return (
