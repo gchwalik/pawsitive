@@ -28,8 +28,8 @@ function Navbar() {
           </span>
         </Button>
         <Popover className="dropdown-popover w-40" placement="bottom end">
-          <Menu className="flex flex-col gap-1">
-            <MenuItem className="px-3 py-1 dropdown-element">
+          <Menu>
+            <MenuItem className="dropdown-element">
               <AppLink to="/place-types" className="block w-full">
                 Place Types
               </AppLink>
