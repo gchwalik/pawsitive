@@ -13,6 +13,23 @@ Because the project is wrapped in Docker, all you need to launch the backend ser
 
 Because all the code is built and runs in the container, your IDE will probably tell you that you don't have needed packages installed in the backend code. If this bothers you, you can resolve it with `poetry install --no-root`.
 
-## Changes
+## WARNING
 
-NOTE: The db is out of sync with the migrations. I rolled back 0002 and 0003 to cleanup some broken functionality in the frontend.
+Please do not commit changes to the sqlite3 db, unless it is directly related to updates to the models/etc. This is the out-of-the-box test data.
+
+## Running `django-admin` commands
+
+`python manage.py ..` and `django-admin ..` commands are fairly interchangeable. See their differences in the [Django docs here](https://docs.djangoproject.com/en/5.2/ref/django-admin/).
+
+Because the project is wrapped in docker and doesn't require any local configuration, to successfully run admin commands, such as `makemigrations`, etc, you need to run:
+```
+$> make run 
+```
+```
+$> make exec
+#> python manage.py [command]
+```
+
+Note that you need to run `make run` in its own terminal, as it is currently configured to watch and print output about the running server. 
+
+`make exec` drops you into the docker container in a bash shell, allowing you to run commands in the built environment.
