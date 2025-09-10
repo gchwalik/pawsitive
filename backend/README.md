@@ -16,4 +16,3 @@ Because all the code is built and runs in the container, your IDE will probably 
 ## Changes
 
 NOTE: The db is out of sync with the migrations. I rolled back 0002 and 0003 to cleanup some broken functionality in the frontend.
-
