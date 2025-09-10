@@ -21,3 +21,7 @@ Launching the application is very straightforward:
     1. The backend server is launched at `localhost:8000`, and this endpoint exposes Django Rest Framework's GUI.
 2. From the `pawsitive/frontend/` folder run `make run`
     1. The frontend server is launched at `localhost:5173`. Accessing this in your brower will show you the pawsitive webpage.
+
+## Data Models
+
+You can see the versioned data models in `/docs/data_models`. There are further notes in `/docs/README.md`.
