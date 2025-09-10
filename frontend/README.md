@@ -8,10 +8,13 @@ As mentioned in the project root README, you can launch the frontend dev server 
 
 ## Dependencies
 
-Because the project is wrapped in Docker, all you need to launch the app is:
+Because the project is wrapped in Docker, all you need to launch the frontend server is:
 
 - docker
 - make
+
+Because all the code is built and runs in the container, your IDE will probably tell you that you don't have needed packages installed
+in the frontend code. If this bothers you, you can resolve it with `npm install`.
 
 ## Reference links
 
