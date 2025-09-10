@@ -26,6 +26,3 @@ class PlaceTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlaceType
         fields = ['id', 'name', 'created', 'updated']
-
-    def get_place_count(self, obj):
-        return obj.places.count()
