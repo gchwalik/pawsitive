@@ -11,8 +11,7 @@ Because the project is wrapped in Docker, all you need to launch the backend ser
 - docker
 - make
 
-Because all the code is built and runs in the container, your IDE will probably tell you that you don't have needed packages installed
-in the backend code. If this bothers you, you can resolve it with `poetry install --no-root`.
+Because all the code is built and runs in the container, your IDE will probably tell you that you don't have needed packages installed in the backend code. If this bothers you, you can resolve it with `poetry install --no-root`.
 
 ## Changes
 
