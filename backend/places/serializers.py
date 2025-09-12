@@ -14,7 +14,8 @@ class PlaceSerializer(serializers.ModelSerializer):
     type_id = serializers.PrimaryKeyRelatedField(
         queryset=PlaceType.objects.all(),
         source='type',
-        write_only=True
+        write_only=True,
+        required=False,
     )
 
     class Meta:
