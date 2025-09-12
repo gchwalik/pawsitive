@@ -22,6 +22,14 @@ Launching the application is very straightforward:
 2. From the `pawsitive/frontend/` folder run `make run`
     1. The frontend server is launched at `localhost:5173`. Accessing this in your brower will show you the pawsitive webpage.
 
-## Data Models
+## Docs
+
+Note that both the frontend and backend folders have their own more-specific readmes.
+
+### PRD
+
+Find the PRD in the `/docs/` folder.
+
+### Data Models
 
 You can see the versioned data models in `/docs/data_models`. There are further notes in `/docs/README.md`.
