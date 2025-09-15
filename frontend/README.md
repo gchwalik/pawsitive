@@ -18,9 +18,9 @@ in the frontend code. If this bothers you, you can resolve it with `npm install`
 
 ## Reference links
 
-- https://tailwindcss.com/docs/colors/
-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-- https://vite.dev/guide/features.html
+- https://tailwindcss.com
+- https://github.com/alan2207/bulletproof-react
+- https://css-tricks.com/snippets/css/a-guide-to-flexbox
 
 ## Tools
 
