@@ -30,7 +30,7 @@ I'm targeting users in the San Francisco Bay Area as we get started.
 - user accounts, linking users to their logged notes, etc
 - geospatial filtering of search results, including location and desired radius
 
-## Beta Functional Requirements 
+## Beta Functional Requirements (Work in Progress)
 
 Relying on only user-input data will lead to limited usability in the beginning. To seed the database, we will scrape reviews from AllTrails, filtering for keywords that fit our location criteria. 
 - note that AllTrails doesn't have public apis, which is why we have to scrape
@@ -55,7 +55,7 @@ Relying on only user-input data will lead to limited usability in the beginning.
 - seed database further with Google review data, which does provide an api:
   - https://developers.google.com/my-business/content/review-data#list_all_reviews
 
-## MVP Functional Requirements 
+## MVP Functional Requirements (Work in Progress)
 
 TODO: Improve notes 
 
