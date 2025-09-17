@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Header } from "react-aria-components";
+import { Header, Label } from "react-aria-components";
 import {
   type SubmitHandler,
   type UseFormReturn,
@@ -37,8 +37,8 @@ function EditPlaceForm({
       className={`form flex-1 ${className}`}
     >
       <div className="form-fields flex-1">
-        <div className="form-attribute">
-          <label className="label">Name:</label>
+        <div className="flex items-center form-attribute">
+          <Label className="label">Name:</Label>
           <input
             {...register("name", { required: "Name is required" })}
             className="input"
