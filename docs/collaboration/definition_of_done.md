@@ -2,7 +2,8 @@
 
 - [x] Meets acceptance criteria in the user story
 - [x] Code compiles without errors/warnings
-- [x] Peer review completed (at least two team member reviews PR)
+- [x] Peer review completed (Pita and 1+ other reviewers approve)
+  - [x] Author adds manual test steps (when appropriate), reviewer follows them
 - [x] Unit tests written for new/changed logic (green locally and in CI)
 - [x] Code merged into main branch without conflicts
 - [x] Documentation updated (inline comments, README, or API docs if applicable)
