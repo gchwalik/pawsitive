@@ -14,7 +14,7 @@ services:
   pawsitive-prod:
     <<: *pawsitive-base
     profiles: ["prod"]
-    env_file: ".env" # TODO: set elsewhere
+    env_file: ".env" # TODO: .env shouldn't be used in prod, right now doesn't matter
     build:
       args:
         - TARGET_STAGE=${PROFILE}

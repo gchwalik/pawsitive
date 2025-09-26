@@ -1,7 +1,7 @@
 # Set the PROFILE var when calling make [command] to specify the target profile
 # ex: make run PROFILE=prod, make run PROFILE=dev
 
-.PHONY: clean exec run
+.PHONY: clean exec fmt lint run
 
 PROFILE?=dev  # or prod
 
