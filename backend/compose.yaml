@@ -1,8 +1,20 @@
+x-pawsitive-base: &pawsitive-base
+  build: .
+  ports:
+    - ${PORT}:${PORT}
+
 services:
-  pawsitive:
+  pawsitive-dev:
+    <<: *pawsitive-base
+    profiles: ["dev"]
     env_file: ".env"
-    build: .
-    ports:
-      - ${PORT}:${PORT}
     volumes:
       - .:/app
+
+  pawsitive-prod:
+    <<: *pawsitive-base
+    profiles: ["prod"]
+    env_file: ".env" # TODO: set elsewhere
+    build:
+      args:
+        - TARGET_STAGE=${PROFILE}
