@@ -1,5 +1,9 @@
+# Set the PROFILE var when calling make [command] to specify the target profile
+# ex: make run PROFILE=prod, make run PROFILE=dev
+
 .PHONY: clean debug-build dev exec fmt lint prod restore
 
+# PROFILE values: dev, prod
 PROFILE?=dev
 
 COMPOSE = docker compose --profile ${PROFILE}
