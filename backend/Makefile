@@ -3,16 +3,17 @@
 
 .PHONY: clean exec fmt lint run
 
-PROFILE?=dev  # or prod
+# PROFILE values: dev, prod
+PROFILE?=dev
 
 COMPOSE = docker compose --profile ${PROFILE}
-CONTAINER = backend-pawsitive-${PROFILE}-1
+CONTAINER = backend-pawsitive-${PROFILE}
 
 run:
 	$(COMPOSE) up --build
 
 exec:
-	docker exec -it $(CONTAINER) bash
+	docker exec -it $(CONTAINER)-1 bash
 
 lint:
 	$(COMPOSE) run --build --rm pawsitive-dev ruff check
