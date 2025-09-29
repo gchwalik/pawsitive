@@ -3,7 +3,8 @@
 
 .PHONY: clean debug-build dev exec fmt lint prod restore
 
-PROFILE?=dev # or prod
+# PROFILE values: dev, prod
+PROFILE?=dev
 
 COMPOSE = docker compose --profile ${PROFILE}
 CONTAINER = frontend-pawsitive-${PROFILE}-1
