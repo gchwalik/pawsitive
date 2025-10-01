@@ -11,7 +11,7 @@ This is the cleaned up data model for the core functionality of the alpha versio
 Some notes include:
 - Added `Location` table, to break out the address for `Place`. We'll eventually add latitude-longitude and geospatial stuff. Rather than in-lining, broke this table out to Location, as eventually it would be nice to tag an Amenity/Hazard/etc with a Location as well.
 - I switched from draw.io to excalidraw, because excalidraw lets you attach lines and text to a box making adjusting elements on the model dramatically simplier.
-- The model doesn't include join tables, but rather has `list` type attributes, as this is how they're defined in Django models. Similarly, I have updated the tables so that the attributes are defined on the correct table (ex: PlaceDetails.for_place instead of Place.has_details, etc)
+- The model doesn't include join tables, but rather has `list` type attributes, as this is how they're defined in [Django models](https://docs.djangoproject.com/en/5.2/topics/db/examples/). Similarly, I have updated the tables so that the attributes are defined on the correct table (ex: PlaceDetails.for_place instead of Place.has_details, etc)
 - I removed the `Holiday` table, as it's not relevant to the core functionality alpha version.
 - Tables `Amenity`, `Hazard`, and `Wildlife`, are all simple object tables, with just a name field
   -  `Hazard` table `type` field is removed, as how we choose to handle short- vs long-term hazards needs a little more research. That robustness isn't necessary for the raw alpha version, and isn't a huge lift to add in later on
