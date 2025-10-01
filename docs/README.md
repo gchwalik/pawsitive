@@ -4,7 +4,9 @@ This folder contains all the docs about design decisions, the prd, versions of t
 
 ## Tools 
 
-- [draw.io](https://app.diagrams.net/) to generate/edit any visual diagrams, such as data models, application architecture, etc
+Diagram/modeling tools:
+- [draw.io](https://app.diagrams.net/)
+- [excalidraw.com](https://excalidraw.com/)
 
 ## Data Models 
 
