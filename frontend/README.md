@@ -34,12 +34,6 @@ PRs require that the pipeline passes green to merge to main. This requires: a su
 
 Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, tests are running with `make test` (which isn't implemented yet, but will be soon).
 
-### Passing the pipeline
-
-PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
-
-Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, tests are running with `make test` (which isn't implemented yet, but will be soon).
-
 #### Linting
 
 Linting is validating that your code is formatted well, but doesn't make changes. Formatting actually formats your code to standard styling.
