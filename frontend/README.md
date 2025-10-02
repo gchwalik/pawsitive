@@ -6,7 +6,9 @@ It's built using React+Vite.
 
 As mentioned in the project root README, you can launch the frontend dev server simply by running `make run` and then accessing it at `localhost:5173`.
 
-## Dependencies
+## Development
+
+### Dependencies
 
 Because the project is wrapped in Docker, all you need to launch the frontend server is:
 
@@ -15,6 +17,44 @@ Because the project is wrapped in Docker, all you need to launch the frontend se
 
 Because all the code is built and runs in the container, your IDE will probably tell you that you don't have needed packages installed
 in the frontend code. If this bothers you, you can resolve it with `npm install`.
+
+### docker
+
+We're wrapping our code in docker containers. This so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
+
+This does have impact on our development though, as to successfully manipulate and debug the environments we need to frequently work inside the containers themselves.
+
+If you want to edit packages, investigate build issues, ets, you'll run `make run` to start up the container, then in a different terminal `make exec` to drop into the container, and then make the changes/run the commands that you need.
+
+I detail here some of the dev process to keep in mind.
+
+### Passing the pipeline
+
+PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
+
+Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, tests are running with `make test` (which isn't implemented yet, but will be soon).
+
+### Passing the pipeline
+
+PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
+
+Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, tests are running with `make test` (which isn't implemented yet, but will be soon).
+
+#### Linting
+
+Linting is validating that your code is formatted well, but doesn't make changes. Formatting actually formats your code to standard styling.
+
+We use `eslint` and `prettier` for linting and formatting. As part of linting we also run `tsc --noEmit` to validate any type errors on compilation, while also not emitting any files/
+
+You can run `make fmt` to format your code, then `make lint` to surface any remaining issues to manually fix. `make lint` should pass before a pr goes to review.
+
+### Managing packages
+
+We use `npm`as the package manager. [Here](https://www.freecodecamp.org/news/npm-cheat-sheet-most-common-commands-and-nvm/) are some useful `npm` commands.
+
+Run `make run`, then `make exec` to drop into the container.
+
+Then you can run commands like `npm install [package name]`, etc.
 
 ## Reference links
 

@@ -22,6 +22,24 @@ Launching the application is very straightforward:
 2. From the `pawsitive/frontend/` folder run `make run`
     1. The frontend server is launched at `localhost:5173`. Accessing this in your brower will show you the pawsitive webpage.
 
+## Development Process
+
+We're wrapping our code in docker containers. This so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
+
+This does have impact on our development though, as to successfully manipulate and debug the environments we need to frequently work inside the containers themselves.
+
+I detail here some of the dev process to keep in mind.
+
+### Passing the pipeline
+
+PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
+
+Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, tests are running with `make test` (which isn't implemented yet, but will be soon).
+- If `make lint` fails, run `make fmt` to format your code, and fix any remaining issues surfaced through `make lint`.
+- You should always run `make lint` and `make test` (once tests are implemented) before committing your code.
+
+If you want to edit packages, investigate build issues, ets, you'll run `make run` to start up the container, then in a different terminal `make exec` to drop into the container, and then make the changes/run the commands that you need.
+
 ## Docs
 
 Note that both the frontend and backend folders have their own more-specific readmes.
