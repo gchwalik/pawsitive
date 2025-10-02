@@ -30,7 +30,7 @@ This does have impact on our development though, as to successfully manipulate a
 
 I detail here some of the dev process to keep in mind.
 
-Note: the frontend and backend folders have their own readmes with expanded information.
+**Note: the frontend and backend folders have their own readmes with expanded information.**
 
 ### Passing the pipeline
 
