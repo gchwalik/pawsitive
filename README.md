@@ -30,6 +30,8 @@ This does have impact on our development though, as to successfully manipulate a
 
 I detail here some of the dev process to keep in mind.
 
+Note: the frontend and backend folders have their own readmes with expanded information.
+
 ### Passing the pipeline
 
 PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
