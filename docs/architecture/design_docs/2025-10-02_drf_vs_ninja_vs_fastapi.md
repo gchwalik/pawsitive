@@ -1,0 +1,1 @@
+# Python Frameworks Comparison: DRF vs Django Ninja vs FastAPI
