@@ -1,7 +1,7 @@
 # Set the PROFILE var when calling make [command] to specify the target profile
 # ex: make run PROFILE=prod, make run PROFILE=dev
 
-.PHONY: clean exec fmt lint run
+.PHONY: clean exec fmt lint run test
 
 # PROFILE values: dev, prod
 PROFILE?=dev
@@ -20,6 +20,9 @@ lint:
 
 fmt:
 	$(COMPOSE) run --build --rm pawsitive-dev ruff format
+
+test:
+	@:
 
 clean:
 	docker system prune -f

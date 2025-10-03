@@ -1,7 +1,7 @@
 # Set the PROFILE var when calling make [command] to specify the target profile
 # ex: make run PROFILE=prod, make run PROFILE=dev
 
-.PHONY: clean debug-build dev exec fmt lint prod restore
+.PHONY: clean debug-build dev exec fmt lint prod test restore
 
 # PROFILE values: dev, prod
 PROFILE?=dev
@@ -20,6 +20,9 @@ lint:
 
 fmt:
 	$(COMPOSE) run --build --rm pawsitive-dev npm run format
+
+test:
+	@:
 
 check:
 	$(COMPOSE) run --build --rm pawsitive-${PROFILE} npm run check
