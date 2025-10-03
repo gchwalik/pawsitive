@@ -17,7 +17,7 @@ Because all the code is built and runs in the container, your IDE will probably 
 
 ### docker
 
-We're wrapping our code in docker containers. This so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
+We're wrapping our code in docker containers. This is so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
 
 This does have impact on our development though, as to successfully manipulate and debug the environments we need to frequently work inside the containers themselves.
 
@@ -35,7 +35,7 @@ Prior to merging your branch commits in you'll want to make sure linting is pass
 
 We use [`ruff`](https://github.com/astral-sh/ruff) as both the linter and formatter.
 
-Linting is validating that your code is formatted well, but doesn't make changes. Formatting actually formats your code to standard styling.
+Linting is static code analysis (it doesn't make changes) used to check for errors, bugs, and stylistic inconsistencies. Formatting actually formats your code to your configured style rules.
 
 You can run `make fmt` to format your code, then `make lint` to surface any remaining issues to manually fix. `make lint` should pass before a pr goes to review.
 

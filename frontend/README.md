@@ -19,7 +19,7 @@ Because all the code is built and runs in the container, your IDE will probably 
 
 ### docker
 
-We're wrapping our code in docker containers. This so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
+We're wrapping our code in docker containers. This is so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
 
 This does have impact on our development though, as to successfully manipulate and debug the environments we need to frequently work inside the containers themselves.
 
@@ -35,7 +35,7 @@ Prior to merging your branch commits in you'll want to make sure linting is pass
 
 #### Linting
 
-Linting is validating that your code is formatted well, but doesn't make changes. Formatting actually formats your code to standard styling.
+Linting is static code analysis (it doesn't make changes) used to check for errors, bugs, and stylistic inconsistencies. Formatting actually formats your code to your configured style rules.
 
 We use `eslint` and `prettier` for linting and formatting. As part of linting we also run `tsc --noEmit` to validate any type errors on compilation, while also not emitting any files/
 
