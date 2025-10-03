@@ -43,7 +43,7 @@ You can run `make fmt` to format your code, then `make lint` to surface any rema
 
 ### Managing packages
 
-We use `npm`as the package manager. [Here](https://www.freecodecamp.org/news/npm-cheat-sheet-most-common-commands-and-nvm/) are some useful `npm` commands.
+We use `npm` as the package manager. [Here](https://www.freecodecamp.org/news/npm-cheat-sheet-most-common-commands-and-nvm/) are some useful `npm` commands.
 
 Run `make run`, then `make exec` to drop into the container.
 

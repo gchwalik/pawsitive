@@ -18,11 +18,11 @@ Launching the application is very straightforward:
 
 ## Development
 
-We're wrapping our code in docker containers. This is so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
+Our code is wrapped up in docker containers. This is so that we all develop in the same environments, we can deploy using IaC (infra as code), etc.
 
 This does have impact on our development though, as to successfully manipulate and debug the environments we need to frequently work inside the containers themselves.
 
-I detail here some of the dev process to keep in mind.
+See the sub-folder specific READMEs for tools used and recommended dev workflow.
 
 ### Dependencies
 
@@ -31,16 +31,6 @@ These should be the only dependencies required to launch the app, as it's wrappe
 - make
 
 Please make an issue to update this doc if any dependencies are missing.
-
-### Passing the pipeline
-
-PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
-
-Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, and that tests are running with `make test`.
-- If `make lint` fails, run `make fmt` to format your code, and fix any remaining issues surfaced through `make lint`.
-- You should always run `make lint` and `make test` before committing your code.
-
-If you want to edit packages, investigate build issues, etc, you'll run `make run` to start up the container, then in a different terminal `make exec` to drop into the container, and then make the changes/run the commands that you need.
 
 ### PRD
 
