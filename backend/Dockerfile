@@ -28,4 +28,4 @@ FROM $TARGET_STAGE AS final
 COPY . .env /app/
 
 # Run Django’s development server
-CMD python manage.py runserver 0.0.0.0:$PORT
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
