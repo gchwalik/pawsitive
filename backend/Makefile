@@ -21,5 +21,8 @@ lint:
 fmt:
 	$(COMPOSE) run --build --rm pawsitive-dev ruff format
 
+test:
+	@:
+
 clean:
 	docker system prune -f

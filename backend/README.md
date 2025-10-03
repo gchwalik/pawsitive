@@ -21,7 +21,7 @@ We're wrapping our code in docker containers. This so that we all develop in the
 
 This does have impact on our development though, as to successfully manipulate and debug the environments we need to frequently work inside the containers themselves.
 
-If you want to edit packages, investigate build issues, ets, you'll run `make run` to start up the container, then in a different terminal `make exec` to drop into the container, and then make the changes/run the commands that you need.
+If you want to edit packages, investigate build issues, etc, you'll run `make run` to start up the container, then in a different terminal `make exec` to drop into the container, and then make the changes/run the commands that you need.
 
 I detail here some of the dev process to keep in mind.
 
@@ -29,7 +29,7 @@ I detail here some of the dev process to keep in mind.
 
 PRs require that the pipeline passes green to merge to main. This requires: a successful build, successful linting, and passing tests.
 
-Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, tests are running with `make test` (which isn't implemented yet, but will be soon).
+Prior to merging your branch commits in you'll want to make sure linting is passing with `make lint`, and that tests are running with `make test`.
 
 #### Linting
 
